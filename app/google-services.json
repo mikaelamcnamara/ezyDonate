@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "948992461135",
+    "firebase_url": "https://ezydonate.firebaseio.com",
+    "project_id": "ezydonate",
+    "storage_bucket": "ezydonate.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:948992461135:android:f9857e6100db1bba",
+        "android_client_info": {
+          "package_name": "com.example.ezydonate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "948992461135-08o0ldiiti04bqdohvk428f4onnv9crn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCY1NP_SqRBvPxRcnc-3pL1SleadWlaPvo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "948992461135-08o0ldiiti04bqdohvk428f4onnv9crn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
