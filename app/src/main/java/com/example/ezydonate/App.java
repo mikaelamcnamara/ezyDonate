@@ -15,6 +15,7 @@ public class App {
             this.users.add(new User("Josh", "Hoopy"));
 
         }
+        //R means res and layout refers to package under res
 
         public void addUser(String new_username, String new_password) {
 
