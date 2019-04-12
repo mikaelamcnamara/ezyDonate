@@ -21,6 +21,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void login(View view) {
+
+        setContentView(R.layout.content_main);
+    }
+
+    public void logout(View view) {
+
+        setContentView(R.layout.activity_main);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

@@ -22,4 +22,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.055" />
 
+    <Button
+    android:id="@+id/button"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="25dp"
+    android:background="@color/login_light"
+    android:fontFamily="sans-serif-condensed-medium"
+    android:text="Login Now"
+    android:textColor="@color/login_light"
+    android:onClick="logout"
+    app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+    app:layout_constraintStart_toStartOf="@+id/guideline_left"
+    app:layout_constraintTop_toBottomOf="@+id/editText" />
+
 </android.support.constraint.ConstraintLayout>
