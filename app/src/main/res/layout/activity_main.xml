@@ -106,6 +106,7 @@
             android:onClick="Login"
             android:text="Login Now"
             android:textColor="@color/login_light"
+            android:onClick="login"
             app:layout_constraintEnd_toStartOf="@+id/guideline_right"
             app:layout_constraintHorizontal_bias="0.505"
             app:layout_constraintStart_toStartOf="@+id/guideline_left"
