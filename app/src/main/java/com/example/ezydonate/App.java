@@ -31,6 +31,7 @@ public class App {
         }
 
         public void removeUser(User user) {
+
             this.users.remove(user);
         }
 
