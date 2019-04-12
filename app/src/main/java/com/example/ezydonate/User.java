@@ -6,6 +6,7 @@ public class User {
 
     private String username;
     private String password;
+    private double donated;
 
 
     // Will require encryption of password in future release //
@@ -32,6 +33,24 @@ public class User {
     public boolean login(String username, String password) {
 
         return username.equals(this.username) && password.equals(this.password);
+    }
+
+    // Gets the Username //
+    public String getUsername() {
+
+        return username;
+    }
+
+    // Gets the Password //
+    public String getPassword() {
+
+        return password;
+    }
+
+    public void makeDonation(int amount) {
+
+        donated += amount;
+
     }
 
 
