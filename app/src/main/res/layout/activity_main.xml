@@ -23,10 +23,6 @@
 
       </android.support.design.widget.AppBarLayout>
   <!-->
-    <include
-        android:id="@+id/include"
-        layout="@layout/content_main" />
-
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -103,10 +99,9 @@
             android:layout_marginRight="8dp"
             android:background="@drawable/btn_color"
             android:fontFamily="sans-serif-condensed-medium"
-            android:onClick="Login"
+            android:onClick="login"
             android:text="Login Now"
             android:textColor="@color/login_light"
-            android:onClick="login"
             app:layout_constraintEnd_toStartOf="@+id/guideline_right"
             app:layout_constraintHorizontal_bias="0.505"
             app:layout_constraintStart_toStartOf="@+id/guideline_left"
@@ -125,7 +120,7 @@
             android:layout_marginRight="8dp"
             android:background="@drawable/btn_color"
             android:fontFamily="sans-serif-condensed-medium"
-            android:onClick="Login"
+            android:onClick="login"
             android:text="LOGIN AS A GUEST"
             android:textColor="@color/login_light"
             app:layout_constraintEnd_toStartOf="@+id/guideline_right"
@@ -145,7 +140,7 @@
             android:layout_marginRight="8dp"
             android:background="@drawable/btn_color"
             android:fontFamily="sans-serif-condensed-medium"
-            android:onClick="Login"
+            android:onClick="login"
             android:text="REGISTSER"
             android:textColor="@color/login_light"
             app:layout_constraintEnd_toStartOf="@+id/guideline_right"

@@ -22,8 +22,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
+        // R means res, layout is the package under res //
+
 
         setContentView(R.layout.content_main);
+    }
+
+    public void logout(View view) {
+
+        setContentView(R.layout.activity_main);
     }
 
     @Override
