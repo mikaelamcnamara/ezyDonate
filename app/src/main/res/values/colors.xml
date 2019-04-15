@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3AD4EC</color>
+    <color name="colorPrimaryDark">#120493</color>
+    <color name="login_light">#5CF3F3F3</color>
+    <color name="activeBtn">#00A9DE</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="action_settings" >#ecf0f1</color>
+
+
+
+</resources>
