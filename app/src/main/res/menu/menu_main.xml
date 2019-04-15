@@ -1,4 +1,17 @@
+
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.ezydonate.MainActivity"/>
+
+<!-- below is an XML for search bar <!-->
+
+
+<!--
+<item android:id="@+id/search_bar"
+android:title="Search"
+android:icon = "@android:drawable/ic_menu_search"
+app:actionViewClass="android.widget.SearchView"
+    app:showAsAction="always"/>
+</menu>
+<!-->
