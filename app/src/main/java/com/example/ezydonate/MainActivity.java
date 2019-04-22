@@ -1,12 +1,7 @@
 package com.example.ezydonate;
-
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -53,21 +48,21 @@ public class MainActivity extends AppCompatActivity {
         int i = 0;
         i++;
 
+        /*
         if (username.getText().toString().equals("jshkeeg@gmail.com") && password.getText().toString().equals("adminss")) {
 
             CreateNewUser(mAuth, username.getText().toString(), password.getText().toString());
             setContentView(R.layout.content_main);
 
-         }
+        } else if (i == 3) {
 
-        else if(i ==3)
+            b1.setEnabled(false);
+        }
+        */
+        signIn(mAuth, username.getText().toString(),password.getText().toString());
 
-    {
 
-        b1.setEnabled(false);
     }
-
-}
 
     public void logout(View view) {
 
@@ -122,22 +117,23 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public void createAccount(String email, String password) {
-        mAuth.createUserWithEmailAndPassword(email, password)
+    public void signIn(final FirebaseAuth mAuth, String email, String password) {
+
+        mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
+                    //@Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(null, "createUserWithEmail:success");
+                            Toast.makeText(MainActivity.this, "signInWithEmail:success", Toast.LENGTH_SHORT).show();
                             FirebaseUser user = mAuth.getCurrentUser();
+                            setContentView(R.layout.content_main);
 
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(null, "createUserWithEmail:failure", task.getException());
+                        }
+                        else {
                             Toast.makeText(MainActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
+
                         // ...
                     }
                 });
