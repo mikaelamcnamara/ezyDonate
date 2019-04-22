@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    android:background="@color/registerbackground">
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/textInputEditText5"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/fullname"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/ezyDone2"
+        tools:layout_editor_absoluteX="30dp" />
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/textInputEditText"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/username"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textColorHint="#D7FFFFFF"
+        app:layout_constraintTop_toBottomOf="@+id/textInputEditText5"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/textInputEditText2"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/email_address"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textColorHint="#D7FFFFFF"
+        app:layout_constraintTop_toBottomOf="@+id/textInputEditText"
+        tools:layout_editor_absoluteX="30dp" />
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/textInputEditText3"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/password"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textColorHint="#D7FFFFFF"
+        app:layout_constraintTop_toBottomOf="@+id/textInputEditText2"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/textInputEditText4"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_marginTop="30dp"
+        android:textSize="20sp"
+        android:text="@string/confirm_password"
+        android:textColor="@color/white"
+        android:textColorHint="#D7FFFFFF"
+        app:layout_constraintTop_toBottomOf="@+id/textInputEditText3"
+        tools:layout_editor_absoluteX="30dp" />
+
+    <TextView
+        android:id="@+id/ezyDone2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/ezyDonate"
+        android:textColor="#ecf0f1"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/register"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:background="@drawable/button_rounded"
+        app:layout_constraintTop_toBottomOf="@+id/textInputEditText4"
+        tools:layout_editor_absoluteX="16dp" />
+
+
+</android.support.constraint.ConstraintLayout>

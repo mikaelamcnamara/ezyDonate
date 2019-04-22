@@ -3,4 +3,10 @@
     <string name="action_settings">User Login</string>
     <string name="email_address">Email address</string>
     <string name="password" >Password</string>
+    <string name="username">Username</string>
+    <string name="fullname">Full Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="register">Register</string>
+    <string name="ezyDonate">ezyDonate</string>
+
 </resources>

@@ -28,6 +28,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.content_main);
     }
 
+    public void register(View view) {
+        // R means res, layout is the package under res //
+
+
+        setContentView(R.layout.register_main);
+    }
+
+    public void forgotPass(View view) {
+        // R means res, layout is the package under res //
+
+
+        setContentView(R.layout.content_main);
+    }
+
     public void logout(View view) {
 
         setContentView(R.layout.activity_main);
