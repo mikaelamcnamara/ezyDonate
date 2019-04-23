@@ -1,5 +1,5 @@
 <resources>
-
+    <string name="app_name" >EzyDonate</string>
     <string name="action_settings">User Login</string>
     <string name="email_address">Email address</string>
     <string name="password" >Password</string>
