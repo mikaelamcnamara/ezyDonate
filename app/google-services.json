@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "91084279614-pk6j03q33qusu44nb4i4mc7f2sso1d0v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ezydonate",
+            "certificate_hash": "890a582bac67ea0192aa2ae8d4477106a58c64c8"
+          }
+        },
+        {
           "client_id": "91084279614-litc60c244guo8a60tod5hq90ba8ud0l.apps.googleusercontent.com",
           "client_type": 3
         }
