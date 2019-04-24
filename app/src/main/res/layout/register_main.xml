@@ -73,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:fontFamily="sans-serif-medium"
+        app:fontFamily="sans-serif-medium"
         android:text="@string/ezyDonate"
         android:textColor="#ecf0f1"
         android:textSize="60sp"
@@ -84,7 +84,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/button_rounded"
         android:text="@string/register"
         android:textColor="@color/white"
