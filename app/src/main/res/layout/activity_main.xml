@@ -23,9 +23,6 @@
 
       </android.support.design.widget.AppBarLayout>
   <!-->
-    <include
-        android:id="@+id/include"
-        layout="@layout/content_main" />
 
 
     <android.support.constraint.ConstraintLayout

@@ -28,32 +28,48 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    Button b1;
     ImageButton logButton;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
     ListView search_bar; // Defining ListView
-    ArrayAdapter<String> adapter; // Defining ArrayAdapter
+    ArrayAdapter<String> adapter; // Defining ArrayAdapter;
     static final int requestcode = 1; //RequestCode
+    private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_main);
         checkPermission();
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.draw_layout);
+        b1 = (Button) findViewById(R.id.loginbtn);
+        // mDrawerLayout = (DrawerLayout) findViewById(R.id.draw_layout);
 
     }
 
-
-
-
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+    }
 
 
     public void logout(View view) {
@@ -88,7 +104,22 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void login(View view) {
-        setContentView(R.layout.page_main);
+
+        EditText username = (EditText) findViewById(R.id.editText3);
+        EditText password = (EditText) findViewById(R.id.editText);
+
+        int i = 0;
+        i++;
+
+        /*
+        if (username.getText().toString().equals("jshkeeg@gmail.com") && password.getText().toString().equals("adminss")) {
+            CreateNewUser(mAuth, username.getText().toString(), password.getText().toString());
+            setContentView(R.layout.content_main);
+        } else if (i == 3) {
+            b1.setEnabled(false);
+        }
+        */
+        signIn(mAuth, username.getText().toString(),password.getText().toString());
     }
 
     public void register(View view) {
@@ -96,13 +127,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void menu (View view) {
+    /* public void menu (View view) {
         mDrawerLayout=(DrawerLayout) findViewById(R.id.draw_layout);
         mDrawerLayout.openDrawer(Gravity.LEFT);
         /* mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.Open, R.string.Close);
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();*/
-    }
+    /*}*/
 
 
 
@@ -166,6 +197,49 @@ public class MainActivity extends AppCompatActivity {
 */
 
 
+    public Boolean CreateNewUser(final FirebaseAuth mAuth, String email, String password) {
+
+
+        if (email.trim().equals("") || password.trim().equals("")) {
+            Toast.makeText(null, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        Toast.makeText(MainActivity.this, "Creating...", Toast.LENGTH_SHORT).show();
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(MainActivity.this, "Successful Creation", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "An error has occurred", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        return true;
+    }
+
+    public void signIn(final FirebaseAuth mAuth, String email, String password) {
+
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    //@Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(MainActivity.this, "signInWithEmail:success", Toast.LENGTH_SHORT).show();
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            setContentView(R.layout.page_main);
+
+                        }
+                        else {
+                            Toast.makeText(MainActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
+                        // ...
+                    }
+                });
+    }
 
 
     public void checkPermission() {
@@ -218,5 +292,6 @@ public class MainActivity extends AppCompatActivity {
         builder.show();
 
     }
+
 }
 
