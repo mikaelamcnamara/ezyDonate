@@ -1,3 +1,4 @@
+/*
 package com.example.ezydonate;
 
 import android.support.annotation.NonNull;
@@ -7,6 +8,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
 
 public class Database extends FireBaseWrapper {
 
@@ -41,3 +43,4 @@ public class Database extends FireBaseWrapper {
         return true;
     }
 }
+*/

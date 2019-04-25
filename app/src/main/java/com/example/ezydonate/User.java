@@ -11,10 +11,8 @@ public class User {
 
     // Will require encryption of password in future release //
     User( String new_username, String new_password) {
-
-        new_username = this.username;
-        new_password = this.password;
-
+        this.username = new_username;
+        this.password = new_password ;
     }
 
     // Sets the username of the user if a username change is prompted //

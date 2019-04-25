@@ -2,7 +2,10 @@
     <string name="app_name" >EzyDonate</string>
     <string name="action_settings">User Login</string>
     <string name="email_address">Email address</string>
+    <string name="full_name">Full Name</string>
+    <string name="username">Username</string>
     <string name="password" >Password</string>
+    <string name="confirmpassword" >Confirm Password</string>
     <string name="Open" >Open</string>
     <string name="Close" >Close</string>
 </resources>
