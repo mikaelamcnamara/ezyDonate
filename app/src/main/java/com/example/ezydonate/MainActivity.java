@@ -55,6 +55,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.page_main);
     }
 
+    public void register (View view) {
+        setContentView(R.layout.register_page);
+    }
+
+
 
     public void menu (View view) {
         dmLayout = (DrawerLayout) findViewById(R.id.draw_layout);
@@ -81,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
 
         EditText username = (EditText) findViewById(R.id.editText3);
         EditText password = (EditText) findViewById(R.id.editText);
-
         int i = 0;
         i++;
 
@@ -90,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
 
             CreateNewUser(mAuth, username.getText().toString(), password.getText().toString());
             setContentView(R.layout.content_main);
-
         } else if (i == 3) {
 
             b1.setEnabled(false);
@@ -101,11 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void logout(View view) {
-
-        setContentView(R.layout.activity_main);
-    }
-
+    public void logout(View view) { setContentView(R.layout.activity_main); }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -139,7 +138,6 @@ public class MainActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (grantResults[0] == PackageManager.PERMISSION_GRANTED && requestCode == MainActivity.requestcode) {
             Toast.makeText(getApplicationContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
-
         } else {
             showDetails();
 
@@ -149,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
     public void showDetails() {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("Storage  Write Permission")
-                .setMessage("This permission is necessary to access videos")
+                .setMessage("This permission is necessary to access storage to be able to save data")
                 .setPositiveButton(android.R.string.ok, new Dialog.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -172,8 +170,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public Boolean CreateNewUser(final FirebaseAuth mAuth, String email, String password) {
-
-
         if (email.trim().equals("") || password.trim().equals("")) {
             Toast.makeText(null, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
             return false;
@@ -187,14 +183,16 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(MainActivity.this, "An error has occurred", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
         return true;
     }
 
-    public void signIn(final FirebaseAuth mAuth, String email, String password) {
 
+
+
+
+    public void signIn(final FirebaseAuth mAuth, String email, String password) {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     //@Override
@@ -202,17 +200,16 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(MainActivity.this, "signInWithEmail:success", Toast.LENGTH_SHORT).show();
                             FirebaseUser user = mAuth.getCurrentUser();
-                            setContentView(R.layout.content_main);
-
+                            setContentView(R.layout.activity_main);
                         }
                         else {
                             Toast.makeText(MainActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
-
                         // ...
                     }
                 });
     }
+
 }
 
