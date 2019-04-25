@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     static final int requestcode = 1; //RequestCode
     private FirebaseAuth mAuth;
 
-
+    //lmaoooooo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
