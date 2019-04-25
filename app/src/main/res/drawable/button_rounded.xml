@@ -5,7 +5,7 @@
         android:color="@color/btnblue"
         />
     <corners
-        android:radius="25dp">
+        android:radius="26dp">
 
     </corners>
 

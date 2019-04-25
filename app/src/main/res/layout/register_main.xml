@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="30dp"
+    android:padding="31dp"
     android:background="@color/registerbackground">
 
     <android.support.design.widget.TextInputEditText
@@ -84,7 +84,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="31dp"
         android:background="@drawable/button_rounded"
         android:text="@string/register"
         android:textColor="@color/white"
