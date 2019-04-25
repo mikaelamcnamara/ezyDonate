@@ -141,7 +141,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:gravity="center"
-            android:onClick="logon"
+            android:onClick="forgotPass"
             android:text="Forgot Password?"
             android:textStyle="bold"
             android:textColor="@color/white"

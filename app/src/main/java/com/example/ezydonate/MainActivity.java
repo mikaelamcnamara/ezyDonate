@@ -55,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.page_main);
     }
 
+    public void forgotPass (View view) {
+        setContentView(R.layout.forgot_user_password);
+    }
+
     public void register (View view) {
         setContentView(R.layout.register_page);
     }
