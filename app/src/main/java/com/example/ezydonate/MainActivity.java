@@ -39,6 +39,8 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -67,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
+       // CreateNewUser(mAuth, "Test@gmail.com", "Adminss" , "Test", "DASDEASDASD");
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
     }
@@ -197,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
 */
 
 
-    public Boolean CreateNewUser(final FirebaseAuth mAuth, String email, String password) {
+    public Boolean CreateNewUser(final FirebaseAuth mAuth, String email, String password , final String name, final String username) {
 
 
         if (email.trim().equals("") || password.trim().equals("")) {
@@ -210,6 +213,13 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(MainActivity.this, "Successful Creation", Toast.LENGTH_SHORT).show();
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    //Change Directory Later
+                    DatabaseReference ref = database.getReference("users/Full_Name");
+                    ref.setValue(name);
+                    //Change Directory Later
+                    ref = database.getReference("users/Username");
+                    ref.setValue(username);
                 } else {
                     Toast.makeText(MainActivity.this, "An error has occurred", Toast.LENGTH_SHORT).show();
                 }
