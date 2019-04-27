@@ -23,6 +23,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
     DrawerLayout dmLayout;
@@ -173,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public Boolean CreateNewUser(final FirebaseAuth mAuth, String email, String password) {
+    public Boolean CreateNewUser(final FirebaseAuth mAuth,  String email, final String password, final String fullName, final String username) {
         if (email.trim().equals("") || password.trim().equals("")) {
             Toast.makeText(null, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
             return false;
@@ -184,6 +186,13 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(MainActivity.this, "Successful Creation", Toast.LENGTH_SHORT).show();
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    //Change later
+                    DatabaseReference ref = database.getReference("user/username");
+                    ref.setValue(username);
+                    // Change later
+                    ref = database.getReference("user/password");
+                    ref.setValue(password);
                 } else {
                     Toast.makeText(MainActivity.this, "An error has occurred", Toast.LENGTH_SHORT).show();
                 }
