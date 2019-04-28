@@ -107,7 +107,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="25dp"
         android:layout_marginRight="25dp"
-        android:background="@color/colar"
+        android:background="@drawable/reg_btn"
         android:fontFamily="sans-serif-condensed-medium"
         android:onClick="logout"
         android:text="Register"

@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public Boolean CreateNewUser(final FirebaseAuth mAuth, String email, final String password, final String fullName, final String username) {
+    public Boolean CreateNewUser(final FirebaseAuth mAuth,  String email, final String password, final String fullName, final String username) {
         if (email.trim().equals("") || password.trim().equals("")) {
             Toast.makeText(null, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
             return false;
