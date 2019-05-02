@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout dmLayout;
 
     Button b1;
+    Button b2;
     private FirebaseAuth mAuth;
     static final int requestcode = 1;
 
@@ -42,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
         // Toolbar toolbar = findViewById(R.id.toolbar);
         //   setSupportActionBar(toolbar);
         b1 = (Button) findViewById(R.id.loginbtn);
-        checkPermission();
-
     }
 
     @Override
@@ -53,19 +52,28 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
     }
 
-    public void logon (View view) {
-        setContentView(R.layout.page_main);
-    }
 
     public void forgotPass (View view) {
         setContentView(R.layout.forgot_user_password);
     }
 
-    public void register (View view) {
+    public void go_register (View view) {
+
         setContentView(R.layout.register_page);
+
     }
 
+    public void register (View view) {
 
+        EditText fullName = (EditText) findViewById(R.id.editText2);
+        EditText username = (EditText) findViewById(R.id.editText4);
+        EditText email = (EditText) findViewById(R.id.editText5);
+        EditText password = (EditText) findViewById(R.id.editText9);
+        EditText confirmpassword = (EditText) findViewById(R.id.editText7);
+
+            CreateNewUser(mAuth, email.getText().toString(), password.getText().toString(), fullName.getText().toString(), username.getText().toString());
+
+    }
 
     public void menu (View view) {
         dmLayout = (DrawerLayout) findViewById(R.id.draw_layout);
@@ -138,6 +146,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void forget_password(View view) {
+
+        EditText email = (EditText) findViewById(R.id.editText8);
+
+        reset_password(mAuth, email.getText().toString());
+    }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -175,10 +190,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public Boolean CreateNewUser(final FirebaseAuth mAuth, String email, final String password, final String fullName, final String username) {
+    public void CreateNewUser(final FirebaseAuth mAuth,  final String email, final String password, final String fullName, final String username) {
         if (email.trim().equals("") || password.trim().equals("")) {
             Toast.makeText(null, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
-            return false;
         }
         Toast.makeText(MainActivity.this, "Creating...", Toast.LENGTH_SHORT).show();
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -186,34 +200,58 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(MainActivity.this, "Successful Creation", Toast.LENGTH_SHORT).show();
+                    String id1 = mAuth.getCurrentUser().getUid();
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     //Change later
-                    DatabaseReference ref = database.getReference("user/username");
+                    DatabaseReference ref = database.getReference("user/"+id1+"/fullName");
+                    ref.setValue(fullName);
+                    //Change later
+                    ref = database.getReference("user/"+id1+"/username");
                     ref.setValue(username);
-                    // Change later
-                    ref = database.getReference("user/password");
-                    ref.setValue(password);
+                    //Change later
+                    ref = database.getReference("user/"+id1+"/email");
+                    ref.setValue(email);
+                    setContentView(R.layout.activity_main);
                 } else {
                     Toast.makeText(MainActivity.this, "An error has occurred", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-        return true;
+
     }
 
+    // Resets password
+    public void reset_password(final FirebaseAuth mAuth, final String email) {
 
+        mAuth.sendPasswordResetEmail(email)
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
 
+                        if (task.isSuccessful()) {
+                            Toast.makeText(MainActivity.this, "Password Reset Request Sent, Check Your Email", Toast.LENGTH_SHORT).show();
+                            setContentView(R.layout.activity_main);
+                        }
+                        else {
+                            Toast.makeText(MainActivity.this, "Email Address Does Not Exist",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+
+    }
 
 
     public void signIn(final FirebaseAuth mAuth, String email, String password) {
         mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                     //@Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(MainActivity.this, "signInWithEmail:success", Toast.LENGTH_SHORT).show();
                             FirebaseUser user = mAuth.getCurrentUser();
-                            setContentView(R.layout.activity_main);
+                            setContentView(R.layout.page_main);
                         }
                         else {
                             Toast.makeText(MainActivity.this, "Authentication failed.",
