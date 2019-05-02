@@ -146,6 +146,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void forget_password(View view) {
+
+        EditText email = (EditText) findViewById(R.id.editText8);
+
+        reset_password(mAuth, email.getText().toString());
+    }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -214,12 +221,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void reset_password(final FirebaseAuth mAuth, final String email) {
 
+        mAuth.sendPasswordResetEmail(email)
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                        if (task.isSuccessful()) {
+                            Toast.makeText(MainActivity.this, "Password Reset Request Sent, Check Your Email", Toast.LENGTH_SHORT).show();
+                            setContentView(R.layout.activity_main);
+                        }
+                        else {
+                            Toast.makeText(MainActivity.this, "Email Address Does Not Exist",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+
+    }
 
 
     public void signIn(final FirebaseAuth mAuth, String email, String password) {
         mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                     //@Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
