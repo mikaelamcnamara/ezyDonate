@@ -220,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    // Resets password
     public void reset_password(final FirebaseAuth mAuth, final String email) {
 
         mAuth.sendPasswordResetEmail(email)
