@@ -104,7 +104,7 @@
             android:textStyle="bold"
             android:textSize="20dp"
             android:background="@drawable/login_btn"
-            android:onClick="logon"
+            android:onClick="login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText" />
@@ -124,7 +124,7 @@
             android:fontFamily="sans-serif-condensed-medium"
             android:textSize="20dp"
             android:text="Register"
-            android:onClick="register"
+            android:onClick="go_register"
             android:textStyle="bold"
             android:textColor="@color/lightBlue"
             app:layout_constraintEnd_toEndOf="parent"
