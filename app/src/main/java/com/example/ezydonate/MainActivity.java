@@ -282,6 +282,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    public void forget_password(View view) {
+
+        EditText email = (EditText) findViewById(R.id.editText8);
+
+        reset_password(mAuth, email.getText().toString());
+    }
 
     public void reset_password(final FirebaseAuth mAuth, final String email) {
 
