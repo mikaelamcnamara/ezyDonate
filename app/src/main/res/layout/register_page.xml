@@ -8,6 +8,26 @@
     android:background="@drawable/regbg_color">
 
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:onClick="logout"
+        android:text="CANCEL"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginbtn5"
+        tools:ignore="HardcodedText" />
+
     <EditText
         android:id="@+id/editText9"
         android:layout_width="307dp"
@@ -119,14 +139,13 @@
         app:layout_constraintTop_toBottomOf="@+id/editText7" />
 
 
-
     <TextView
         android:id="@+id/ezyDone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:fontFamily="sans-serif-medium"
