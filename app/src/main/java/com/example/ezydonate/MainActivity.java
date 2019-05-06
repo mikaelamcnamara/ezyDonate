@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.forgot_user_password);
     }
 
-    public void register(View view) {
+    public void register_page(View view) {
         setContentView(R.layout.register_page);
     }
 
@@ -217,12 +217,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-//    public void registerUser(View view) {
-//        EditText fullname = (EditText) findViewById(R.id.)
-//        EditText username = (EditText) findViewById(R.id.editText3);
-//        EditText password = (EditText) findViewById(R.id.editText);
-//
-//    }
+    public void register (View view) {
+
+        EditText fullName = (EditText) findViewById(R.id.editText2);
+        EditText username = (EditText) findViewById(R.id.editText4);
+        EditText email = (EditText) findViewById(R.id.editText5);
+        EditText password = (EditText) findViewById(R.id.editText9);
+        EditText confirmpassword = (EditText) findViewById(R.id.editText7);
+
+            CreateNewUser(mAuth, email.getText().toString(), password.getText().toString(), fullName.getText().toString(), username.getText().toString());
+
+    }
 
 
     public Boolean CreateNewUser(final FirebaseAuth mAuth, String email, final String password,
