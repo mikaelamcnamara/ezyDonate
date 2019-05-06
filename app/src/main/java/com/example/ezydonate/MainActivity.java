@@ -6,7 +6,10 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -26,7 +29,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout dmLayout;
 
     Button b1;
@@ -47,29 +50,63 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_menu:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new MainMenuFragment()).commit();
+                break;
+            case R.id.nav_account:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new AccountFragment()).commit();
+                break;
+            case R.id.nav_event:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new EventFragment()).commit();
+                break;
+            case R.id.nav_history:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new HistoryFragment()).commit();
+                break;
+            case R.id.nav_settings:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new SettingsFragment()).commit();
+                break;
+            case R.id.nav_booking:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new BookingFragment()).commit();
+                break;
+        }
+        dmLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
     }
 
-    public void logon (View view) {
+    public void logon(View view) {
         setContentView(R.layout.page_main);
     }
 
-    public void forgotPass (View view) {
+    public void forgotPass(View view) {
         setContentView(R.layout.forgot_user_password);
     }
 
-    public void register (View view) {
+    public void register(View view) {
         setContentView(R.layout.register_page);
     }
 
 
-
-    public void menu (View view) {
+    public void menu(View view) {
         dmLayout = (DrawerLayout) findViewById(R.id.draw_layout);
         dmLayout.openDrawer(Gravity.LEFT);
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     public void checkPermission() {
@@ -86,14 +123,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     public void login(View view) {
         // R means res, layout is the package under res //
-
+        //Toast.makeText(null,"Login Working", Toast.LENGTH_SHORT).show();
         EditText username = (EditText) findViewById(R.id.editText3);
         EditText password = (EditText) findViewById(R.id.editText);
-        int i = 0;
-        i++;
+        //int i = 0;
+        //i++;
 
         /*
         if (username.getText().toString().equals("jshkeeg@gmail.com") && password.getText().toString().equals("adminss")) {
@@ -105,12 +141,19 @@ public class MainActivity extends AppCompatActivity {
             b1.setEnabled(false);
         }
         */
-        signIn(mAuth, username.getText().toString(),password.getText().toString());
+        signIn(mAuth, username.getText().toString(), password.getText().toString());
+        //signIn(mAuth, "nadavf141@gmail.com", "adminss");
 
 
     }
 
-    public void logout(View view) { setContentView(R.layout.activity_main); }
+    public void logout(View view) {
+        setContentView(R.layout.activity_main);
+    }
+
+    public void resetPass(View view) {
+        setContentView(R.layout.verified_pass);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -140,7 +183,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (grantResults[0] == PackageManager.PERMISSION_GRANTED && requestCode == MainActivity.requestcode) {
             Toast.makeText(getApplicationContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
@@ -173,9 +217,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+//    public void registerUser(View view) {
+//        EditText fullname = (EditText) findViewById(R.id.)
+//        EditText username = (EditText) findViewById(R.id.editText3);
+//        EditText password = (EditText) findViewById(R.id.editText);
+//
+//    }
 
 
-    public Boolean CreateNewUser(final FirebaseAuth mAuth,  String email, final String password, final String fullName, final String username) {
+    public Boolean CreateNewUser(final FirebaseAuth mAuth, String email, final String password,
+                                 final String fullName, final String username) {
         if (email.trim().equals("") || password.trim().equals("")) {
             Toast.makeText(null, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
             return false;
@@ -202,27 +253,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-
     public void signIn(final FirebaseAuth mAuth, String email, String password) {
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    //@Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(MainActivity.this, "signInWithEmail:success", Toast.LENGTH_SHORT).show();
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            setContentView(R.layout.activity_main);
-                        }
-                        else {
-                            Toast.makeText(MainActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                        // ...
-                    }
-                });
-    }
+        if (email.trim().equals("") || password.trim().equals("") ) {
 
+
+        } else {
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(MainActivity.this, "signInWithEmail:success", Toast.LENGTH_SHORT).show();
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                setContentView(R.layout.page_main);
+                            } else {
+                                Toast.makeText(MainActivity.this, "Authentication failed.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                            // ...
+                        }
+                    });
+        }
+
+    }
 }
 
