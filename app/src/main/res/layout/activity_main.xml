@@ -124,7 +124,7 @@
             android:fontFamily="sans-serif-condensed-medium"
             android:textSize="20dp"
             android:text="Register"
-            android:onClick="register"
+            android:onClick="go_register"
             android:textStyle="bold"
             android:textColor="@color/lightBlue"
             app:layout_constraintEnd_toEndOf="parent"
