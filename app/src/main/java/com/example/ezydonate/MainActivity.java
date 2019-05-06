@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.page_main);
     }
 
-    public void forgotPass(View view) {
+    public void forgotPass_page(View view) {
         setContentView(R.layout.forgot_user_password);
     }
 
@@ -217,7 +217,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    public void register (View view) {
+    public void register(View view) {
 
         EditText fullName = (EditText) findViewById(R.id.editText2);
         EditText username = (EditText) findViewById(R.id.editText4);
@@ -225,7 +225,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         EditText password = (EditText) findViewById(R.id.editText9);
         EditText confirmpassword = (EditText) findViewById(R.id.editText7);
 
-            CreateNewUser(mAuth, email.getText().toString(), password.getText().toString(), fullName.getText().toString(), username.getText().toString());
+        CreateNewUser(mAuth, email.getText().toString(), password.getText().toString(), fullName.getText().toString(), username.getText().toString());
 
     }
 
@@ -259,7 +259,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     public void signIn(final FirebaseAuth mAuth, String email, String password) {
-        if (email.trim().equals("") || password.trim().equals("") ) {
+        if (email.trim().equals("") || password.trim().equals("")) {
 
 
         } else {
@@ -281,5 +281,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
     }
-}
 
+
+    public void reset_password(final FirebaseAuth mAuth, final String email) {
+
+        mAuth.sendPasswordResetEmail(email)
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                        if (task.isSuccessful()) {
+                            Toast.makeText(MainActivity.this, "Password Reset Request Sent, Check Your Email", Toast.LENGTH_SHORT).show();
+                            setContentView(R.layout.activity_main);
+                        } else {
+                            Toast.makeText(MainActivity.this, "Email Address Does Not Exist",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+
+    }
+
+}
