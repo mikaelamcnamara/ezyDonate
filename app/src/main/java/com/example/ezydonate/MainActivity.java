@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
@@ -234,31 +233,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (email.trim().equals("") || password.trim().equals("")) {
             Toast.makeText(null, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
         }
-        Toast.makeText(MainActivity.this, "Creating...", Toast.LENGTH_SHORT).show();
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(MainActivity.this, "Successful Creation, Please Verify your Email", Toast.LENGTH_SHORT).show();
-                    String id1 = mAuth.getCurrentUser().getUid();
-                    final FirebaseUser user = mAuth.getCurrentUser();
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    //Change later
-                    DatabaseReference ref = database.getReference("user/"+id1+"/fullName");
-                    ref.setValue(fullName);
-                    //Change later
-                    ref = database.getReference("user/"+id1+"/username");
-                    ref.setValue(username);
-                    //Change later
-                    ref = database.getReference("user/"+id1+"/email");
-                    ref.setValue(email);
-                    user.sendEmailVerification();
-                    setContentView(R.layout.activity_main);
-                } else {
-                    Toast.makeText(MainActivity.this, "An error has occurred", Toast.LENGTH_SHORT).show();
+        else
+            {
+            Toast.makeText(MainActivity.this, "Creating...", Toast.LENGTH_SHORT).show();
+            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(MainActivity.this, "Successful Creation, Please Verify your Email", Toast.LENGTH_SHORT).show();
+                        String id1 = mAuth.getCurrentUser().getUid();
+                        final FirebaseUser user = mAuth.getCurrentUser();
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        //Change later
+                        DatabaseReference ref = database.getReference("user/" + id1 + "/fullName");
+                        ref.setValue(fullName);
+                        //Change later
+                        ref = database.getReference("user/" + id1 + "/username");
+                        ref.setValue(username);
+                        //Change later
+                        ref = database.getReference("user/" + id1 + "/email");
+                        ref.setValue(email);
+                        user.sendEmailVerification();
+                        setContentView(R.layout.activity_main);
+                    } else {
+                        Toast.makeText(MainActivity.this, "An error has occurred", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
+
+            });
+        }
 
     }
 
@@ -267,7 +270,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (email.trim().equals("") || password.trim().equals("")) {
 
 
-        } else {
+        }
+        else {
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
