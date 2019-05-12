@@ -230,31 +230,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    public Boolean CreateNewUser(final FirebaseAuth mAuth, String email, final String password,
-                                 final String fullName, final String username) {
+    public void CreateNewUser(final FirebaseAuth mAuth,  final String email, final String password, final String fullName, final String username) {
         if (email.trim().equals("") || password.trim().equals("")) {
             Toast.makeText(null, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
-            return false;
         }
         Toast.makeText(MainActivity.this, "Creating...", Toast.LENGTH_SHORT).show();
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(MainActivity.this, "Successful Creation", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Successful Creation, Please Verify your Email", Toast.LENGTH_SHORT).show();
+                    String id1 = mAuth.getCurrentUser().getUid();
+                    final FirebaseUser user = mAuth.getCurrentUser();
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     //Change later
-                    DatabaseReference ref = database.getReference("user/username");
+                    DatabaseReference ref = database.getReference("user/"+id1+"/fullName");
+                    ref.setValue(fullName);
+                    //Change later
+                    ref = database.getReference("user/"+id1+"/username");
                     ref.setValue(username);
-                    // Change later
-                    ref = database.getReference("user/password");
-                    ref.setValue(password);
+                    //Change later
+                    ref = database.getReference("user/"+id1+"/email");
+                    ref.setValue(email);
+                    user.sendEmailVerification();
+                    setContentView(R.layout.activity_main);
                 } else {
                     Toast.makeText(MainActivity.this, "An error has occurred", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-        return true;
+
     }
 
 
@@ -267,11 +272,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
+                            final FirebaseUser userTest = mAuth.getCurrentUser();
+                            if (task.isSuccessful() && userTest.isEmailVerified()) {
                                 Toast.makeText(MainActivity.this, "signInWithEmail:success", Toast.LENGTH_SHORT).show();
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 setContentView(R.layout.page_main);
-                            } else {
+                            }
+
+                            else if (task.isSuccessful() && !userTest.isEmailVerified()) {
+                                Toast.makeText(MainActivity.this, "Email is not verified - Please Verify your Email",
+                                        Toast.LENGTH_SHORT).show();
+                                        mAuth.signOut();
+                            }
+
+                            else {
                                 Toast.makeText(MainActivity.this, "Authentication failed.",
                                         Toast.LENGTH_SHORT).show();
                             }
