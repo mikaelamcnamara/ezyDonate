@@ -2,6 +2,7 @@ package com.example.ezydonate;
 import android.Manifest;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.signin.SignIn;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -87,17 +89,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
     }
-
-    public void logon(View view) {
-        setContentView(R.layout.page_main);
-    }
-
+    
     public void forgotPass_page(View view) {
-        setContentView(R.layout.forgot_user_password);
+
+        Intent forgot_password  = new Intent(MainActivity.this, ForgotActivity.class);
+        startActivity(forgot_password);
     }
 
     public void register_page(View view) {
-        setContentView(R.layout.register_page);
+
+        Intent register  = new Intent(MainActivity.this, RegisterActivity.class);
+        startActivity(register);
     }
 
 
@@ -141,9 +143,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             b1.setEnabled(false);
         }
         */
-        signIn(mAuth, username.getText().toString(), password.getText().toString());
-        //signIn(mAuth, "nadavf141@gmail.com", "adminss");
 
+        signIn(mAuth, username.getText().toString(), password.getText().toString());
 
     }
 
@@ -217,57 +218,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    public void register(View view) {
-
-        EditText fullName = (EditText) findViewById(R.id.editText2);
-        EditText username = (EditText) findViewById(R.id.editText4);
-        EditText email = (EditText) findViewById(R.id.editText5);
-        EditText password = (EditText) findViewById(R.id.editText9);
-        EditText confirmpassword = (EditText) findViewById(R.id.editText7);
-
-        CreateNewUser(mAuth, email.getText().toString(), password.getText().toString(), fullName.getText().toString(), username.getText().toString());
-
-    }
-
-
-    public void CreateNewUser(final FirebaseAuth mAuth,  final String email, final String password, final String fullName, final String username) {
-        if (email.trim().equals("") || password.trim().equals("")) {
-            Toast.makeText(null, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
-        }
-        Toast.makeText(MainActivity.this, "Creating...", Toast.LENGTH_SHORT).show();
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(MainActivity.this, "Successful Creation, Please Verify your Email", Toast.LENGTH_SHORT).show();
-                    String id1 = mAuth.getCurrentUser().getUid();
-                    final FirebaseUser user = mAuth.getCurrentUser();
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    //Change later
-                    DatabaseReference ref = database.getReference("user/"+id1+"/fullName");
-                    ref.setValue(fullName);
-                    //Change later
-                    ref = database.getReference("user/"+id1+"/username");
-                    ref.setValue(username);
-                    //Change later
-                    ref = database.getReference("user/"+id1+"/email");
-                    ref.setValue(email);
-                    user.sendEmailVerification();
-                    setContentView(R.layout.activity_main);
-                } else {
-                    Toast.makeText(MainActivity.this, "An error has occurred", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-    }
-
 
     public void signIn(final FirebaseAuth mAuth, String email, String password) {
         if (email.trim().equals("") || password.trim().equals("")) {
 
 
-        } else {
+        }
+        else {
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
@@ -282,7 +239,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             else if (task.isSuccessful() && !userTest.isEmailVerified()) {
                                 Toast.makeText(MainActivity.this, "Email is not verified - Please Verify your Email",
                                         Toast.LENGTH_SHORT).show();
-                                        mAuth.signOut();
+                                mAuth.signOut();
                             }
 
                             else {
@@ -293,33 +250,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         }
                     });
         }
-
-    }
-
-    public void forget_password(View view) {
-
-        EditText email = (EditText) findViewById(R.id.editText8);
-
-        reset_password(mAuth, email.getText().toString());
-    }
-
-    public void reset_password(final FirebaseAuth mAuth, final String email) {
-
-        mAuth.sendPasswordResetEmail(email)
-                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-
-                        if (task.isSuccessful()) {
-                            Toast.makeText(MainActivity.this, "Password Reset Request Sent, Check Your Email", Toast.LENGTH_SHORT).show();
-                            setContentView(R.layout.activity_main);
-                        } else {
-                            Toast.makeText(MainActivity.this, "Email Address Does Not Exist",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                });
 
     }
 
