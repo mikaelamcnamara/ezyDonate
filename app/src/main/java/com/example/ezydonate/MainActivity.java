@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
     }
-    
+
     public void forgotPass_page(View view) {
 
         Intent forgot_password  = new Intent(MainActivity.this, ForgotActivity.class);
