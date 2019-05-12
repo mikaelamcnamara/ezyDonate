@@ -194,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
         if (email.trim().equals("") || password.trim().equals("")) {
             Toast.makeText(null, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
         }
+
         Toast.makeText(MainActivity.this, "Creating...", Toast.LENGTH_SHORT).show();
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -244,22 +245,26 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void signIn(final FirebaseAuth mAuth, String email, String password) {
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
-                    //@Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(MainActivity.this, "signInWithEmail:success", Toast.LENGTH_SHORT).show();
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            setContentView(R.layout.page_main);
+        if (email.trim().equals("") || password.trim().equals("")) {
+            Toast.makeText(MainActivity.this, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                        //@Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(MainActivity.this, "signInWithEmail:success", Toast.LENGTH_SHORT).show();
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                setContentView(R.layout.page_main);
+                            } else {
+                                Toast.makeText(MainActivity.this, "Authentication failed.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                            // ...
                         }
-                        else {
-                            Toast.makeText(MainActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                        // ...
-                    }
-                });
+                    });
+        }
     }
 
 }
