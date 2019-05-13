@@ -37,8 +37,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Button b1;
     private FirebaseAuth mAuth;
     static final int requestcode = 1;
-
-    //lmaoooooo
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -130,19 +129,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //Toast.makeText(null,"Login Working", Toast.LENGTH_SHORT).show();
         EditText username = (EditText) findViewById(R.id.editText3);
         EditText password = (EditText) findViewById(R.id.editText);
-        //int i = 0;
-        //i++;
-
-        /*
-        if (username.getText().toString().equals("jshkeeg@gmail.com") && password.getText().toString().equals("adminss")) {
-
-            CreateNewUser(mAuth, username.getText().toString(), password.getText().toString());
-            setContentView(R.layout.content_main);
-        } else if (i == 3) {
-
-            b1.setEnabled(false);
-        }
-        */
 
         signIn(mAuth, username.getText().toString(), password.getText().toString());
 
@@ -150,10 +136,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void logout(View view) {
         setContentView(R.layout.activity_main);
-    }
-
-    public void resetPass(View view) {
-        setContentView(R.layout.verified_pass);
     }
 
     @Override
