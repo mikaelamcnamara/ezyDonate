@@ -7,7 +7,6 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
@@ -22,14 +21,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.signin.SignIn;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout dmLayout;
@@ -101,6 +97,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         startActivity(register);
     }
 
+    public void makeEvent(View view) {
+
+        Intent makeEvent = new Intent(MainActivity.this, EventActivity.class);
+        startActivity(makeEvent);
+
+    }
+
 
     public void menu(View view) {
         dmLayout = (DrawerLayout) findViewById(R.id.draw_layout);
@@ -127,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void login(View view) {
         // R means res, layout is the package under res //
         //Toast.makeText(null,"Login Working", Toast.LENGTH_SHORT).show();
-        EditText username = (EditText) findViewById(R.id.editText3);
+        EditText username = (EditText) findViewById(R.id.editText2);
         EditText password = (EditText) findViewById(R.id.editText);
 
         signIn(mAuth, username.getText().toString(), password.getText().toString());
@@ -202,10 +205,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     public void signIn(final FirebaseAuth mAuth, String email, String password) {
+
         if (email.trim().equals("") || password.trim().equals("")) {
 
 
         }
+
         else {
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
