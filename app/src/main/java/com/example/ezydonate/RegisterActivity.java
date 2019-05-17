@@ -44,35 +44,42 @@ public class RegisterActivity extends Activity {
     public void CreateNewUser(final FirebaseAuth mAuth,  final String email, final String password, final String fullName, final String username) {
         if (email.trim().equals("") || password.trim().equals("")) {
             Toast.makeText(null, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
+
         }
-        Toast.makeText(RegisterActivity.this, "Creating...", Toast.LENGTH_SHORT).show();
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(RegisterActivity.this, "Successful Creation, Please Verify your Email", Toast.LENGTH_SHORT).show();
-                    String id1 = mAuth.getCurrentUser().getUid();
-                    final FirebaseUser user = mAuth.getCurrentUser();
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    //Change later
-                    DatabaseReference ref = database.getReference("user/"+id1+"/fullName");
-                    ref.setValue(fullName);
-                    //Change later
-                    ref = database.getReference("user/"+id1+"/username");
-                    ref.setValue(username);
-                    //Change later
-                    ref = database.getReference("user/"+id1+"/email");
-                    ref.setValue(email);
-                    user.sendEmailVerification();
 
-                    Intent main = new Intent(RegisterActivity.this, MainActivity.class);
-                    startActivity(main);
+        else {
 
-                } else {
-                    Toast.makeText(RegisterActivity.this, "An error has occurred", Toast.LENGTH_SHORT).show();
+
+            Toast.makeText(RegisterActivity.this, "Creating...", Toast.LENGTH_SHORT).show();
+            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(RegisterActivity.this, "Successful Creation, Please Verify your Email", Toast.LENGTH_SHORT).show();
+                        String id1 = mAuth.getCurrentUser().getUid();
+                        final FirebaseUser user = mAuth.getCurrentUser();
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        //Change later
+                        DatabaseReference ref = database.getReference("user/" + id1 + "/fullName");
+                        ref.setValue(fullName);
+                        //Change later
+                        ref = database.getReference("user/" + id1 + "/username");
+                        ref.setValue(username);
+                        //Change later
+                        ref = database.getReference("user/" + id1 + "/email");
+                        ref.setValue(email);
+                        user.sendEmailVerification();
+
+                        Intent main = new Intent(RegisterActivity.this, MainActivity.class);
+                        startActivity(main);
+
+                    } else {
+                        Toast.makeText(RegisterActivity.this, "An error has occurred", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
+            });
+        }
+
 
     }
 
