@@ -4,14 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -42,15 +36,11 @@ public class RegisterActivity extends Activity {
     }
 
     public void CreateNewUser(final FirebaseAuth mAuth,  final String email, final String password, final String fullName, final String username) {
-        if (email.trim().equals("") || password.trim().equals("")) {
-            Toast.makeText(null, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
-
+        if (email.trim().equals("") || password.trim().equals("") || fullName.trim().equals("") || username.trim().equals("")) {
+            Toast.makeText(this, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
         }
-
         else {
-
-
-            Toast.makeText(RegisterActivity.this, "Creating...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Creating...", Toast.LENGTH_SHORT).show();
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -70,8 +60,7 @@ public class RegisterActivity extends Activity {
                         ref.setValue(email);
                         user.sendEmailVerification();
 
-                        Intent main = new Intent(RegisterActivity.this, MainActivity.class);
-                        startActivity(main);
+                        finish();
 
                     } else {
                         Toast.makeText(RegisterActivity.this, "An error has occurred", Toast.LENGTH_SHORT).show();
@@ -80,21 +69,23 @@ public class RegisterActivity extends Activity {
             });
         }
 
+    }
 
+    public void cancel(View view) {
+        finish();
     }
 
     public void register(View view) {
 
-        EditText fullName = (EditText) findViewById(R.id.editText2);
-        EditText username = (EditText) findViewById(R.id.editText4);
+        EditText fullName = (EditText) findViewById(R.id.editText1);
+        EditText username = (EditText) findViewById(R.id.editText3);
         EditText email = (EditText) findViewById(R.id.editText5);
         EditText password = (EditText) findViewById(R.id.editText9);
         EditText confirmpassword = (EditText) findViewById(R.id.editText7);
 
+
         CreateNewUser(mAuth, email.getText().toString(), password.getText().toString(), fullName.getText().toString(), username.getText().toString());
 
-
-
+        }
     }
 
-}
