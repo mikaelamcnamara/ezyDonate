@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
 import android.view.View;
 import android.widget.EditText;
@@ -19,6 +21,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EventActivity extends Activity {
 
@@ -27,6 +31,7 @@ public class EventActivity extends Activity {
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
+//    List<Event> lstEvent;
 
     public Bitmap image;
 
@@ -37,9 +42,16 @@ public class EventActivity extends Activity {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        setContentView(R.layout.make_event);
+        setContentView(R.layout.fragment_event);
         // Toolbar toolbar = findViewById(R.id.toolbar);
         //   setSupportActionBar(toolbar);
+     /*   lstEvent = new ArrayList<>();
+        lstEvent.add(new Event("The Vegetarian", "yo", "hello","fdksdfk","ninehirty",R.drawable.app_icon));
+        RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
+        RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this, lstEvent);
+        myrv.setLayoutManager(new GridLayoutManager(this, 1));
+        myrv.setAdapter(myAdapter);
+*/
     }
 
     public void getImage(View view) {
@@ -76,7 +88,7 @@ public class EventActivity extends Activity {
         String temp=Base64.encodeToString(b, Base64.DEFAULT);
         return temp;
     }
-
+/*
     public void createEvents(View view) {
 
         EditText title = (EditText) findViewById(R.id.editText1);
@@ -91,8 +103,10 @@ public class EventActivity extends Activity {
 
         mDatabase.child("events").child(title.getText().toString()).child(title.getText().toString()).setValue("hi there");
     }
+    */
 
 }
+/*
 
 class Event {
 
@@ -101,9 +115,9 @@ class Event {
     public String location;
     public String eventDate;
     public String time;
-    public String image;
+    public int image;
 
-    public Event (String title, String description, String location, String eventDate, String time, String image) {
+    public Event (String title, String description, String location, String eventDate, String time, int image) {
 
         this.title = title;
         this.description = description;
@@ -114,4 +128,28 @@ class Event {
 
     }
 
-}
+    public String getDescription() {
+        return description;
+    }
+
+    public String getEventDate() {
+        return eventDate;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public int getThumbnail() {
+        return image;
+    }
+    }
+*/
