@@ -1,36 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="120dp"
-    android:layout_height="190dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="5dp"
-    app:cardCornerRadius="4dp">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingBottom="20dp"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--<android.support.v7.widget.CardView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="170dp"-->
+        <!--android:layout_marginLeft="30dp"-->
+        <!--android:layout_marginTop="30dp"-->
+        <!--android:layout_marginRight="30dp">-->
 
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/event_img_id"
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:background="#2d2d2d"
-            android:scaleType="centerCrop" />
+            android:layout_height="300dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp">
 
-        <TextView
-            android:textSize="13sp"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Event Title"
-        />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/lightBlue"
+                android:orientation="horizontal">
 
 
+            </LinearLayout>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/event_img_id"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@mipmap/ic_launcher_round"
+                app:civ_border_color="#FF000000"
+                app:civ_border_width="2dp" />
+
+            <TextView
+                android:id="@+id/event_title_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="210dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:text="Title"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/event_date_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="51dp"
+                android:textSize="17dp"
+                android:layout_weight="1"
+                android:text="Date" />
+
+            <TextView
+                android:id="@+id/event_time_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="260dp"
+                android:layout_marginTop="51dp"
+                android:textSize="17dp"
+                android:layout_weight="1"
+                android:text="Time" />
+
+            <TextView
+                android:id="@+id/event_location_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="195dp"
+                android:layout_marginTop="82dp"
+                android:layout_weight="1"
+                android:text="Location"
+                android:textSize="17dp" />
+
+            <!--<Button-->
+            <!--android:id="@+id/event_button_id"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="185dp"-->
+            <!--android:layout_marginTop="110dp"-->
+            <!--android:text="Attend"/>-->
+
+            <TextView
+                android:id="@+id/event_description_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="170dp"
+                android:layout_weight="1"
+                android:text="Description"
+                android:textSize="17dp" />
+
+
+
+        </android.support.v7.widget.CardView>
+
+
+
+
+
+
+<!--<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--android:layout_margin="30dp"-->
+    <!--app:cardCornerRadius="5dp">-->
+
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="154dp"-->
+        <!--android:background="@color/lightBlue"-->
+
+        <!--android:orientation="vertical">-->
+
+        <!--<ImageView-->
+        <!--android:id="@+id/event_img_id"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="160dp"-->
+        <!--android:background="#2d2d2d"-->
+        <!--android:scaleType="centerCrop" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/event_title_id"-->
+        <!--android:textSize="13sp"-->
+        <!--android:gravity="center"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:text="Event Title"/>-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/event_location_id"-->
+        <!--android:textSize="13sp"-->
+        <!--android:gravity="center"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:text="Location Title"/>-->
 
 
     </LinearLayout>
 
-</android.support.v7.widget.CardView>
+<!--</android.support.v7.widget.CardView>-->

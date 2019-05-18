@@ -13,6 +13,8 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Menu;
@@ -27,8 +29,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout dmLayout;
+
 
     Button b1;
     private FirebaseAuth mAuth;
@@ -44,7 +50,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         b1 = (Button) findViewById(R.id.loginbtn);
         checkPermission();
 
+
+
     }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
