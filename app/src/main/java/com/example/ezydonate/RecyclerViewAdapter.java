@@ -1,16 +1,12 @@
 package com.example.ezydonate;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -36,7 +32,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.event_title.setText(mData.get(position).getTitle());
-        holder.event_thumbnail.setImageResource(mData.get(position).getThumbnail());
+        //holder.event_thumbnail.setImageResource(mData.get(position).getThumbnail());
         holder.event_time.setText(mData.get(position).getTime());
         holder.event_description.setText(mData.get(position).getDescription());
         holder.event_date.setText(mData.get(position).getEventDate());
