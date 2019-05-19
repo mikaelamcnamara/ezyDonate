@@ -21,7 +21,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
+import com.squareup.picasso.Picasso;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -210,6 +212,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         builder.create();
         builder.show();
 
+
     }
 
 
@@ -221,13 +224,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         else {
+            Toast.makeText(MainActivity.this, "Connecting...", Toast.LENGTH_SHORT).show();
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             final FirebaseUser userTest = mAuth.getCurrentUser();
                             if (task.isSuccessful() && userTest.isEmailVerified()) {
-                                Toast.makeText(MainActivity.this, "signInWithEmail:success", Toast.LENGTH_SHORT).show();
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 setContentView(R.layout.page_main);
                             }
