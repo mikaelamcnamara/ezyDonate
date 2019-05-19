@@ -57,7 +57,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/editText2"
             android:layout_width="307dp"
             android:layout_height="53dp"
             android:layout_marginTop="21dp"
@@ -85,7 +85,7 @@
             android:padding="16dp"
             android:textColorHint="@color/login_light"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText3" />
+            app:layout_constraintTop_toBottomOf="@+id/editText2" />
 
 
         <Button
@@ -124,7 +124,7 @@
             android:fontFamily="sans-serif-condensed-medium"
             android:textSize="20dp"
             android:text="Register"
-            android:onClick="register"
+            android:onClick="register_page"
             android:textStyle="bold"
             android:textColor="@color/lightBlue"
             app:layout_constraintEnd_toEndOf="parent"
@@ -141,7 +141,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:gravity="center"
-            android:onClick="forgotPass"
+            android:onClick="forgotPass_page"
             android:text="Forgot Password?"
             android:textStyle="bold"
             android:textColor="@color/white"

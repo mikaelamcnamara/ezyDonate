@@ -2,41 +2,46 @@ package com.example.ezydonate;
 import android.Manifest;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
+import com.squareup.picasso.Picasso;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout dmLayout;
 
+
     Button b1;
     private FirebaseAuth mAuth;
     static final int requestcode = 1;
-
-    //lmaoooooo
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +52,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         b1 = (Button) findViewById(R.id.loginbtn);
         checkPermission();
 
+
+
     }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -88,16 +96,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FirebaseUser currentUser = mAuth.getCurrentUser();
     }
 
-    public void logon(View view) {
-        setContentView(R.layout.page_main);
+    public void forgotPass_page(View view) {
+
+        Intent forgot_password  = new Intent(MainActivity.this, ForgotActivity.class);
+        startActivity(forgot_password);
     }
 
-    public void forgotPass(View view) {
-        setContentView(R.layout.forgot_user_password);
+    public void register_page(View view) {
+
+        Intent register  = new Intent(MainActivity.this, RegisterActivity.class);
+        startActivity(register);
     }
 
-    public void register(View view) {
-        setContentView(R.layout.register_page);
+    public void makeEvent(View view) {
+
+        Intent makeEvent = new Intent(MainActivity.this, EventActivity.class);
+        startActivity(makeEvent);
+
     }
 
 
@@ -126,33 +141,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void login(View view) {
         // R means res, layout is the package under res //
         //Toast.makeText(null,"Login Working", Toast.LENGTH_SHORT).show();
-        EditText username = (EditText) findViewById(R.id.editText3);
+        EditText username = (EditText) findViewById(R.id.editText2);
         EditText password = (EditText) findViewById(R.id.editText);
-        //int i = 0;
-        //i++;
 
-        /*
-        if (username.getText().toString().equals("jshkeeg@gmail.com") && password.getText().toString().equals("adminss")) {
-
-            CreateNewUser(mAuth, username.getText().toString(), password.getText().toString());
-            setContentView(R.layout.content_main);
-        } else if (i == 3) {
-
-            b1.setEnabled(false);
-        }
-        */
         signIn(mAuth, username.getText().toString(), password.getText().toString());
-        //signIn(mAuth, "nadavf141@gmail.com", "adminss");
-
 
     }
 
     public void logout(View view) {
         setContentView(R.layout.activity_main);
-    }
-
-    public void resetPass(View view) {
-        setContentView(R.layout.verified_pass);
     }
 
     @Override
@@ -215,58 +212,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         builder.create();
         builder.show();
 
-    }
 
-//    public void registerUser(View view) {
-//        EditText fullname = (EditText) findViewById(R.id.)
-//        EditText username = (EditText) findViewById(R.id.editText3);
-//        EditText password = (EditText) findViewById(R.id.editText);
-//
-//    }
-
-
-    public Boolean CreateNewUser(final FirebaseAuth mAuth, String email, final String password,
-                                 final String fullName, final String username) {
-        if (email.trim().equals("") || password.trim().equals("")) {
-            Toast.makeText(null, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        Toast.makeText(MainActivity.this, "Creating...", Toast.LENGTH_SHORT).show();
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(MainActivity.this, "Successful Creation", Toast.LENGTH_SHORT).show();
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    //Change later
-                    DatabaseReference ref = database.getReference("user/username");
-                    ref.setValue(username);
-                    // Change later
-                    ref = database.getReference("user/password");
-                    ref.setValue(password);
-                } else {
-                    Toast.makeText(MainActivity.this, "An error has occurred", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-        return true;
     }
 
 
     public void signIn(final FirebaseAuth mAuth, String email, String password) {
-        if (email.trim().equals("") || password.trim().equals("") ) {
+
+        if (email.trim().equals("") || password.trim().equals("")) {
 
 
-        } else {
+        }
+
+        else {
+            Toast.makeText(MainActivity.this, "Connecting...", Toast.LENGTH_SHORT).show();
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(MainActivity.this, "signInWithEmail:success", Toast.LENGTH_SHORT).show();
+                            final FirebaseUser userTest = mAuth.getCurrentUser();
+                            if (task.isSuccessful() && userTest.isEmailVerified()) {
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 setContentView(R.layout.page_main);
-                            } else {
+                            }
+
+                            else if (task.isSuccessful() && !userTest.isEmailVerified()) {
+                                Toast.makeText(MainActivity.this, "Email is not verified - Please Verify your Email",
+                                        Toast.LENGTH_SHORT).show();
+                                mAuth.signOut();
+                            }
+
+                            else {
                                 Toast.makeText(MainActivity.this, "Authentication failed.",
                                         Toast.LENGTH_SHORT).show();
                             }
@@ -276,5 +251,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
     }
-}
 
+}

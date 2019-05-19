@@ -19,6 +19,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:label="EzyDonate" >
+        </activity>
+        <activity
+            android:name=".ForgotActivity"
+            android:label="EzyDonate" >
+        </activity>
+        <activity
+            android:name=".EventActivity"
+            android:label="EzyDonate" >
+        </activity>
     </application>
 
 </manifest>
