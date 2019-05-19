@@ -32,25 +32,30 @@ public class ForgotActivity extends Activity {
     }
 
     public void reset_password(final FirebaseAuth mAuth, final String email) {
+        if (email.trim().equals("")) {
+            Toast.makeText(this, "Invalid Email", Toast.LENGTH_SHORT).show();
+        }
 
-        mAuth.sendPasswordResetEmail(email)
-                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
+        else {
+            mAuth.sendPasswordResetEmail(email)
+                    .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
 
-                        if (task.isSuccessful()) {
-                            Toast.makeText(ForgotActivity.this, "Password Reset Request Sent, Check Your Email", Toast.LENGTH_SHORT).show();
+                            if (task.isSuccessful()) {
+                                Toast.makeText(ForgotActivity.this, "Password Reset Request Sent, Check Your Email", Toast.LENGTH_SHORT).show();
 
-                            Intent main = new Intent(ForgotActivity.this, MainActivity.class);
-                            startActivity(main);
+                                Intent main = new Intent(ForgotActivity.this, MainActivity.class);
+                                startActivity(main);
 
-                        } else {
-                            Toast.makeText(ForgotActivity.this, "Email Address Does Not Exist",
-                                    Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(ForgotActivity.this, "Email Address Does Not Exist",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+
                         }
-
-                    }
-                });
+                    });
+        }
 
     }
 
@@ -59,5 +64,10 @@ public class ForgotActivity extends Activity {
         EditText email = (EditText) findViewById(R.id.editText8);
 
         reset_password(mAuth, email.getText().toString());
+    }
+
+    public void cancel(View view) {
+
+        finish();
     }
 }
