@@ -8,4 +8,15 @@
     <string name="confirmpassword" >Confirm Password</string>
     <string name="Open" >Open</string>
     <string name="Close" >Close</string>
+    <string-array name="times">
+        <item>9:00am</item>
+        <item>10:00am</item>
+        <item>11:00am</item>
+        <item>12:00pm</item>
+        <item>1:00pm</item>
+        <item>2:00pm</item>
+        <item>3:00pm</item>
+        <item>4:00pm</item>
+        <item>5:00pm</item>
+    </string-array>
 </resources>

@@ -8,9 +8,21 @@
 
 
     <android.support.constraint.ConstraintLayout
-        android:layout_height="match_parent"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="249dp">
 
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="412dp"
+            android:layout_height="match_parent"
+            android:alpha="0.7"
+            android:scaleType="fitStart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/meeting" />
 
         <ImageButton
             android:id="@+id/menuButton"
@@ -24,26 +36,68 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_menu_black_24dp"
-            tools:ignore="VectorDrawableCompat"/>
+            tools:ignore="VectorDrawableCompat" />
 
+        <Button
+
+            android:id="@+id/loginbtn"
+            android:layout_width="363dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/login_btn"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Make Booking"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/imageView5"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+
+        <Button
+
+            android:id="@+id/loginbtn2"
+            android:layout_width="363dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="200dp"
+            android:background="@drawable/reg_btn"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Cancel Booking"
+            android:textColor="@color/lightBlue"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loginbtn" />
 
 
         <TextView
+            android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="256dp"
+            android:layout_marginTop="70dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:text="Booking"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textSize="30sp"
+            android:textColor="@color/white"
+            android:textSize="45sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textColor="@color/white"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </android.support.constraint.ConstraintLayout>
