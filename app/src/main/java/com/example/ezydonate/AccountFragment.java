@@ -1,17 +1,28 @@
 package com.example.ezydonate;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ezydonate.Model.UserInformation;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class AccountFragment extends Fragment {
@@ -32,10 +43,16 @@ public class AccountFragment extends Fragment {
     /**
      * UI references
      */
-    //@BindView(R.id.tvFullname) TextView tvFullname;
-    //@BindView(R.id.tvEmail) TextView tvEmail;
-    //@BindView(R.id.tvPassword) TextView tvPassword;
-    //@BindView(R.id.btnEdit) Button mBtnEdit;
+    @BindView(R.id.editText10) EditText etEmail;
+    @BindView(R.id.textView17) TextView tvUpEmail;
+
+    @BindView(R.id.editText14)EditText etFullname;
+    @BindView(R.id.textView24) TextView tvFullname;
+
+    @BindView(R.id.editText12) EditText etPassword;
+    @BindView(R.id.textView20) TextView tvPassword;
+
+
     public AccountFragment() {
 
     }
@@ -59,8 +76,8 @@ public class AccountFragment extends Fragment {
         return v;
     }
 
-}
-/* to be changed,  to avoid errors i change this part to comments for now
+
+
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
 
@@ -102,10 +119,10 @@ public class AccountFragment extends Fragment {
             }
         });
     }
-    **
+    /**
      * Get data from firebase and store in local string
      * @param dataSnapshot
-     *
+     */
     private void showData(DataSnapshot dataSnapshot) {
         for (DataSnapshot ds : dataSnapshot.getChildren()) {
             uInfo = new UserInformation();
@@ -127,4 +144,3 @@ public class AccountFragment extends Fragment {
     }
 
 }
-*/
