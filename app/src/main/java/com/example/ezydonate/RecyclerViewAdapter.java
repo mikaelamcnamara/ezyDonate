@@ -2,31 +2,23 @@ package com.example.ezydonate;
 
 import android.content.Context;
 import android.os.Build;
-import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
-
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> implements Filterable  {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> implements Filterable {
 
     Context mContext;
 
@@ -99,7 +91,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.event_title.setText(mData.get(position).getTitle());
-        holder.event_thumbnail.setImageResource(mData.get(position).getThumbnail());
+        //holder.event_thumbnail.setImageResource(mData.get(position).getThumbnail());
         holder.event_time.setText(mData.get(position).getTime());
         holder.event_description.setText(mData.get(position).getDescription());
         holder.event_date.setText(mData.get(position).getEventDate());
