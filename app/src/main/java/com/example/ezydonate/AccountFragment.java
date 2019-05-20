@@ -1,26 +1,18 @@
 package com.example.ezydonate;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.ezydonate.Model.UserInformation;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,12 +24,12 @@ public class AccountFragment extends Fragment {
     /**
      * Firebase stuff
      */
-    private FirebaseDatabase mFirebaseDatabase;
+    //FirebaseDatabase mFirebaseDatabase;
     private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
-    private DatabaseReference myRef;
-    private String userID;
-    private UserInformation uInfo;
+    //private FirebaseAuth.AuthStateListener mAuthListener;
+    //private DatabaseReference myRef;
+    //private String userID;
+    //private UserInformation uInfo;
 
 
     /**
@@ -82,28 +74,28 @@ public class AccountFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         mAuth = FirebaseAuth.getInstance();
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        myRef = mFirebaseDatabase.getReference();
+        //mFirebaseDatabase = FirebaseDatabase.getInstance();
+        //myRef = mFirebaseDatabase.getReference();
         FirebaseUser user = mAuth.getCurrentUser();
-        userID = user.getUid();
+        //userID = user.getUid();
+        updateUI(user);
+    //    mAuthListener = new FirebaseAuth.AuthStateListener() {
+     //       @Override
+    //        public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+    //            FirebaseUser user = firebaseAuth.getCurrentUser();
+    //            if (user != null) {
+    //                // User is signed in
+    //                Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+    //                toastMessage("Successfully signed in with: " + user.getEmail());
+    //            } else {
+   //                 // User is signed out
+    //                Log.d(TAG, "onAuthStateChanged:signed_out");
+     //               toastMessage("Successfully signed out.");
+ //               }
 
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                    toastMessage("Successfully signed in with: " + user.getEmail());
-                } else {
-                    // User is signed out
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
-                    toastMessage("Successfully signed out.");
-                }
-
-            }
-        };
-
+     //       }
+      //  };
+        /**
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -118,11 +110,42 @@ public class AccountFragment extends Fragment {
                 Log.w(TAG, "Failed to read value.");
             }
         });
+        */
+    }
+
+    private void updateUI(FirebaseUser user) {
+        //hideProgressDialog();
+        String userID = mAuth.getCurrentUser().getUid();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref1 = database.getReference("user/" + userID + "/email");
+
+        etEmail.setText(ref1.d);
+        //etFullname.setText(user.);
+        /**
+        if (user != null) {
+            mStatusTextView.setText(getString(R.string.emailpassword_status_fmt,
+                    user.getEmail(), user.isEmailVerified()));
+            mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
+
+            findViewById(R.id.emailPasswordButtons).setVisibility(View.GONE);
+            findViewById(R.id.emailPasswordFields).setVisibility(View.GONE);
+            findViewById(R.id.signedInButtons).setVisibility(View.VISIBLE);
+
+            findViewById(R.id.verifyEmailButton).setEnabled(!user.isEmailVerified());
+        } else {
+            mStatusTextView.setText(R.string.signed_out);
+            mDetailTextView.setText(null);
+
+            findViewById(R.id.emailPasswordButtons).setVisibility(View.VISIBLE);
+            findViewById(R.id.emailPasswordFields).setVisibility(View.VISIBLE);
+            findViewById(R.id.signedInButtons).setVisibility(View.GONE);
+        }
+         */
     }
     /**
      * Get data from firebase and store in local string
      * @param dataSnapshot
-     */
+     *//**
     private void showData(DataSnapshot dataSnapshot) {
         for (DataSnapshot ds : dataSnapshot.getChildren()) {
             uInfo = new UserInformation();
@@ -142,5 +165,5 @@ public class AccountFragment extends Fragment {
     private void toastMessage(String message){
         Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
     }
-
+*/
 }
