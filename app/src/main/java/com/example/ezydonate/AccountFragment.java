@@ -1,27 +1,17 @@
 package com.example.ezydonate;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.ezydonate.Model.UserInformation;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class AccountFragment extends Fragment {
@@ -40,15 +30,13 @@ public class AccountFragment extends Fragment {
 
 
     /**
-     *UI references
+     * UI references
      */
-    @BindView(R.id.tvFullname) TextView tvFullname;
-    @BindView(R.id.tvEmail) TextView tvEmail;
-    @BindView(R.id.tvPassword) TextView tvPassword;
-    @BindView(R.id.btnEdit) Button mBtnEdit;
-
-
-    public AccountFragment(){
+    //@BindView(R.id.tvFullname) TextView tvFullname;
+    //@BindView(R.id.tvEmail) TextView tvEmail;
+    //@BindView(R.id.tvPassword) TextView tvPassword;
+    //@BindView(R.id.btnEdit) Button mBtnEdit;
+    public AccountFragment() {
 
     }
 
@@ -60,18 +48,19 @@ public class AccountFragment extends Fragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_account, container, false);
 
-        ButterKnife.bind(this,v);
+        ButterKnife.bind(this, v);
 
         return v;
     }
 
+}
+/* to be changed,  to avoid errors i change this part to comments for now
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
 
@@ -113,10 +102,10 @@ public class AccountFragment extends Fragment {
             }
         });
     }
-    /**
+    **
      * Get data from firebase and store in local string
      * @param dataSnapshot
-     */
+     *
     private void showData(DataSnapshot dataSnapshot) {
         for (DataSnapshot ds : dataSnapshot.getChildren()) {
             uInfo = new UserInformation();
@@ -138,3 +127,4 @@ public class AccountFragment extends Fragment {
     }
 
 }
+*/
