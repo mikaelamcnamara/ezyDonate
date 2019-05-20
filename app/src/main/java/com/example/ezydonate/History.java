@@ -10,9 +10,9 @@ public class History {
     public String location;
     public String eventDate;
     public String time;
-    public int image;
+    public String image;
 
-    public History (String title, String description, String location, String eventDate, String time, int image) {
+    public History (String title, String description, String location, String eventDate, String time, String image) {
 
         this.title = title;
         this.description = description;
@@ -43,7 +43,7 @@ public class History {
         return title;
     }
 
-    public int getThumbnail() {
+    public String getThumbnail() {
         return image;
     }
 
@@ -67,7 +67,7 @@ public class History {
         this.time = time;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }

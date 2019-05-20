@@ -32,10 +32,10 @@ public class HistoryFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         lstEvent = new ArrayList<>();
-        lstEvent.add(new Event("The Vegetarian", "yo", "hello","fdksdfk","ninehirty",R.drawable.app_icon));
-        lstEvent.add(new Event("The Vegetarianss", "yo", "hello","fdksdfk","ninehirty",R.drawable.app_icon));
-        lstEvent.add(new Event("The Vegetarian", "yo", "hello","fdksdfk","ninehirty",R.drawable.app_icon));
-        lstEvent.add(new Event("The Vegetarianss", "yo", "hello","fdksdfk","ninehirty",R.drawable.app_icon));
+        lstEvent.add(new Event("The Vegetarian", "yo", "hello","fdksdfk","ninehirty", "hi"));
+        lstEvent.add(new Event("The Vegetarianss", "yo", "hello","fdksdfk","ninehirty","hi"));
+        lstEvent.add(new Event("The Vegetarian", "yo", "hello","fdksdfk","ninehirty", "hi"));
+        lstEvent.add(new Event("The Vegetarianss", "yo", "hello","fdksdfk","ninehirty","hi"));
     }
 
 }

@@ -32,7 +32,7 @@ public class RecyclerViewAdapterHistory extends RecyclerView.Adapter<RecyclerVie
     @Override //
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.event_title.setText(mData.get(position).getTitle());
-        holder.event_thumbnail.setImageResource(mData.get(position).getThumbnail());
+        //holder.event_thumbnail.setImageResource(mData.get(position).getThumbnail());
         holder.event_time.setText(mData.get(position).getTime());
         holder.event_description.setText(mData.get(position).getDescription());
         holder.event_date.setText(mData.get(position).getEventDate());
