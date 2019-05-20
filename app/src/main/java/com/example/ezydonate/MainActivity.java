@@ -13,26 +13,19 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
-import com.squareup.picasso.Picasso;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout dmLayout;
@@ -55,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     }
+
 
 
     @Override
@@ -111,6 +105,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void makeEvent(View view) {
 
         Intent makeEvent = new Intent(MainActivity.this, EventActivity.class);
+        startActivity(makeEvent);
+
+    }
+
+    public void makeBooking(View view) {
+
+        Intent makeEvent = new Intent(MainActivity.this, BookingMakeActivity.class);
+        startActivity(makeEvent);
+
+    }
+
+    public void cancelBooking(View view) {
+
+        Intent makeEvent = new Intent(MainActivity.this, BookingCancelActivity.class);
         startActivity(makeEvent);
 
     }

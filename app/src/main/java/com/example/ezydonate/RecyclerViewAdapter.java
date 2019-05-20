@@ -24,8 +24,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v;
         v = LayoutInflater.from(mContext).inflate(R.layout.cardview_event, parent,false);
-       MyViewHolder vHolder = new MyViewHolder(v);
-       return vHolder;
+        MyViewHolder vHolder = new MyViewHolder(v);
+        return vHolder;
 
     }
 
