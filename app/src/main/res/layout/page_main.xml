@@ -73,8 +73,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="249dp"
                 android:scaleType="fitStart"
-                app:srcCompat="@drawable/header_image"
-                tools:layout_editor_absoluteX="0dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/header_image" />
 
             <ImageButton
                 android:id="@+id/LogOutButton"
@@ -143,8 +145,10 @@
                 android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="12dp"
                 android:text="last month"
+                android:textColor="@color/white"
+                android:textSize="13dp"
                 app:layout_constraintEnd_toEndOf="@+id/imageView7"
                 app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="@+id/imageView7"
@@ -155,9 +159,13 @@
                 android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="12dp"
                 android:text="$25"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/imageView7"
+                app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintStart_toStartOf="@+id/imageView7"
                 app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -168,6 +176,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:text="You previously donated"
+                android:textColor="@color/white"
+                android:textStyle="normal"
+                android:textSize="13dp"
                 app:layout_constraintEnd_toEndOf="@+id/imageView7"
                 app:layout_constraintStart_toStartOf="@+id/imageView7"
                 app:layout_constraintTop_toTopOf="@+id/imageView7" />
@@ -181,8 +192,11 @@
                 android:id="@+id/textView15"
                 android:layout_width="wrap_content"
                 android:layout_height="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="12dp"
                 android:text="since 05/04/19"
+                android:textColor="@color/white"
+                android:textStyle="normal"
+                android:textSize="13dp"
                 app:layout_constraintEnd_toEndOf="@+id/imageView11"
                 app:layout_constraintHorizontal_bias="0.502"
                 app:layout_constraintStart_toStartOf="@+id/imageView11"
@@ -193,8 +207,11 @@
                 android:id="@+id/textView14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="12dp"
                 android:text="$200"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/imageView11"
                 app:layout_constraintStart_toStartOf="@+id/imageView11"
                 app:layout_constraintTop_toBottomOf="@+id/textView13" />
@@ -204,8 +221,11 @@
                 android:id="@+id/textView13"
                 android:layout_width="wrap_content"
                 android:layout_height="17dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="12dp"
                 android:text="Total Donations"
+                android:textColor="@color/white"
+                android:textSize="13dp"
+                android:textStyle="normal"
                 app:layout_constraintEnd_toEndOf="@+id/imageView11"
                 app:layout_constraintHorizontal_bias="0.502"
                 app:layout_constraintStart_toStartOf="@+id/imageView11"
@@ -215,10 +235,13 @@
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="52dp"
                 android:layout_marginRight="52dp"
                 android:text="Total Points"
+                android:textColor="@color/white"
+                android:textStyle="normal"
+                android:textSize="13dp"
                 app:layout_constraintEnd_toEndOf="@+id/imageView16"
                 app:layout_constraintTop_toTopOf="@+id/imageView16" />
 
@@ -226,11 +249,14 @@
                 android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="68dp"
-                android:layout_marginRight="68dp"
+                android:layout_marginTop="2dp"
                 android:text="100000"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/imageView16"
+                app:layout_constraintHorizontal_bias="0.832"
+                app:layout_constraintStart_toStartOf="@+id/imageView16"
                 app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
 
@@ -245,7 +271,7 @@
 
 
 
-        <FrameLayout
+    <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -260,7 +286,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/latestdonor" />
-
         <ImageView
         android:id="@+id/imageView6"
         android:layout_width="match_parent"
@@ -272,20 +297,20 @@
         app:srcCompat="@drawable/donors" />-->
 
 
-        </FrameLayout>
+    </FrameLayout>
 
 
 
 
-        <android.support.design.widget.NavigationView
-            android:id="@+id/nav_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            app:headerLayout="@layout/navigation_header"
-            app:menu="@menu/mainpage_menu">
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/navigation_header"
+        app:menu="@menu/mainpage_menu">
 
-        </android.support.design.widget.NavigationView>
+    </android.support.design.widget.NavigationView>
 
 
 

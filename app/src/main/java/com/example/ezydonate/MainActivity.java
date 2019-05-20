@@ -13,12 +13,10 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -28,9 +26,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout dmLayout;
@@ -54,7 +49,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    // lol
+
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -109,6 +105,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void makeEvent(View view) {
 
         Intent makeEvent = new Intent(MainActivity.this, EventActivity.class);
+        startActivity(makeEvent);
+
+    }
+
+    public void makeBooking(View view) {
+
+        Intent makeEvent = new Intent(MainActivity.this, BookingMakeActivity.class);
+        startActivity(makeEvent);
+
+    }
+
+    public void cancelBooking(View view) {
+
+        Intent makeEvent = new Intent(MainActivity.this, BookingCancelActivity.class);
         startActivity(makeEvent);
 
     }
@@ -210,6 +220,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         builder.create();
         builder.show();
 
+
     }
 
 
@@ -221,13 +232,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         else {
+            Toast.makeText(MainActivity.this, "Connecting...", Toast.LENGTH_SHORT).show();
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             final FirebaseUser userTest = mAuth.getCurrentUser();
                             if (task.isSuccessful() && userTest.isEmailVerified()) {
-                                Toast.makeText(MainActivity.this, "signInWithEmail:success", Toast.LENGTH_SHORT).show();
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 setContentView(R.layout.page_main);
                             }
