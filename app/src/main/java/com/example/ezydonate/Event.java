@@ -10,9 +10,9 @@ public class Event {
         public String location;
         public String eventDate;
         public String time;
-        public String image;
+        public int image;
 
-        public Event (String title, String description, String location, String eventDate, String time, String image) {
+        public Event (String title, String description, String location, String eventDate, String time, int image) {
 
             this.title = title;
             this.description = description;
@@ -43,7 +43,7 @@ public class Event {
             return title;
         }
 
-        public String getThumbnail() {
+        public int getThumbnail() {
             return image;
         }
 
@@ -67,7 +67,7 @@ public class Event {
         this.time = time;
     }
 
-    public void setImage(String image) {
+    public void setImage(int image) {
         this.image = image;
     }
 }
