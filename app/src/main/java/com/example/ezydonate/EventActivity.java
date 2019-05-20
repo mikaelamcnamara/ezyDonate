@@ -183,6 +183,16 @@ public class EventActivity extends Activity implements SearchView.OnQueryTextLis
 
         mDatabase.child("events").child(title.getText().toString()).setValue(event);
 
+                            Toast.makeText(EventActivity.this, download_uri, Toast.LENGTH_SHORT).show();
+
+                            finish();
+                        }
+                    });
+
+
+                }
+            });
+        }
         mDatabase.child("events").child(title.getText().toString()).child(title.getText().toString()).setValue("hi there");
     }
     */
