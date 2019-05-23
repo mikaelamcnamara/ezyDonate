@@ -36,10 +36,12 @@ public class RegisterActivity extends Activity {
     }
 
     public void CreateNewUser(final FirebaseAuth mAuth,  final String email, final String password, final String fullName, final String username) {
+       final User newUser = new User(email, fullName, username,"None");
         if (email.trim().equals("") || password.trim().equals("") || fullName.trim().equals("") || username.trim().equals("")) {
             Toast.makeText(this, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
         }
         else {
+            //Changed to object system can use it for images now
             Toast.makeText(this, "Creating...", Toast.LENGTH_SHORT).show();
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
@@ -48,18 +50,9 @@ public class RegisterActivity extends Activity {
                         Toast.makeText(RegisterActivity.this, "Successful Creation, Please Verify your Email", Toast.LENGTH_SHORT).show();
                         String id1 = mAuth.getCurrentUser().getUid();
                         final FirebaseUser user = mAuth.getCurrentUser();
-                        FirebaseDatabase database = FirebaseDatabase.getInstance();
-                        //Change later
-                        DatabaseReference ref = database.getReference("user/" + id1 + "/fullName");
-                        ref.setValue(fullName);
-                        //Change later
-                        ref = database.getReference("user/" + id1 + "/username");
-                        ref.setValue(username);
-                        //Change later
-                        ref = database.getReference("user/" + id1 + "/email");
-                        ref.setValue(email);
+                        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+                        mDatabase.child("User").child(id1).setValue(newUser);
                         user.sendEmailVerification();
-
                         finish();
 
                     } else {
