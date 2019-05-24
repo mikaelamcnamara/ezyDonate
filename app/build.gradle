@@ -44,6 +44,8 @@ dependencies {
     implementation 'android.arch.lifecycle:extensions:1.1.1'
     //external lib
     implementation 'com.jakewharton:butterknife:8.8.1'
+    implementation 'org.parceler:parceler-api:1.1.6'
+    annotationProcessor 'org.parceler:parceler:1.1.6'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }
 apply plugin: 'com.google.gms.google-services'

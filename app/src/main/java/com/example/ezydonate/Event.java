@@ -12,6 +12,11 @@ public class Event {
         public String time;
         public String image;
 
+        public Event () {
+
+
+        }
+
         public Event (String title, String description, String location, String eventDate, String time, String image) {
 
             this.title = title;

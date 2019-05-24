@@ -182,10 +182,10 @@
             android:src="@drawable/email"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.059"
+            app:layout_constraintHorizontal_bias="0.035"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.31" />
+            app:layout_constraintVertical_bias="0.311" />
 
         <TextView
             android:id="@+id/textView6"
@@ -292,18 +292,24 @@
             android:id="@+id/imageView14"
             android:layout_width="53dp"
             android:layout_height="56dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginBottom="284dp"
             android:background="@color/lightBlue"
-            app:srcCompat="@drawable/ic_account_circle_black_24dp"
-            tools:layout_editor_absoluteX="31dp"
-            tools:layout_editor_absoluteY="391dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_account_circle_black_24dp" />
 
         <ImageView
             android:id="@+id/imageView15"
             android:layout_width="60dp"
             android:layout_height="58dp"
-            app:srcCompat="@drawable/key"
-            tools:layout_editor_absoluteX="31dp"
-            tools:layout_editor_absoluteY="559dp" />
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginBottom="116dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/key" />
 
 
     </android.support.constraint.ConstraintLayout>
