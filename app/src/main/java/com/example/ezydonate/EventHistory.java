@@ -2,8 +2,7 @@ package com.example.ezydonate;
 
 /*Created a separate class for events */
 
-public class History {
-
+public class EventHistory {
 
     public String title;
     public String description;
@@ -12,15 +11,13 @@ public class History {
     public String time;
     public String image;
 
-    public History (String title, String description, String location, String eventDate, String time, String image) {
-
+    public EventHistory(String title, String description, String location, String eventDate, String time, String image) {
         this.title = title;
         this.description = description;
         this.location = location;
         this.eventDate = eventDate;
         this.time = time;
         this.image = image;
-
     }
 
     public String getDescription() {
@@ -43,33 +40,11 @@ public class History {
         return title;
     }
 
-    public String getThumbnail() {
-        return image;
-    }
-
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public void setEventDate(String eventDate) {
-        this.eventDate = eventDate;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
 }
 
 

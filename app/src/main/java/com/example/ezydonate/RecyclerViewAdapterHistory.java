@@ -13,9 +13,9 @@ import java.util.List;
 public class RecyclerViewAdapterHistory extends RecyclerView.Adapter<RecyclerViewAdapterHistory.MyViewHolder> {
 
     Context mContext;
-    List<Event> mData;
+    List<EventHistory> mData;
 
-    public RecyclerViewAdapterHistory(Context mContext, List<Event> mData) {
+    public RecyclerViewAdapterHistory(Context mContext, List<EventHistory> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
@@ -26,7 +26,6 @@ public class RecyclerViewAdapterHistory extends RecyclerView.Adapter<RecyclerVie
         v = LayoutInflater.from(mContext).inflate(R.layout.cardview_event, parent,false);
         MyViewHolder vHolder = new MyViewHolder(v);
         return vHolder;
-
     }
 
     @Override //
@@ -44,8 +43,6 @@ public class RecyclerViewAdapterHistory extends RecyclerView.Adapter<RecyclerVie
         return mData.size();
     }
 
-
-
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView event_title;
         private TextView event_time;
@@ -53,8 +50,6 @@ public class RecyclerViewAdapterHistory extends RecyclerView.Adapter<RecyclerVie
         private TextView event_date;
         private TextView event_location;
         private ImageView event_thumbnail;
-
-
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -64,8 +59,6 @@ public class RecyclerViewAdapterHistory extends RecyclerView.Adapter<RecyclerVie
             event_date = itemView.findViewById(R.id.event_date_id);
             event_location=  itemView.findViewById(R.id.event_location_id);
             event_description = itemView.findViewById(R.id.event_description_id);
-
-
         }
     }
 }
