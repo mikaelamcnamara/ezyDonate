@@ -24,7 +24,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/meeting" />
+            android:src="@drawable/meeting" />
 
 
         <ImageButton
@@ -38,7 +38,7 @@
             android:onClick="menu"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_menu_black_24dp"
+            android:src="@drawable/ic_menu_black_24dp"
             tools:ignore="VectorDrawableCompat" />
 
         <TextView
@@ -277,8 +277,10 @@
             android:text="Booking 2"
             android:textColor="#000"
             android:textSize="23dp"
-            tools:layout_editor_absoluteX="67dp"
-            tools:layout_editor_absoluteY="446dp" />
+            app:layout_constraintBottom_toBottomOf="@+id/textView19"
+            app:layout_constraintEnd_toEndOf="@+id/textView19"
+            app:layout_constraintStart_toStartOf="@+id/textView19"
+            app:layout_constraintTop_toTopOf="@+id/textView19" />
 
 
     </android.support.constraint.ConstraintLayout>
