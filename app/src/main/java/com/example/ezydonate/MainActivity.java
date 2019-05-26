@@ -151,6 +151,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+
+
     public void menu(View view) {
         dmLayout = (DrawerLayout) findViewById(R.id.draw_layout);
         dmLayout.openDrawer(Gravity.LEFT);
