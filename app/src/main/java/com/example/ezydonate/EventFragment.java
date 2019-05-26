@@ -20,7 +20,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.database.ObservableSnapshotArray;
 
 import java.util.List;
-
+//lmao
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 
