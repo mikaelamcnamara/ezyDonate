@@ -90,6 +90,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.cardview_event);
     }
 
+    public void booking(View view) {
+        setContentView(R.layout.admin_booking);
+    }
+
+    public void history(View view) {
+        setContentView(R.layout.fragment_history);
+    }
+
+    public void account(View view) {
+        setContentView(R.layout.fragment_account);
+    }
+
     public void mainmenu(View view) {
         setContentView(R.layout.mainadmin_page);
     }
