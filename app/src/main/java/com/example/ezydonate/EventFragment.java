@@ -39,7 +39,7 @@ public class EventFragment extends Fragment {
         @Nullable
         @Override
         public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            v = inflater.inflate(R.layout.fragment_event, container, false);
+            v = inflater.inflate(R.layout.fragment_user_event, container, false);
 
             ButterKnife.bind(getActivity());
 
@@ -80,7 +80,7 @@ public class EventFragment extends Fragment {
                 public FirebaseEventViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
                     View view = LayoutInflater.from(parent.getContext())
-                            .inflate(R.layout.cardview_event, parent, false);
+                            .inflate(R.layout.carduser_event, parent, false);
 
                     return new FirebaseEventViewHolder(view);
                 }

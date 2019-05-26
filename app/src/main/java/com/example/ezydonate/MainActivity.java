@@ -70,10 +70,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new HistoryFragment()).commit();
                 break;
-            case R.id.nav_settings:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new SettingsFragment()).commit();
-                break;
             case R.id.nav_booking:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new BookingFragment()).commit();
@@ -88,6 +84,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
+    }
+
+    public void event(View view) {
+        setContentView(R.layout.cardview_event);
+    }
+
+    public void mainmenu(View view) {
+        setContentView(R.layout.mainadmin_page);
     }
 
     public void forgotPass_page(View view) {
