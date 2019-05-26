@@ -19,7 +19,6 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.database.ObservableSnapshotArray;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindViews;
