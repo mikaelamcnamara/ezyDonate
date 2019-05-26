@@ -12,6 +12,27 @@
         android:layout_height="249dp">
 
 
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="120dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_calendar"
+            android:gravity="center"
+            android:text="Select Time"
+            android:textColor="#000"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/timePicker1"
+            app:layout_constraintEnd_toEndOf="@+id/imageView6"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/imageView5"
+            app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="413dp"
@@ -60,8 +81,8 @@
 
         <CalendarView
             android:id="@+id/calendarView"
-            android:layout_width="385dp"
-            android:layout_height="297dp"
+            android:layout_width="364dp"
+            android:layout_height="231dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="120dp"
@@ -74,32 +95,21 @@
             app:layout_constraintStart_toStartOf="@+id/imageView5"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="190dp"
-            android:layout_height="26dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
-            android:gravity="clip_horizontal"
-            android:background="#FFF"
-            android:padding="5dp"
-            android:text="Choose A Time: "
+        <TimePicker
+            android:id="@+id/timePicker1"
+            android:layout_width="250dp"
+            android:layout_height="86dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:timePickerMode="spinner"
+            app:layout_constraintBottom_toTopOf="@+id/loginbtn2"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/calendarView" />
-
-        <Spinner
-            android:id="@+id/spinner1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="39dp"
-            android:layout_marginRight="39dp"
-            android:text="Times"
-            app:layout_constraintBottom_toBottomOf="@+id/textView9"
-            app:layout_constraintEnd_toStartOf="@+id/imageView5"
-            app:layout_constraintHorizontal_bias="0.13"
-            app:layout_constraintStart_toEndOf="@+id/textView9"
-            app:layout_constraintTop_toTopOf="@+id/textView9" />
 
         <TextView
             android:id="@+id/textView10"
@@ -140,21 +150,20 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/bg_calendar"
             android:fontFamily="sans-serif-condensed-medium"
             android:text="Make Booking"
+            android:onClick="createBooking"
             android:textColor="@color/activeBtn"
             android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+            app:layout_constraintStart_toStartOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 

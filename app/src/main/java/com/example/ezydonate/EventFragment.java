@@ -104,8 +104,6 @@ public class EventFragment extends Fragment {
         }
 
 
-
-
         public void makeEvent(View view) {
 
         Intent makeEvent = new Intent(getActivity(), EventActivity.class);

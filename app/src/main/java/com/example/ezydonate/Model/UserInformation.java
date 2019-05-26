@@ -32,6 +32,4 @@ public class UserInformation {
     public void setUID(String UID) { this.UID = UID; }
 
 
-
-
 }
