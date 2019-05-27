@@ -7,12 +7,14 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +23,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.ezydonate.Model.Donation;
+import com.example.ezydonate.Model.UserInformation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -30,8 +34,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -41,18 +49,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Button b1;
     private FirebaseAuth mAuth;
     static final int requestcode = 1;
-    
+    private DatabaseReference mDatabase;
+    private User uInfo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         setContentView(R.layout.activity_main);
         // Toolbar toolbar = findViewById(R.id.toolbar);
         //   setSupportActionBar(toolbar);
         b1 = (Button) findViewById(R.id.loginbtn);
         checkPermission();
-
-
 
     }
 
@@ -81,6 +90,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new BookingFragment()).commit();
                 break;
+            case R.id.nav_donate:
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new DonateFragment()).commit();
+
         }
         dmLayout.closeDrawer(GravityCompat.START);
         return true;
@@ -111,6 +124,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void mainmenuA(View view) {
         setContentView(R.layout.mainadmin_page);
+    }
+
+    public void donate(View view) {
+        setContentView(R.layout.donate);
     }
 
     public void mainmenu(View view) {
@@ -273,7 +290,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 String id1 = mAuth.getCurrentUser().getUid();
                                 DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
-                                mDatabase.child("user").child(id1).child("isAdmin").addValueEventListener(new ValueEventListener() {
+                                mDatabase.child("User").child(id1).child("isAdmin").addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(DataSnapshot snapshot) {
 
@@ -316,5 +333,56 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void makedonate(View view) {
+
+        final String id1 = mAuth.getCurrentUser().getUid();
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+
+        final EditText title = (EditText) findViewById(R.id.editText9);
+
+        if (title.getText().toString().trim().equals("")) {
+            Toast.makeText(this, "Invalid Details", Toast.LENGTH_SHORT).show();
+        }
+
+        else {
+
+            final double amount = (Double.parseDouble(title.getText().toString()));
+
+            Donation donation = new Donation(amount, id1, "hi");
+
+            mDatabase.child("donation").child(id1).setValue(donation);
+
+            ValueEventListener postListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    // Get Post object and use the values to update the UI
+                    //Donation donation = dataSnapshot.getValue(Donation.class);
+
+                    uInfo = new User();
+                    uInfo.setDonation(Double.parseDouble(dataSnapshot.child(id1).child("donation").getValue().toString()));
+
+                    double donate = amount + uInfo.getDonation();
+
+                    mDatabase.child(id1).child("donation").setValue(donate);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    // Getting Post failed, log a message
+                    Log.w( "loadPost:onCancelled", databaseError.toException());
+                    // ...
+                }
+            };
+            mDatabase.addValueEventListener(postListener);
+
+            Toast.makeText(this, "Donation successful", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
 
 }

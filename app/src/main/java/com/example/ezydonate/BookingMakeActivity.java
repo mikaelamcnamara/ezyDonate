@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -37,6 +38,9 @@ public class BookingMakeActivity extends Activity {
     private DatabaseReference mDatabase;
     private String date;
 //    private Calendar calendar;
+    private TimePicker timepicker;
+    private Button btn;
+    private String time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +48,10 @@ public class BookingMakeActivity extends Activity {
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         setContentView(R.layout.make_booking);
+        btn = (Button) findViewById(R.id.loginbtn2);
 
+        timepicker = (TimePicker) findViewById(R.id.timePicker1);
+        timepicker.setIs24HourView(true);
 
         CalendarView v = new CalendarView( this );
         v.setOnDateChangeListener( new CalendarView.OnDateChangeListener() {
@@ -53,15 +60,14 @@ public class BookingMakeActivity extends Activity {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 this.calendar = new GregorianCalendar( year, month, dayOfMonth );
 
-                String dates = dayOfMonth + "-" + (month + 1) + "-" + year;
+                date = dayOfMonth + "-" + (month + 1) + "-" + year;
 
-                date = dates;
+
 
             }//met
         });
 
     }
-
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -70,8 +76,25 @@ public class BookingMakeActivity extends Activity {
        // final EditText date = (EditText) findViewById(R.id.editText2);
         final EditText location = (EditText) findViewById(R.id.editText3);
 
-        TimePicker timepicker = (TimePicker) findViewById(R.id.timePicker1);
-        final String time = timepicker.getMinute() + " - " + timepicker.getHour();
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int getHour = timepicker.getHour();
+                int getMinute = timepicker.getMinute();
+
+
+                if (getHour > 12){
+                    int twelve = getHour - 12;
+                }
+
+                if (getMinute < 10){
+
+                }
+
+                time = getHour + " - " + getMinute;
+
+            }
+        });
 
 //        if (time.trim().equals("") || date.trim().equals("") || location.getText().toString().trim().equals("")) {
 //            Toast.makeText(this, "Invalid Details", Toast.LENGTH_SHORT).show();
@@ -89,7 +112,7 @@ public class BookingMakeActivity extends Activity {
 
                     Booking booking = new Booking(name, time, date, "hi");
 
-                    mDatabase.child("booking").child(name + " " + id1).setValue(booking);
+                    mDatabase.child("booking").child(name + " " + id1 + " " + time).setValue(booking);
 
                     Toast.makeText(BookingMakeActivity.this, "Booking Made", Toast.LENGTH_SHORT).show();
 

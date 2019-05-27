@@ -76,7 +76,7 @@ public class AccountFragment extends Fragment {
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         userID = user.getUid();
-        myRef = mFirebaseDatabase.getReference("user/" + userID+"/");
+        myRef = mFirebaseDatabase.getReference("User/" + userID+"/");
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -114,7 +114,7 @@ public class AccountFragment extends Fragment {
 
             uInfo = new UserInformation();
             uInfo.setEmail(dataSnapshot.child("email").getValue().toString());
-            uInfo.setFullname(dataSnapshot.child("fullName").getValue().toString());
+            uInfo.setFullname(dataSnapshot.child("fullname").getValue().toString());
 
 
 
@@ -139,7 +139,7 @@ public class AccountFragment extends Fragment {
         if(etFullname.getText().toString().trim().equals("")){
             toastMessage("Please enter new name.");
         }else {
-            myRef.child("fullName").setValue(etFullname.getText().toString());
+            myRef.child("fullname").setValue(etFullname.getText().toString());
             getActivity().getFragmentManager().popBackStack();
             toastMessage("Full Name successfully updated.");
         }

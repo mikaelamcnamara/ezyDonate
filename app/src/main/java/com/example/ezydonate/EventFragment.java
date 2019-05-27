@@ -38,7 +38,7 @@ public class EventFragment extends Fragment {
         @Nullable
         @Override
         public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            v = inflater.inflate(R.layout.fragment_user_event, container, false);
+            v = inflater.inflate(R.layout.fragment_event, container, false);
 
             ButterKnife.bind(getActivity());
 

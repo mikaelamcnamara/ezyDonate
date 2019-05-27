@@ -79,7 +79,7 @@
 
         <Button
             android:id="@+id/booking_button_id3"
-            android:layout_width="301dp"
+            android:layout_width="251dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="130dp"

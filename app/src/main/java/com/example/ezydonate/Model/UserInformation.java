@@ -6,12 +6,14 @@ public class UserInformation {
     private String email;
    // private String password;
     private String UID;
+    private String isAdmin;
 
     public UserInformation(){}
 
     public UserInformation(String fullname, String email) {
         this.fullName = fullname;
         this.email = email;
+        this.isAdmin = "no";
         //this.password = password;
     }
 
