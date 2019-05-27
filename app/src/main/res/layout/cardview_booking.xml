@@ -36,33 +36,8 @@
 
         </LinearLayout>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/event_img_id"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:src="@mipmap/ic_launcher_round"
-            app:civ_border_color="#FFF"
-            app:civ_border_width="2dp" />
-
         <TextView
-            android:id="@+id/event_title_id"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="20dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Title"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="15dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/event_date_id"
+            android:id="@+id/booking_date_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp"
@@ -75,7 +50,7 @@
             android:textSize="13dp" />
 
         <TextView
-            android:id="@+id/event_time_id"
+            android:id="@+id/booking_time_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="250dp"
@@ -88,7 +63,7 @@
             android:textSize="13dp" />
 
         <TextView
-            android:id="@+id/event_location_id"
+            android:id="@+id/booking_location_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp"
@@ -103,7 +78,7 @@
 
 
         <Button
-            android:id="@+id/event_button_id3"
+            android:id="@+id/booking_button_id3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
@@ -114,29 +89,9 @@
             android:textSize="15dp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/event_button_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="130dp"
-            android:background="#00BCF5"
-            android:text="EDIT"
-            android:textColor="#FFF"
-            android:textSize="15dp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/event_more"
-            android:layout_width="45dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="270dp"
-            android:layout_marginTop="130dp"
-            android:background="@drawable/ic_group_expand_00"/>
-
 
         <TextView
-            android:id="@+id/event_description_id"
+            android:id="@+id/booking_description_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"

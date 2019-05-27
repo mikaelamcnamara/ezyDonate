@@ -103,25 +103,13 @@
 
 
         <Button
-            android:id="@+id/event_button_id3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="130dp"
-            android:background="#00BCF5"
-            android:text="remove"
-            android:textColor="#FFF"
-            android:textSize="15dp"
-            android:textStyle="bold" />
-
-        <Button
             android:id="@+id/event_button_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp"
             android:layout_marginTop="130dp"
             android:background="#00BCF5"
-            android:text="EDIT"
+            android:text="ATTend"
             android:textColor="#FFF"
             android:textSize="15dp"
             android:textStyle="bold" />

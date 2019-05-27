@@ -7,13 +7,14 @@
     android:background="@drawable/bg_color">
 
 
+
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="249dp">
-
+        android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerviewbooking_id"
+            android:id="@+id/recyclerview_id"
             android:layout_width="384dp"
             android:layout_height="647dp"
             android:layout_marginStart="8dp"
@@ -21,14 +22,40 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginBottom="20dp"
             android:clipToPadding="false"
             android:paddingBottom="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.727"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button4"
-            app:layout_constraintVertical_bias="0.0"></android.support.v7.widget.RecyclerView>
+            app:layout_constraintTop_toBottomOf="@+id/search_view"></android.support.v7.widget.RecyclerView>
+
+        <ImageButton
+            android:id="@+id/menuButton"
+            android:layout_width="78dp"
+            android:layout_height="67dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@null"
+            android:onClick="menu"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_menu_black_24dp"
+            tools:ignore="VectorDrawableCompat" />
+
+        <SearchView
+            android:id="@+id/search_view"
+            android:layout_width="301dp"
+            android:layout_height="68dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:searchIcon="@drawable/ic_search_white_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/menuButton"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </android.support.constraint.ConstraintLayout>
@@ -41,8 +68,6 @@
         app:headerLayout="@layout/navigation_header"
         android:id="@+id/nav_view">
     </android.support.design.widget.NavigationView>
-
-
 
 
 </android.support.v4.widget.DrawerLayout>

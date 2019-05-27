@@ -72,8 +72,8 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
 
         titleTextView.setText(event.getTitle());
         event_description.setText(event.getDescription());
-        dateTextView.setText(event.getEventDate());
-        timeTextView.setText(event.getTime());
+        dateTextView.setText("Date:" + event.getEventDate());
+        timeTextView.setText("Time" + event.getTime());
         locationTextView.setText(event.getLocation());
 
     }

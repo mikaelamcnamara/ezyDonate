@@ -12,6 +12,8 @@
         android:layout_height="249dp">
 
 
+
+
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="412dp"
@@ -25,18 +27,16 @@
             app:srcCompat="@drawable/meeting" />
 
         <ImageButton
-            android:id="@+id/menuButton"
-            android:layout_width="78dp"
-            android:layout_height="67dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:background="@null"
-            android:onClick="menu"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_menu_black_24dp"
-            tools:ignore="VectorDrawableCompat" />
+            android:id="@+id/cancelevents"
+            android:layout_width="45dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
+            android:background="@drawable/ic_arrow_back_black_24dp"
+            android:onClick="mainmenu"
+            app:layout_constraintEnd_toStartOf="@+id/textView6"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
 
@@ -104,20 +104,6 @@
 
     </android.support.constraint.ConstraintLayout>
 
-
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-    <android.support.design.widget.NavigationView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:menu="@menu/mainpage_menu"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/navigation_header"
-        android:id="@+id/nav_view">
-    </android.support.design.widget.NavigationView>
 
 
 

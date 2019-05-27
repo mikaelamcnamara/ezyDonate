@@ -26,6 +26,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout dmLayout;
@@ -70,10 +77,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new HistoryFragment()).commit();
                 break;
-            case R.id.nav_settings:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new SettingsFragment()).commit();
-                break;
             case R.id.nav_booking:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new BookingFragment()).commit();
@@ -88,6 +91,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
+    }
+
+    public void event(View view) {
+        setContentView(R.layout.cardview_event);
+    }
+
+    public void booking(View view) {
+        setContentView(R.layout.admin_booking);
+    }
+
+    public void history(View view) {
+        setContentView(R.layout.fragment_history);
+    }
+
+    public void account(View view) {
+        setContentView(R.layout.fragment_account);
+    }
+
+    public void mainmenuA(View view) {
+        setContentView(R.layout.mainadmin_page);
+    }
+
+    public void mainmenu(View view) {
+        setContentView(R.layout.page_main);
     }
 
     public void forgotPass_page(View view) {
@@ -122,6 +149,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         startActivity(makeEvent);
 
     }
+
+
 
 
     public void menu(View view) {
@@ -239,8 +268,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             final FirebaseUser userTest = mAuth.getCurrentUser();
                             if (task.isSuccessful() && userTest.isEmailVerified()) {
+
                                 FirebaseUser user = mAuth.getCurrentUser();
-                                setContentView(R.layout.page_main);
+                                String id1 = mAuth.getCurrentUser().getUid();
+                                DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+
+                                mDatabase.child("user").child(id1).child("isAdmin").addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot snapshot) {
+
+                                       String admin = (String) snapshot.getValue();  //prints "Do you have data? You'll love Firebase."
+
+                                        if (admin.equals("yes")) {
+
+
+                                            setContentView(R.layout.mainadmin_page);
+                                        }
+
+                                        else {
+
+                                            setContentView(R.layout.page_main);
+
+                                        }
+                                    }
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                        String admin = "false";
+                                    }
+                                });
+
                             }
 
                             else if (task.isSuccessful() && !userTest.isEmailVerified()) {
