@@ -55,7 +55,8 @@ public class RegisterActivity extends Activity {
                         user.sendEmailVerification();
                         finish();
 
-                    } else {
+                    } else
+                        {
                         Toast.makeText(RegisterActivity.this, "An error has occurred", Toast.LENGTH_SHORT).show();
                     }
                 }

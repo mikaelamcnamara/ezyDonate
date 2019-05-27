@@ -24,6 +24,9 @@
       </android.support.design.widget.AppBarLayout>
   <!-->
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -58,25 +61,33 @@
 
         <EditText
             android:id="@+id/editText2"
-            android:layout_width="307dp"
+            android:layout_width="match_parent"
             android:layout_height="53dp"
+            android:layout_weight= "1"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="24dp"
             android:layout_marginRight="24dp"
+            android:layout_marginStart = "81dp"
+            android:layout_marginLeft = "81dp"
             android:background="@drawable/login_rec"
             android:hint="@string/email_address"
             android:inputType="textEmailAddress"
             android:padding="16dp"
             android:textColorHint="@color/login_light"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView" >
+
+            </EditText>
+
 
 
         <EditText
             android:id="@+id/editText"
-            android:layout_width="307dp"
+            android:layout_width="match_parent"
             android:layout_height="53dp"
             android:layout_marginTop="16dp"
+            android:layout_marginStart = "81dp"
+            android:layout_marginLeft = "81dp"
             android:layout_marginEnd="24dp"
             android:layout_marginRight="24dp"
             android:background="@drawable/login_rec"
@@ -85,18 +96,18 @@
             android:padding="16dp"
             android:textColorHint="@color/login_light"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText2" />
+            app:layout_constraintTop_toBottomOf="@+id/editText2" >
 
-
+        </EditText>
         <Button
 
             android:id="@+id/loginbtn"
-            android:layout_width="363dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="24dp"
             android:layout_marginRight="8dp"
             android:text="Login"
             android:fontFamily="sans-serif-condensed-medium"
@@ -107,19 +118,20 @@
             android:onClick="login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText" />
+            app:layout_constraintTop_toBottomOf="@+id/editText" >
 
+        </Button>
 
         <Button
 
             android:id="@+id/loginbtn2"
-            android:layout_width="363dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
             android:background="@drawable/reg_btn"
             android:fontFamily="sans-serif-condensed-medium"
             android:textSize="20dp"
@@ -129,8 +141,9 @@
             android:textColor="@color/lightBlue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginbtn" />
+            app:layout_constraintTop_toBottomOf="@+id/loginbtn" >
 
+        </Button>
         <TextView
             android:id="@+id/textView"
             android:layout_width="165dp"
@@ -176,7 +189,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/email" />
+            app:srcCompat="@drawable/email"/>
 
         <ImageView
             android:id="@+id/imageView3"
@@ -197,6 +210,6 @@
             app:srcCompat="@drawable/key" />
 
     </android.support.constraint.ConstraintLayout>
-
+    </ScrollView>
 
 </android.support.design.widget.CoordinatorLayout>
