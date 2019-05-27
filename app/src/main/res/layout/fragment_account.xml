@@ -14,8 +14,8 @@
 
         <TextView
             android:id="@+id/textView24"
-            android:layout_width="349dp"
-            android:layout_height="37dp"
+            android:layout_width="359dp"
+            android:layout_height="39dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
@@ -30,10 +30,10 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.565"
+            app:layout_constraintHorizontal_bias="0.638"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.676" />
+            app:layout_constraintVertical_bias="0.677" />
 
         <TextView
             android:id="@+id/textView25"
@@ -52,17 +52,15 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.104"
+            app:layout_constraintHorizontal_bias="0.088"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.499" />
 
         <EditText
             android:id="@+id/editText14"
-            android:layout_width="299dp"
+            android:layout_width="298dp"
             android:layout_height="56dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
@@ -74,15 +72,15 @@
             android:textColorHint="@color/login_light"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.791"
+            app:layout_constraintHorizontal_bias="0.857"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.581" />
 
         <TextView
             android:id="@+id/textView20"
-            android:layout_width="349dp"
-            android:layout_height="37dp"
+            android:layout_width="359dp"
+            android:layout_height="39dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
@@ -97,10 +95,10 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.565"
+            app:layout_constraintHorizontal_bias="0.638"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.924" />
+            app:layout_constraintVertical_bias="0.923" />
 
         <TextView
             android:id="@+id/textView21"
@@ -119,15 +117,15 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.104"
+            app:layout_constraintHorizontal_bias="0.084"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.746" />
 
         <EditText
             android:id="@+id/editText12"
-            android:layout_width="299dp"
-            android:layout_height="56dp"
+            android:layout_width="297dp"
+            android:layout_height="60dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
@@ -141,14 +139,14 @@
             android:textColorHint="@color/login_light"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.833"
+            app:layout_constraintHorizontal_bias="0.877"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.836" />
+            app:layout_constraintVertical_bias="0.835" />
 
         <EditText
             android:id="@+id/editText10"
-            android:layout_width="299dp"
+            android:layout_width="301dp"
             android:layout_height="56dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
@@ -163,10 +161,10 @@
             android:textColorHint="@color/login_light"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.747"
+            app:layout_constraintHorizontal_bias="0.865"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.31" />
+            app:layout_constraintVertical_bias="0.311" />
 
         <ImageView
             android:id="@+id/imageView8"
@@ -175,14 +173,12 @@
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
             android:background="@color/lightBlue"
             android:src="@drawable/email"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.035"
+            app:layout_constraintEnd_toStartOf="@+id/editText10"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.311" />
@@ -260,15 +256,15 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.092"
+            app:layout_constraintHorizontal_bias="0.088"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.239" />
+            app:layout_constraintVertical_bias="0.223" />
 
         <TextView
             android:id="@+id/textView17"
-            android:layout_width="349dp"
-            android:layout_height="37dp"
+            android:layout_width="360dp"
+            android:layout_height="39dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
@@ -283,33 +279,57 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.434"
+            app:layout_constraintHorizontal_bias="0.628"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.414" />
+            app:layout_constraintVertical_bias="0.411" />
 
         <ImageView
             android:id="@+id/imageView14"
-            android:layout_width="53dp"
+            android:layout_width="60dp"
             android:layout_height="56dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginBottom="284dp"
-            android:background="@color/lightBlue"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="#56ABF4"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/editText14"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.581"
             app:srcCompat="@drawable/ic_account_circle_black_24dp" />
 
         <ImageView
             android:id="@+id/imageView15"
-            android:layout_width="60dp"
-            android:layout_height="58dp"
+            android:layout_width="65dp"
+            android:layout_height="61dp"
             android:layout_marginStart="28dp"
             android:layout_marginLeft="28dp"
-            android:layout_marginBottom="116dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/editText12"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.846"
             app:srcCompat="@drawable/key" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="30dp" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="391dp" />
 
 
     </android.support.constraint.ConstraintLayout>
