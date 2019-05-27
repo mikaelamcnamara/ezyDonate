@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     static final int requestcode = 1;
     private DatabaseReference mDatabase;
     private User uInfo;
+    private DatabaseReference myRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -340,7 +341,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void makedonate(View view) {
 
-        final String id1 = mAuth.getCurrentUser().getUid();
+        FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
+
+        FirebaseUser user = mAuth.getCurrentUser();
+        final String id1 = user.getUid();
+
+        myRef = mFirebaseDatabase.getReference("User/"  + id1 + "/");
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
@@ -355,22 +361,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             final double amount = (Double.parseDouble(title.getText().toString()));
 
-            Donation donation = new Donation(amount, id1, "hi");
+            Donation donation = new Donation(amount, id1, dtf.format(now));
 
-            mDatabase.child("donation").child(id1).setValue(donation);
+            mDatabase.child("donation").child(id1 + " " + dtf.format(now)).setValue(donation);
 
-            ValueEventListener postListener = new ValueEventListener() {
+            myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     // Get Post object and use the values to update the UI
                     //Donation donation = dataSnapshot.getValue(Donation.class);
 
                     uInfo = new User();
-                    uInfo.setDonation(Double.parseDouble(dataSnapshot.child(id1).child("donation").getValue().toString()));
+                    String donate = dataSnapshot.child("donation").getValue().toString();
 
-                    double donate = amount + uInfo.getDonation();
+                    uInfo.setDonation(Double.parseDouble((donate)));
 
-                    mDatabase.child(id1).child("donation").setValue(donate);
+                    double total = amount + uInfo.getDonation();
+
+                    myRef.child("donation").setValue(total);
                 }
 
                 @Override
@@ -379,8 +387,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     Log.w( "loadPost:onCancelled", databaseError.toException());
                     // ...
                 }
-            };
-            mDatabase.addValueEventListener(postListener);
+            });
 
             Toast.makeText(this, "Donation successful", Toast.LENGTH_SHORT).show();
         }

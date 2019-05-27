@@ -23,6 +23,7 @@ public class User
         this.username = username;
         this.image = image;
         this.isAdmin = "no";
+        this.donation = 0;
     }
 
 
