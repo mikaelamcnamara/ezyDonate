@@ -40,51 +40,51 @@
             android:id="@+id/booking_date_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="24dp"
             android:layout_weight="1"
             android:text="Date"
-            android:textColor="@color/white"
-            android:textStyle="bold"
             android:textAllCaps="true"
-            android:textSize="13dp" />
+            android:textColor="@color/white"
+            android:textSize="13dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/booking_time_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="250dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="58dp"
             android:layout_weight="1"
             android:text="Time"
-            android:textColor="@color/white"
-            android:textStyle="bold"
             android:textAllCaps="true"
-            android:textSize="13dp" />
+            android:textColor="@color/white"
+            android:textSize="13dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/booking_location_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="90dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="93dp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="Location"
-            android:textColor="@color/white"
-            android:textStyle="bold"
             android:textAllCaps="true"
-            android:textSize="13dp" />
+            android:textColor="@color/white"
+            android:textSize="13dp"
+            android:textStyle="bold" />
 
 
         <Button
             android:id="@+id/booking_button_id3"
-            android:layout_width="wrap_content"
+            android:layout_width="301dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="130dp"
             android:background="#00BCF5"
-            android:text="remove"
+            android:text="@android:string/cancel"
             android:textColor="#FFF"
             android:textSize="15dp"
             android:textStyle="bold" />
@@ -102,6 +102,30 @@
             android:paddingLeft="30dp"
             android:paddingBottom="20dp"
             android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_date_range_black_24dp" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="55dp"
+            android:background="@drawable/ic_access_time_black_24dp" />
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="90dp"
+            app:srcCompat="@drawable/ic_location_on_black_24dp" />
     </android.support.v7.widget.CardView>
 
 
