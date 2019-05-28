@@ -36,7 +36,7 @@ public class RegisterActivity extends Activity {
     }
 
     public void CreateNewUser(final FirebaseAuth mAuth,  final String email, final String password, final String fullName, final String username) {
-       final User newUser = new User(email, fullName, username,"None");
+       final User newUser = new User(email, fullName, username);
         if (email.trim().equals("") || password.trim().equals("") || fullName.trim().equals("") || username.trim().equals("")) {
             Toast.makeText(this, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
         }

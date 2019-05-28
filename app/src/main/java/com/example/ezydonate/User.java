@@ -9,7 +9,7 @@ public class User
     public String email;
     public String fullname;
     public String username;
-    public String image;
+
     public String isAdmin;
     public double donation = 0;
 
@@ -19,12 +19,12 @@ public class User
 
     }
 
-    public User(String email, String fullname, String username, String image)
+    public User(String email, String fullname, String username)
     {
         this.email = email;
         this.fullname = fullname;
         this.username = username;
-        this.image = image;
+
         this.isAdmin = "no";
         this.donation = 0;
 
