@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -44,6 +45,8 @@ public class EventFragment extends Fragment {
 
             mDatabase = FirebaseDatabase.getInstance().getReference().child("events");
             query = mDatabase.limitToFirst(50);
+
+//            this.btnButton1= (Button) v.findViewById(R.id.event_button_id);
 
             mRecyclerView = (RecyclerView) v.findViewById(R.id.recyclerview_id);
 
@@ -88,6 +91,16 @@ public class EventFragment extends Fragment {
                 protected void onBindViewHolder(@NonNull FirebaseEventViewHolder holder, int position, @NonNull Event model) {
 
                     holder.bindEvent(model);
+
+                    holder.btnButton1.setOnClickListener(new View.OnClickListener(){
+                        @Override
+                        public void onClick(View v) {
+
+                            ((MainActivity)getActivity()).attendEvent(v);
+
+                        }
+                    });
+
                 }
 
 //                @Override

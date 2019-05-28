@@ -26,6 +26,7 @@ import java.util.ArrayList;
 
 public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+    public Button btnButton1;
     View eView;
     Context eContext;
     private static final int MAX_WIDTH = 200;
@@ -52,6 +53,8 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
         TextView timeTextView = (TextView) eView.findViewById(R.id.event_time_id);
         TextView locationTextView = (TextView) eView.findViewById(R.id.event_location_id);
         btn = itemView.findViewById(R.id.event_more);
+        btnButton1 = itemView.findViewById(R.id.event_button_id);
+
         btn.setOnClickListener(new View.OnClickListener() {
             boolean visible;
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -60,6 +63,16 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
                 TransitionManager.beginDelayedTransition(events);
                 visible =! visible;
                 event_description.setVisibility(visible ? View.VISIBLE : View.GONE);
+            }
+        });
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            boolean visible;
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            public void onClick(View v) {
+
+
             }
         });
 

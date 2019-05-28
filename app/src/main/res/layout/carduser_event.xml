@@ -110,6 +110,7 @@
             android:layout_marginTop="130dp"
             android:background="#00BCF5"
             android:text="ATTend"
+            android:clickable="false"
             android:textColor="#FFF"
             android:textSize="15dp"
             android:textStyle="bold" />

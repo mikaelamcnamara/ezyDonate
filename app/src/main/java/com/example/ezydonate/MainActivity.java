@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ezydonate.Model.Donation;
@@ -41,6 +42,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.LinkedList;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -52,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     static final int requestcode = 1;
     private DatabaseReference mDatabase;
     private User uInfo;
+    private TextView tv1;
     private DatabaseReference myRef;
 
     @Override
@@ -393,6 +396,47 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
     }
+
+    public void attendEvent(View view) {
+
+        FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
+
+        tv1 = findViewById(R.id.event_title_id);
+
+        final String event = tv1.getText().toString();
+
+        FirebaseUser user = mAuth.getCurrentUser();
+        final String id1 = user.getUid();
+
+        myRef = mFirebaseDatabase.getReference("User/"  + id1 + "/");
+
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Post object and use the values to update the UI
+                //Donation donation = dataSnapshot.getValue(Donation.class);
+
+
+                uInfo = new User();
+                LinkedList<String> events = new LinkedList<String>();
+
+                events.add( (String) dataSnapshot.child("attended_events").getValue());
+
+                uInfo.addEvent(events);
+
+                myRef.child("attended_events").setValue(events);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w( "loadPost:onCancelled", databaseError.toException());
+                // ...
+            }
+        });
+
+    }
+
 
 
 }
