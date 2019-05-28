@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -39,7 +40,7 @@ public class EventFragment extends Fragment {
         @Nullable
         @Override
         public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            v = inflater.inflate(R.layout.fragment_event, container, false);
+            v = inflater.inflate(R.layout.fragment_user_event, container, false);
 
             ButterKnife.bind(getActivity());
 
@@ -92,14 +93,14 @@ public class EventFragment extends Fragment {
 
                     holder.bindEvent(model);
 
-                    holder.btnButton1.setOnClickListener(new View.OnClickListener(){
-                        @Override
-                        public void onClick(View v) {
+//                    holder.btnButton1.setOnClickListener(new View.OnClickListener(){
+//                        @Override
+//                        public void onClick(View v) {
+//
+//                            ((MainActivity)getActivity()).attendEvent(v);
 
-                            ((MainActivity)getActivity()).attendEvent(v);
-
-                        }
-                    });
+//                        }
+////                    });
 
                 }
 
@@ -114,7 +115,6 @@ public class EventFragment extends Fragment {
             mFirebaseAdapter.startListening();
             mRecyclerView.setAdapter(mFirebaseAdapter);
         }
-
 
         public void makeEvent(View view) {
 

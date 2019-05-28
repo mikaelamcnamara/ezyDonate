@@ -397,43 +397,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    public void attendEvent(View view) {
+    public void attendEvent(View view, String event) {
 
-        FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
-
-        tv1 = findViewById(R.id.event_title_id);
-
-        final String event = tv1.getText().toString();
+//        tv1 = findViewById(R.id.event_title_id);
+//
+//        final String event = tv1.getText().toString();
 
         FirebaseUser user = mAuth.getCurrentUser();
         final String id1 = user.getUid();
 
-        myRef = mFirebaseDatabase.getReference("User/"  + id1 + "/");
-
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
-                //Donation donation = dataSnapshot.getValue(Donation.class);
-
-
-                uInfo = new User();
-                LinkedList<String> events = new LinkedList<String>();
-
-                events.add( (String) dataSnapshot.child("attended_events").getValue());
-
-                uInfo.addEvent(events);
-
-                myRef.child("attended_events").setValue(events);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w( "loadPost:onCancelled", databaseError.toException());
-                // ...
-            }
-        });
+        mDatabase.child("User").child(id1).child("attended_events").child(event).setValue(true);
 
     }
 
