@@ -33,11 +33,11 @@
 
         <ImageButton
             android:id="@+id/cancelevents"
-            android:layout_width="45dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
             android:background="@drawable/ic_arrow_back_black_24dp"
             android:onClick="mainmenu"
             app:layout_constraintEnd_toStartOf="@+id/search_view"
