@@ -84,7 +84,7 @@
                 android:background="@color/lightBlue"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:onClick="event"
+                android:onClick="adminEvent"
                 android:text="EVENTS"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.495"

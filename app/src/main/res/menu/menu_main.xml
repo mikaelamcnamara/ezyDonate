@@ -2,16 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.ezydonate.MainActivity"/>
-
-<!-- below is an XML for search bar <!-->
-
-
-<!--
-<item android:id="@+id/search_bar"
-android:title="Search"
-android:icon = "@android:drawable/ic_menu_search"
-app:actionViewClass="android.widget.SearchView"
-    app:showAsAction="always"/>
+    tools:context="com.example.ezydonate.MainActivity">
+    <item
+        android:id="@+id/app_bar_search"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="Search"
+        app:actionViewClass="android.widget.SearchView" />
 </menu>
-<!-->
+
+

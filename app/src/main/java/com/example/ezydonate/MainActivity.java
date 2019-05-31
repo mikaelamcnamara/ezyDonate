@@ -17,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -72,8 +73,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -115,6 +114,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void event(View view) {
         setContentView(R.layout.cardview_event);
+    }
+
+    public void adminEvent(View view) {
+
+        Intent eventAdmin  = new Intent(MainActivity.this, EventAdmin.class);
+        startActivity(eventAdmin);
     }
 
     public void booking(View view) {
@@ -409,7 +414,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mDatabase.child("User").child(id1).child("attended_events").child(event).setValue(true);
 
     }
-
-
 
 }

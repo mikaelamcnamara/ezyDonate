@@ -45,6 +45,10 @@
             android:name=".BookingMakeActivity"
             android:label="EzyDonate" >
         </activity>
+        <activity
+            android:name=".EventAdmin"
+            android:label="EzyDonate" >
+        </activity>
     </application>
 
 </manifest>

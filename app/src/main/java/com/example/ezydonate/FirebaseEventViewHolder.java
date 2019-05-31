@@ -30,6 +30,7 @@ import java.util.ArrayList;
 public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     public Button btnButton1;
+    public Button cancelbtn;
     View eView;
     Context eContext;
     private FirebaseAuth mAuth;
@@ -58,6 +59,7 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
         TextView timeTextView = (TextView) eView.findViewById(R.id.event_time_id);
         TextView locationTextView = (TextView) eView.findViewById(R.id.event_location_id);
         btn = itemView.findViewById(R.id.event_more);
+        cancelbtn = eView.findViewById(R.id.event_button_remove);
         btnButton1 = itemView.findViewById(R.id.event_button_id);
 
         mAuth = FirebaseAuth.getInstance();
@@ -70,11 +72,6 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.hasChild(titleTextView.getText().toString())) {
                     btnButton1.setText("Attending");
-                }
-
-                else {
-
-                    btnButton1.setText("Attend");
                 }
             }
 
@@ -129,6 +126,17 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
 //                    public void onCancelled(DatabaseError databaseError) {
 //                    }
 //                });
+
+            }
+        });
+
+        cancelbtn.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            public void onClick(View view) {
+                final ArrayList<Event> events = new ArrayList<>();
+
+                ((EventAdmin) eContext).removeEvent(view, titleTextView.getText().toString());
 
             }
         });

@@ -1,5 +1,6 @@
 package com.example.ezydonate;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,10 +8,17 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.SearchView;
+import android.widget.SimpleAdapter;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,6 +29,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.database.ObservableSnapshotArray;
 
+import java.util.ArrayList;
 import java.util.List;
 //lmao
 import butterknife.BindViews;
@@ -32,6 +41,7 @@ public class EventFragment extends Fragment {
         private List<Event> lstEvent;
         private FirebaseAuth mAuth = FirebaseAuth.getInstance();
         private FirebaseRecyclerAdapter<Event, FirebaseEventViewHolder> mFirebaseAdapter;
+        public SearchView search;
         private DatabaseReference mDatabase;
         Query query;
 
@@ -43,11 +53,14 @@ public class EventFragment extends Fragment {
             v = inflater.inflate(R.layout.fragment_user_event, container, false);
 
             ButterKnife.bind(getActivity());
+            setHasOptionsMenu(true);
 
             mDatabase = FirebaseDatabase.getInstance().getReference().child("events");
             query = mDatabase.limitToFirst(50);
 
 //            this.btnButton1= (Button) v.findViewById(R.id.event_button_id);
+
+                // search = (SearchView) getView().findViewById(R.id.search_view);
 
             mRecyclerView = (RecyclerView) v.findViewById(R.id.recyclerview_id);
 
@@ -56,7 +69,14 @@ public class EventFragment extends Fragment {
 //            RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(),lstEvent);
 //            myrecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
 //            myrecyclerview.setAdapter(recyclerAdapter);
+
             return v;
+        }
+
+        @Override
+        public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+            inflater.inflate(R.menu.menu_main, menu);
+            super.onCreateOptionsMenu(menu,inflater);
         }
 
         @Override
@@ -84,6 +104,8 @@ public class EventFragment extends Fragment {
 
                     View view = LayoutInflater.from(parent.getContext())
                             .inflate(R.layout.carduser_event, parent, false);
+
+                    //search = (EditText) getView().findViewById(R.id.search_view);
 
                     return new FirebaseEventViewHolder(view);
                 }
@@ -114,6 +136,33 @@ public class EventFragment extends Fragment {
             mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             mFirebaseAdapter.startListening();
             mRecyclerView.setAdapter(mFirebaseAdapter);
+
+            if (search != null) {
+
+                search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        //newSearch();
+                        return false;
+                    }
+                });
+            }
+
+//
+        }
+
+        private void newSearch(String s) {
+
+            ArrayList<Event> myList = new ArrayList<>();
+            for ( Event object : myList) {
+
+
+            }
         }
 
         public void makeEvent(View view) {
