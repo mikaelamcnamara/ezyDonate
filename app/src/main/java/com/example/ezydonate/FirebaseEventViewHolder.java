@@ -11,7 +11,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,11 +32,14 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
     public Button btnButton1;
     View eView;
     Context eContext;
+    private FirebaseAuth mAuth;
+    private String userID;
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
     private TextView event_description;
     private LinearLayout events = itemView.findViewById(R.id.transition_container);
     private Button btn;
+    private DatabaseReference myRef;
 
     public FirebaseEventViewHolder(View itemView) {
         super(itemView);
@@ -45,15 +51,39 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
     public void bindEvent(Event event) {
 
 
-
         ImageView eventImageView = (ImageView) eView.findViewById(R.id.event_img_id);
-        TextView titleTextView = (TextView) eView.findViewById(R.id.event_title_id);
+        final TextView titleTextView = (TextView) eView.findViewById(R.id.event_title_id);
         event_description = (TextView) eView.findViewById(R.id.event_description_id);
         TextView dateTextView = (TextView) eView.findViewById(R.id.event_date_id);
         TextView timeTextView = (TextView) eView.findViewById(R.id.event_time_id);
         TextView locationTextView = (TextView) eView.findViewById(R.id.event_location_id);
         btn = itemView.findViewById(R.id.event_more);
         btnButton1 = itemView.findViewById(R.id.event_button_id);
+
+        mAuth = FirebaseAuth.getInstance();
+        String id = mAuth.getCurrentUser().getUid();
+
+        DatabaseReference root = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference eventref = root.child("User").child(id).child("attended_events");
+        eventref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.hasChild(titleTextView.getText().toString())) {
+                    btnButton1.setText("Attending");
+                }
+
+                else {
+
+                    btnButton1.setText("Attend");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
 
         btn.setOnClickListener(new View.OnClickListener() {
             boolean visible;
@@ -66,12 +96,39 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
             }
         });
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            boolean visible;
+        btnButton1.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
+                final ArrayList<Event> events = new ArrayList<>();
 
+                ((MainActivity) eContext).attendEvent(view, titleTextView.getText().toString());
+                btnButton1.setText("Attending");
+
+
+
+//                ref.addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(DataSnapshot dataSnapshot) {
+//                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                            events.add(snapshot.getValue(Event.class));
+//                        }
+//
+//
+//                        Toast.makeText(v.getContext(), "Invalid Username or Password", Toast.LENGTH_SHORT).show();
+//                        try {
+//                            ((MainActivity) eContext).attendEvent(v);
+//                        } catch (Exception e) {
+//                            // ignore
+//                        }
+//
+////                MainActivity.get
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(DatabaseError databaseError) {
+//                    }
+//                });
 
             }
         });
@@ -103,13 +160,7 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
                     events.add(snapshot.getValue(Event.class));
                 }
 
-                int itemPosition = getLayoutPosition();
-
-                Intent intent = new Intent(eContext, EventFragment.class);
-                intent.putExtra("position", itemPosition + "");
-                intent.putExtra("events", Parcels.wrap(events));
-
-                eContext.startActivity(intent);
+//                MainActivity.get
             }
 
             @Override
