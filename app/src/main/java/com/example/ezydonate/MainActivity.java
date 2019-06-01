@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
@@ -40,6 +41,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout dmLayout;
 
@@ -51,6 +53,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private User uInfo;
     private TextView tv1;
     private DatabaseReference myRef;
+    private DatabaseReference Donors;
+    private User[] topDonators = new User[3];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +64,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         setContentView(R.layout.activity_main);
-        // Toolbar toolbar = findViewById(R.id.toolbar);
-        //   setSupportActionBar(toolbar);
         b1 = (Button) findViewById(R.id.loginbtn);
-
         checkPermission();
+        Donors = (DatabaseReference) FirebaseDatabase.getInstance().getReference("User");
 
     }
 
@@ -107,6 +110,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        Donors.orderByChild("donation").limitToLast(3).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int i = ((int) dataSnapshot.getChildrenCount());
+                for(DataSnapshot user: dataSnapshot.getChildren())
+                {
+                    i--;
+                    if(i >=0)
+                    {
+                        topDonators[i] = user.getValue(User.class);
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public void event(View view) {
