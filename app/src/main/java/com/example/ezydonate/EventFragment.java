@@ -58,17 +58,9 @@ public class EventFragment extends Fragment {
             mDatabase = FirebaseDatabase.getInstance().getReference().child("events");
             query = mDatabase.limitToFirst(50);
 
-//            this.btnButton1= (Button) v.findViewById(R.id.event_button_id);
-
-                // search = (SearchView) getView().findViewById(R.id.search_view);
-
             mRecyclerView = (RecyclerView) v.findViewById(R.id.recyclerview_id);
 
             setUpFirebaseAdapter(query);
-//
-//            RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(),lstEvent);
-//            myrecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
-//            myrecyclerview.setAdapter(recyclerAdapter);
 
             return v;
         }
@@ -105,8 +97,6 @@ public class EventFragment extends Fragment {
                     View view = LayoutInflater.from(parent.getContext())
                             .inflate(R.layout.carduser_event, parent, false);
 
-                    //search = (EditText) getView().findViewById(R.id.search_view);
-
                     return new FirebaseEventViewHolder(view);
                 }
 
@@ -115,22 +105,9 @@ public class EventFragment extends Fragment {
 
                     holder.bindEvent(model);
 
-//                    holder.btnButton1.setOnClickListener(new View.OnClickListener(){
-//                        @Override
-//                        public void onClick(View v) {
-//
-//                            ((MainActivity)getActivity()).attendEvent(v);
-
-//                        }
-////                    });
 
                 }
 
-//                @Override
-//                protected void populateViewHolder(FirebaseEventViewHolder viewHolder,
-//                                                  Event model, int position) {
-//                    viewHolder.bindEvent(model);
-//                }
             };
             mRecyclerView.setHasFixedSize(true);
             mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -167,10 +144,9 @@ public class EventFragment extends Fragment {
 
         public void makeEvent(View view) {
 
-        Intent makeEvent = new Intent(getActivity(), EventActivity.class);
-        startActivity(makeEvent);
-
-    }
+            Intent makeEvent = new Intent(getActivity(), EventActivity.class);
+            startActivity(makeEvent);
+        }
 
 }
 

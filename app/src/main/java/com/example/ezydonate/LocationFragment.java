@@ -114,7 +114,6 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback {
 
 
 
-
     private void getLocationPermission(){
         Log.d(TAG, "getLocationPermission: getting location permissions");
         String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION,

@@ -64,6 +64,10 @@
             android:name=".EventAdmin"
             android:label="EzyDonate" >
         </activity>
+        <activity
+            android:name=".EventEdit"
+            android:label="EzyDonate" >
+        </activity>
     </application>
 
 </manifest>
