@@ -6,9 +6,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
@@ -53,18 +55,17 @@ public class BookingMakeActivity extends Activity {
         timepicker = (TimePicker) findViewById(R.id.timePicker1);
         timepicker.setIs24HourView(true);
 
-        CalendarView v = new CalendarView( this );
-        v.setOnDateChangeListener( new CalendarView.OnDateChangeListener() {
-            private GregorianCalendar calendar;
+        CalendarView calendar = (CalendarView)findViewById(R.id.calendarView);
 
-            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                this.calendar = new GregorianCalendar( year, month, dayOfMonth );
+        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
 
-                date = dayOfMonth + "-" + (month + 1) + "-" + year;
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month,
+                                            int dayOfMonth) {
 
+                date = dayOfMonth + "/" + month + "/" + year;
 
-
-            }//met
+            }
         });
     }
 
@@ -102,7 +103,8 @@ public class BookingMakeActivity extends Activity {
 //        if (time.trim().equals("") || date.trim().equals("") || location.getText().toString().trim().equals("")) {
 //            Toast.makeText(this, "Invalid Details", Toast.LENGTH_SHORT).show();
 
-
+            final String timeString = timepicker.getHour() + "-" + timepicker.getMinute();
+            Toast.makeText(this, date, Toast.LENGTH_SHORT).show();
             FirebaseUser user = mAuth.getCurrentUser();
             final String id1 = mAuth.getCurrentUser().getUid();
             final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -113,9 +115,9 @@ public class BookingMakeActivity extends Activity {
 
                     String name = (String) snapshot.getValue();  //prints "Do you have data? You'll love Firebase."
 
-                    Booking booking = new Booking(name, time, date, "hi");
+                    Booking booking = new Booking(name, timeString, date, "hi");
 
-                    mDatabase.child("booking").child(name + " " + id1 + " " + time).setValue(booking);
+                    mDatabase.child("booking").child(id1 + timeString).setValue(booking);
 
                     Toast.makeText(BookingMakeActivity.this, "Booking Made", Toast.LENGTH_SHORT).show();
 

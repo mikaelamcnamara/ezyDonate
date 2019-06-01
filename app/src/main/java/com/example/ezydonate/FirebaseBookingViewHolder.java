@@ -57,29 +57,29 @@ public class FirebaseBookingViewHolder extends RecyclerView.ViewHolder implement
 
     @Override
     public void onClick(View view) {
-        final ArrayList<Booking> bookings = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("booking");
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    bookings.add(snapshot.getValue(Booking.class));
-                }
-
-                int itemPosition = getLayoutPosition();
-
-                Intent intent = new Intent(eContext, BookingCancelActivity.class);
-                intent.putExtra("position", itemPosition + "");
-                intent.putExtra("events", Parcels.wrap(bookings));
-
-                eContext.startActivity(intent);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
+//        final ArrayList<Booking> bookings = new ArrayList<>();
+//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("booking");
+//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                    bookings.add(snapshot.getValue(Booking.class));
+//                }
+//
+//                int itemPosition = getLayoutPosition();
+//
+//                Intent intent = new Intent(eContext, BookingCancelActivity.class);
+//                intent.putExtra("position", itemPosition + "");
+//                intent.putExtra("events", Parcels.wrap(bookings));
+//
+//                eContext.startActivity(intent);
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//            }
+//        });
     }
 
 

@@ -13,7 +13,7 @@ public class Booking {
 
     }
 
-    public Booking(String user, String date, String time, String location)
+    public Booking(String user, String time, String date, String location)
     {
         this.user = user;
         this.date = date;

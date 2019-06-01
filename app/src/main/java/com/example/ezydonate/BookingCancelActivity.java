@@ -51,6 +51,9 @@ public class BookingCancelActivity extends Activity {
             setUpFirebaseAdapter(query);
         }
 
+    public void backBooking(View view) {
+        finish();
+    }
 
         private void setUpFirebaseAdapter(Query query) {
 
