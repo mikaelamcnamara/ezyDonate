@@ -47,6 +47,9 @@ dependencies {
     implementation 'org.parceler:parceler-api:1.1.6'
     annotationProcessor 'org.parceler:parceler:1.1.6'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    //gps
+    implementation 'com.google.android.gms:play-services-maps:15.0.1'
+    implementation 'com.google.android.gms:play-services-location:15.0.1'
 }
 apply plugin: 'com.google.gms.google-services'
 

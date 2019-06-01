@@ -1,4 +1,5 @@
 package com.example.ezydonate;
+
 import android.Manifest;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -17,17 +18,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ezydonate.Model.Donation;
-import com.example.ezydonate.Model.UserInformation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -37,14 +35,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.MutableData;
-import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.LinkedList;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout dmLayout;
@@ -97,9 +91,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         new BookingFragment()).commit();
                 break;
             case R.id.nav_donate:
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new DonateFragment()).commit();
-
+                break;
+            case R.id.nav_location:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new LocationFragment()).commit();
         }
         dmLayout.closeDrawer(GravityCompat.START);
         return true;
