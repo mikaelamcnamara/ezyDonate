@@ -40,5 +40,10 @@ public class User
 
         return donation;
     }
+    public String getUsername() {
+
+        return username;
+    }
+
 
 }

@@ -131,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             }
         });
+
     }
 
     public void event(View view) {
