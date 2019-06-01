@@ -67,6 +67,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         b1 = (Button) findViewById(R.id.loginbtn);
         checkPermission();
         Donors = (DatabaseReference) FirebaseDatabase.getInstance().getReference("User");
+        Donors.orderByChild("donation").limitToLast(3).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int i = ((int) dataSnapshot.getChildrenCount());
+                for(DataSnapshot user: dataSnapshot.getChildren())
+                {
+                    i--;
+                    if(i >=0)
+                    {
+                        topDonators[i] = user.getValue(User.class);
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
     }
 
@@ -110,27 +131,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        Donors.orderByChild("donation").limitToLast(3).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                int i = ((int) dataSnapshot.getChildrenCount());
-                for(DataSnapshot user: dataSnapshot.getChildren())
-                {
-                    i--;
-                    if(i >=0)
-                    {
-                        topDonators[i] = user.getValue(User.class);
-                    }
 
-                }
 
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
     }
 
@@ -167,6 +169,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void mainmenu(View view) {
         setContentView(R.layout.page_main);
+
     }
 
     public void forgotPass_page(View view) {
