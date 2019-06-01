@@ -136,6 +136,7 @@
             android:paddingLeft="30dp"
             android:paddingBottom="20dp"
             android:visibility="gone" />
+
     </android.support.v7.widget.CardView>
 
 

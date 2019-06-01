@@ -66,9 +66,12 @@ public class BookingMakeActivity extends Activity {
 
             }//met
         });
-
     }
 
+
+    public void backBooking(View view) {
+        finish();
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void createBooking(View view) {

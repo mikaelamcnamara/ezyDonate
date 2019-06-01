@@ -59,7 +59,6 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
         TextView timeTextView = (TextView) eView.findViewById(R.id.event_time_id);
         TextView locationTextView = (TextView) eView.findViewById(R.id.event_location_id);
         btn = itemView.findViewById(R.id.event_more);
-       // cancelbtn = eView.findViewById(R.id.event_button_remove);
         btnButton1 = itemView.findViewById(R.id.event_button_id);
 
         mAuth = FirebaseAuth.getInstance();
@@ -81,27 +80,53 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
             }
         });
 
+        String id1 = mAuth.getCurrentUser().getUid();
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            boolean visible;
-            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+        root.child("User").child(id1).child("isAdmin").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                TransitionManager.beginDelayedTransition(events);
-                visible =! visible;
-                event_description.setVisibility(visible ? View.VISIBLE : View.GONE);
-            }
-        });
+            public void onDataChange(DataSnapshot snapshot) {
 
-        btnButton1.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-            @Override
-            public void onClick(View view) {
-                final ArrayList<Event> events = new ArrayList<>();
+                String admin = (String) snapshot.getValue();  //prints "Do you have data? You'll love Firebase."
 
-                ((MainActivity) eContext).attendEvent(view, titleTextView.getText().toString());
-                btnButton1.setText("Attending");
+                if (admin.equals("yes")) {
 
+
+                    cancelbtn = eView.findViewById(R.id.event_button_remove);
+                    btnButton1 = itemView.findViewById(R.id.eventedit_button_id);
+
+                    cancelbtn.setOnClickListener(new View.OnClickListener() {
+                        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                        @Override
+                        public void onClick(View view) {
+                            final ArrayList<Event> events = new ArrayList<>();
+
+                            ((EventAdmin) eContext).removeEvent(view, titleTextView.getText().toString());
+
+                        }
+                    });
+
+                    btnButton1.setOnClickListener(new View.OnClickListener() {
+                        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                        @Override
+                        public void onClick(View view) {
+                            final ArrayList<Event> events = new ArrayList<>();
+
+                            ((EventAdmin) eContext).editEvent(view, titleTextView.getText().toString());
+
+                        }
+                    });
+                }
+
+                else {
+
+                    btnButton1.setOnClickListener(new View.OnClickListener() {
+                        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                        @Override
+                        public void onClick(View view) {
+                            final ArrayList<Event> events = new ArrayList<>();
+
+                            ((MainActivity) eContext).attendEvent(view, titleTextView.getText().toString());
+                            btnButton1.setText("Attending");
 
 
 //                ref.addValueEventListener(new ValueEventListener() {
@@ -127,20 +152,29 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
 //                    }
 //                });
 
+                        }
+                    });
+                }
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+                String admin = "false";
             }
         });
 
-//        cancelbtn.setOnClickListener(new View.OnClickListener() {
-//            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-//            @Override
-//            public void onClick(View view) {
-//                final ArrayList<Event> events = new ArrayList<>();
-//
-//                ((EventAdmin) eContext).removeEvent(view, titleTextView.getText().toString());
-//
-//            }
-//        });
 
+        btn.setOnClickListener(new View.OnClickListener() {
+            boolean visible;
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            public void onClick(View v) {
+                TransitionManager.beginDelayedTransition(events);
+                visible =! visible;
+                event_description.setVisibility(visible ? View.VISIBLE : View.GONE);
+            }
+        });
 
         Picasso.get()
                 .load(event.getThumbnail())

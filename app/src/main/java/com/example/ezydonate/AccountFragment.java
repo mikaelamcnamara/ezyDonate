@@ -1,6 +1,11 @@
 package com.example.ezydonate;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -20,6 +25,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -35,7 +43,12 @@ public class AccountFragment extends Fragment {
     private DatabaseReference myRef;
     private String userID;
     private UserInformation uInfo;
+    private Uri image_uri;
+    private String download_uri;
+//    List<Event> lstEvent;
+    public Bitmap image;
 
+    public static final int GET_FROM_GALLERY = 3;
 
 
     @BindView(R.id.editText10) EditText etEmail;
@@ -152,6 +165,7 @@ public class AccountFragment extends Fragment {
             toastMessage("Password successfully updated.");
         }
     }
+
 
     private void toastMessage(String message){
         Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();

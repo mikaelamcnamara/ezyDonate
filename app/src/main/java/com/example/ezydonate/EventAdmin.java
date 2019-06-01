@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -107,22 +108,8 @@ public class EventAdmin extends Activity {
 
                 holder.bindEvent(model);
 
-//                    holder.btnButton1.setOnClickListener(new View.OnClickListener(){
-//                        @Override
-//                        public void onClick(View v) {
-//
-//                            ((MainActivity)getActivity()).attendEvent(v);
-
-//                        }
-////                    });
-
             }
 
-//                @Override
-//                protected void populateViewHolder(FirebaseEventViewHolder viewHolder,
-//                                                  Event model, int position) {
-//                    viewHolder.bindEvent(model);
-//                }
         };
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -139,16 +126,21 @@ public class EventAdmin extends Activity {
 
     public void removeEvent(View view, String event) {
 
-//        tv1 = findViewById(R.id.event_title_id);
-//
-//        final String event = tv1.getText().toString();
-
         FirebaseUser user = mAuth.getCurrentUser();
         final String id1 = user.getUid();
 
         mDatabase.child(event).removeValue();
 
     }
+
+    public void editEvent(View view, String event) {
+
+        Intent eventEdit = new Intent(this, EventEdit.class);
+        eventEdit.putExtra("eventName", event);
+        startActivity(eventEdit);
+
+    }
+
 
 }
 

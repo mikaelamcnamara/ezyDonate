@@ -29,7 +29,8 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button4"
-            app:layout_constraintVertical_bias="0.0"></android.support.v7.widget.RecyclerView>
+            app:layout_constraintVertical_bias="0.0">
+        </android.support.v7.widget.RecyclerView>
 
         <ImageButton
             android:id="@+id/cancelevents"
@@ -39,7 +40,7 @@
             android:layout_marginEnd="32dp"
             android:layout_marginRight="32dp"
             android:background="@drawable/ic_arrow_back_black_24dp"
-            android:onClick="mainmenu"
+            android:onClick="history"
             app:layout_constraintEnd_toStartOf="@+id/search_view"
             app:layout_constraintTop_toTopOf="parent" />
 
