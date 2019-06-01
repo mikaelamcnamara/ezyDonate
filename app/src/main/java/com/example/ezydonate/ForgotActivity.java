@@ -45,8 +45,6 @@ public class ForgotActivity extends Activity {
                             if (task.isSuccessful()) {
                                 Toast.makeText(ForgotActivity.this, "Password Reset Request Sent, Check Your Email", Toast.LENGTH_SHORT).show();
                                     setContentView(R.layout.verified_pass);
-//                                Intent main = new Intent(ForgotActivity.this, MainActivity.class);
-//                                startActivity(main);
 
                             } else {
                                 Toast.makeText(ForgotActivity.this, "Email Address Does Not Exist",

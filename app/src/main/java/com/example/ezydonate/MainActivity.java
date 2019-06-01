@@ -135,6 +135,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.mainadmin_page);
     }
 
+
     public void donate(View view) {
         setContentView(R.layout.donate);
     }
@@ -199,6 +200,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(getApplicationContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
         }
     }
+
+
 
 
     public void login(View view) {

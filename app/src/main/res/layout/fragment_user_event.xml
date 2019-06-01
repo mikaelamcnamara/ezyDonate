@@ -27,7 +27,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.727"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/search_view"></android.support.v7.widget.RecyclerView>
+            app:layout_constraintTop_toBottomOf="@+id/search_view">
+
+        </android.support.v7.widget.RecyclerView>
 
         <ImageButton
             android:id="@+id/menuButton"

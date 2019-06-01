@@ -42,7 +42,9 @@
             android:paddingBottom="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button4"></android.support.v7.widget.RecyclerView>
+            app:layout_constraintTop_toBottomOf="@+id/button4">
+
+        </android.support.v7.widget.RecyclerView>
 
         <ImageButton
             android:id="@+id/cancelevents"
