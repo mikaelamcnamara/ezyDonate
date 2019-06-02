@@ -385,7 +385,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                     }
                                     @Override
                                     public void onCancelled(DatabaseError databaseError) {
-
                                         String admin = "false";
                                     }
                                 });

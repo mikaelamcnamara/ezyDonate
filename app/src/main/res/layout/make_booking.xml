@@ -24,16 +24,68 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="60dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@drawable/bg_calendar"
                 android:gravity="center"
                 android:text="Booking Details"
-                android:textColor="#000"
+                android:textSize="15dp"
+                android:textColor="#F5EFEF"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/calendarView"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/imageView5"
                 app:layout_constraintTop_toBottomOf="@+id/textView6"
                 app:layout_constraintVertical_bias="0.108" />
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/ic_date_range_black_24dp"
+                app:layout_constraintBottom_toTopOf="@+id/calendarView"
+                app:layout_constraintEnd_toStartOf="@+id/textView10"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editText6" />
+
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/ic_library_books_black_24dp"
+                app:layout_constraintBottom_toTopOf="@+id/editText6"
+                app:layout_constraintEnd_toStartOf="@+id/textView22"
+                app:layout_constraintTop_toBottomOf="@+id/textView6"
+                app:layout_constraintVertical_bias="0.779" />
+
+            <ImageView
+                android:id="@+id/imageView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/ic_access_time_black_24dp"
+                app:layout_constraintBottom_toTopOf="@+id/timePicker1"
+                app:layout_constraintEnd_toStartOf="@+id/textView23"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/calendarView"
+                app:layout_constraintVertical_bias="0.714" />
 
             <TextView
                 android:id="@+id/textView23"
@@ -42,16 +94,20 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="30dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_calendar"
                 android:gravity="center"
                 android:text="Select Time"
-                android:textColor="#000"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/timePicker1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.532"
                 app:layout_constraintStart_toStartOf="@+id/imageView5"
                 app:layout_constraintTop_toBottomOf="@+id/calendarView"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
                 android:id="@+id/imageView5"
@@ -126,13 +182,16 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@drawable/bg_calendar"
                 android:gravity="center"
                 android:text="Select Date"
-                android:textColor="#000"
+                android:textSize="15dp"
+                android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/calendarView"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/imageView5"
                 app:layout_constraintTop_toBottomOf="@+id/editText6"
                 app:layout_constraintVertical_bias="0.521" />
@@ -178,22 +237,24 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.011" />
 
+
+
+
             <EditText
                 android:id="@+id/editText6"
                 android:layout_width="371dp"
                 android:layout_height="45dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="28dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Reason for Booking:         "
+                android:text="Reason for Booking:"
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.535"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
