@@ -96,7 +96,6 @@
                 android:layout_marginRight="8dp"
                 android:background="@drawable/bg_calendar"
                 android:visibility="visible"
-                app:layout_constraintBottom_toTopOf="@+id/drawerLayout2"
                 app:layout_constraintEnd_toEndOf="@+id/imageView5"
                 app:layout_constraintHorizontal_bias="0.454"
                 app:layout_constraintStart_toStartOf="@+id/imageView5"

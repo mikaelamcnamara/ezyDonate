@@ -8,9 +8,15 @@
 
 
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
     <android.support.constraint.ConstraintLayout
         android:layout_height="match_parent"
         android:layout_width="match_parent">
+
 
 
         <TextView
@@ -30,23 +36,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/editText5"
-            android:layout_width="307dp"
-            android:layout_height="53dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@drawable/login_rec"
-            android:hint="Time"
-            android:inputType="text"
-            android:padding="16dp"
-            android:textColorHint="@color/login_light"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        <!--<EditText-->
+            <!--android:id="@+id/editText5"-->
+            <!--android:layout_width="307dp"-->
+            <!--android:layout_height="53dp"-->
+            <!--android:background="@drawable/login_rec"-->
+            <!--android:hint="Time"-->
+            <!--android:inputType="text"-->
+            <!--android:padding="16dp"-->
+            <!--android:textColorHint="@color/login_light"-->
+            <!--tools:layout_editor_absoluteX="8dp"-->
+            <!--tools:layout_editor_absoluteY="435dp" />-->
 
         <EditText
             android:id="@+id/editText1"
@@ -102,23 +102,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText2" />
 
-        <EditText
-            android:id="@+id/editText4"
-            android:layout_width="307dp"
-            android:layout_height="53dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@drawable/login_rec"
-            android:hint="Date"
-            android:inputType="date"
-            android:padding="16dp"
-            android:textColorHint="@color/login_light"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        <!--<EditText-->
+            <!--android:id="@+id/editText4"-->
+            <!--android:layout_width="307dp"-->
+            <!--android:layout_height="53dp"-->
+            <!--android:background="@drawable/login_rec"-->
+            <!--android:hint="Date"-->
+            <!--android:inputType="date"-->
+            <!--android:padding="16dp"-->
+            <!--android:textColorHint="@color/login_light"-->
+            <!--tools:layout_editor_absoluteX="8dp"-->
+            <!--tools:layout_editor_absoluteY="352dp" />-->
 
         <Button
             android:id="@+id/button2"
@@ -129,12 +123,14 @@
             android:layout_marginTop="30dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:background="@color/lightBlue"
+            android:layout_marginBottom="20dp"
 
+            android:background="@color/lightBlue"
             android:onClick="createEvents"
             android:text="Create Event"
             android:textColor="@color/white"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button3" />
@@ -166,9 +162,39 @@
             android:textColor="@color/lightBlue"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.505"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText5" />
+            app:layout_constraintTop_toBottomOf="@+id/timePicker2" />
 
+        <CalendarView
+            android:id="@+id/calendarView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/bg_calendar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText3" />
+
+        <TimePicker
+            android:id="@+id/timePicker2"
+            android:layout_width="250dp"
+            android:layout_height="86dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="30dp"
+            android:numbersTextColor="@color/white"
+            android:numbersInnerTextColor="@color/white"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:timePickerMode="spinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/calendarView3" />
 
 
 
@@ -178,6 +204,7 @@
 
 
 
+</ScrollView>
 
 
 

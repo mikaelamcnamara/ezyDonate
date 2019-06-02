@@ -82,25 +82,25 @@ public class BookingMakeActivity extends Activity {
        // final EditText date = (EditText) findViewById(R.id.editText2);
         final EditText location = (EditText) findViewById(R.id.editText3);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int getHour = timepicker.getHour();
-                int getMinute = timepicker.getMinute();
-
-
-                if (getHour > 12){
-                    int twelve = getHour - 12;
-                }
-
-                if (getMinute < 10){
-
-                }
-
-                time = getHour + " - " + getMinute;
-
-            }
-        });
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                int getHour = timepicker.getHour();
+//                int getMinute = timepicker.getMinute();
+//
+//
+//                if (getHour > 12){
+//                    int twelve = getHour - 12;
+//                }
+//
+//                if (getMinute < 10){
+//
+//                }
+//
+//                time = getHour + " - " + getMinute;
+//
+//            }
+//        });
 
 //        if (time.trim().equals("") || date.trim().equals("") || location.getText().toString().trim().equals("")) {
 //            Toast.makeText(this, "Invalid Details", Toast.LENGTH_SHORT).show();
