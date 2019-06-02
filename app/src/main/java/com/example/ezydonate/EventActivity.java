@@ -68,11 +68,13 @@ public class EventActivity extends Activity {
     private Uri image_uri;
     private String download_uri;
 //    List<Event> lstEvent;
-
+    private String date;
     public Bitmap image;
+    private String timeString;
 
     public static final int GET_FROM_GALLERY = 3;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,7 +89,24 @@ public class EventActivity extends Activity {
         RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this, lstEvent);
         myrv.setLayoutManager(new GridLayoutManager(this, 1));
         myrv.setAdapter(myAdapter);
+
+
 */
+        timepicker = (TimePicker) findViewById(R.id.timePicker2);
+
+        CalendarView calendar = (CalendarView)findViewById(R.id.calendarView3);
+
+        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month,
+                                            int dayOfMonth) {
+
+                date = dayOfMonth + "/" + month + "/" + year;
+
+            }
+        });
+
     }
 
     public void getImage(View view) {
@@ -141,25 +160,6 @@ public class EventActivity extends Activity {
 //        final EditText time = (EditText) findViewById(R.id.editText5);
         Button myButton = (Button) findViewById(R.id.button2);
 
-        timepicker = (TimePicker) findViewById(R.id.timePicker2);
-        timepicker.setIs24HourView(true);
-        final String[] date = new String[1];
-
-        CalendarView calendar = (CalendarView)findViewById(R.id.calendarView3);
-
-        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-
-            @Override
-            public void onSelectedDayChange(CalendarView view, int year, int month,
-                                            int dayOfMonth) {
-
-                date[0] = dayOfMonth + "/" + month + "/" + year;
-
-            }
-        });
-
-        final String timeString = timepicker.getHour() + "-" + timepicker.getMinute();
-
         Toast.makeText(EventActivity.this, "Event being created....", Toast.LENGTH_LONG).show();
 
         myButton.setEnabled(false);
@@ -170,7 +170,9 @@ public class EventActivity extends Activity {
 
             if (image_uri == null) {
 
-                Event event = new Event(title.getText().toString(), description.getText().toString(), location.getText().toString(), date[0], timeString, "");
+                timeString = timepicker.getHour() + "-" + timepicker.getMinute();
+
+                Event event = new Event(title.getText().toString(), description.getText().toString(), location.getText().toString(), date, timeString, "");
 
                 mDatabase.child("events").child(title.getText().toString()).setValue(event);
 
@@ -198,8 +200,9 @@ public class EventActivity extends Activity {
                             public void onSuccess(Uri uri) {
 
                                 download_uri = uri.toString();
+                                timeString = timepicker.getHour() + "-" + timepicker.getMinute();
 
-                                Event event = new Event(title.getText().toString(), description.getText().toString(), location.getText().toString(), date[0], timeString, download_uri);
+                                Event event = new Event(title.getText().toString(), description.getText().toString(), location.getText().toString(), date, timeString, download_uri);
 
                                 mDatabase.child("events").child(title.getText().toString()).setValue(event);
 

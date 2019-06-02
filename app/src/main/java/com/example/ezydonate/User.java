@@ -11,7 +11,7 @@ public class User
     public String username;
 
     public String isAdmin;
-    public double donation = 0;
+    public long donation = 0;
 
 
     public User() {
@@ -31,7 +31,7 @@ public class User
     }
 
 
-    public void setDonation (double donation) {
+    public void setDonation (long donation) {
 
        this.donation = donation;
     }
@@ -46,7 +46,7 @@ public class User
         this.username = name;
     }
 
-    public double getDonation() {
+    public long getDonation() {
 
         return donation;
     }

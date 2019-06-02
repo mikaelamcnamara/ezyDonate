@@ -1,5 +1,6 @@
 package com.example.ezydonate;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -24,81 +25,103 @@ import butterknife.ButterKnife;
 
 public class HistoryFragment extends Fragment {
 
-        View v;
-        private RecyclerView myrecyclerview;
-        private List<Event> lstEvent;
-        private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        private FirebaseRecyclerAdapter<Event, FirebaseEventViewHolder> mFirebaseAdapter;
-        private DatabaseReference mDatabase;
-        Query query;
-
-        RecyclerView mRecyclerView;
-
         @Nullable
         @Override
         public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            v = inflater.inflate(R.layout.fragment_history, container, false);
+            return inflater.inflate(R.layout.history_pages, container, false);
+        }
 
-            ButterKnife.bind(getActivity());
 
-            mDatabase = FirebaseDatabase.getInstance().getReference().child("events");
-            query = mDatabase.limitToFirst(50);
+        public void eventHistory(View view) {
 
-            mRecyclerView = (RecyclerView) v.findViewById(R.id.recyclerviewhistory_id);
+            Intent eventhistory = new Intent(getActivity(), EventHistoryPage.class);
+            startActivity(eventhistory);
 
-            setUpFirebaseAdapter(query);
+        }
+
+        public void donationHistory(View view) {
+
+            Intent donateHistory = new Intent(getActivity(), TransHistoryPage.class);
+            startActivity(donateHistory);
+
+        }
+    }
+
+//        View v;
+//        private RecyclerView myrecyclerview;
+//        private List<Event> lstEvent;
+//        private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+//        private FirebaseRecyclerAdapter<Event, FirebaseEventViewHolder> mFirebaseAdapter;
+//        private DatabaseReference mDatabase;
+//        Query query;
 //
-//            RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(),lstEvent);
-//            myrecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
-//            myrecyclerview.setAdapter(recyclerAdapter);
-            return v;
-        }
-
-        @Override
-        public void onCreate(@Nullable Bundle savedInstanceState) {
-
-            /*List for adding cards */
-            super.onCreate(savedInstanceState);
-
-
-        }
-
-        private void setUpFirebaseAdapter(Query query) {
-
-            FirebaseRecyclerOptions<Event> options =
-                    new FirebaseRecyclerOptions.Builder<Event>()
-                            .setQuery(query, Event.class)
-                            .build();
-
-            mFirebaseAdapter = new FirebaseRecyclerAdapter<Event, FirebaseEventViewHolder> (options)
-            {
-
-                @NonNull
-                @Override
-                public FirebaseEventViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-                    View view = LayoutInflater.from(parent.getContext())
-                            .inflate(R.layout.carduser_event, parent, false);
-
-                    return new FirebaseEventViewHolder(view);
-                }
-
-                @Override
-                protected void onBindViewHolder(@NonNull FirebaseEventViewHolder holder, int position, @NonNull Event model) {
-
-                    holder.bindEvent(model);
-                }
-
+//        RecyclerView mRecyclerView;
+//
+//        @Nullable
+//        @Override
+//        public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+//            v = inflater.inflate(R.layout.fragment_history, container, false);
+//
+//            ButterKnife.bind(getActivity());
+//
+//            mDatabase = FirebaseDatabase.getInstance().getReference().child("events");
+//            query = mDatabase.limitToFirst(50);
+//
+//            mRecyclerView = (RecyclerView) v.findViewById(R.id.recyclerviewhistory_id);
+//
+//            setUpFirebaseAdapter(query);
+////
+////            RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(),lstEvent);
+////            myrecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+////            myrecyclerview.setAdapter(recyclerAdapter);
+//            return v;
+//        }
+//
+//        @Override
+//        public void onCreate(@Nullable Bundle savedInstanceState) {
+//
+//            /*List for adding cards */
+//            super.onCreate(savedInstanceState);
+//
+//
+//        }
+//
+//        private void setUpFirebaseAdapter(Query query) {
+//
+//            FirebaseRecyclerOptions<Event> options =
+//                    new FirebaseRecyclerOptions.Builder<Event>()
+//                            .setQuery(query, Event.class)
+//                            .build();
+//
+//            mFirebaseAdapter = new FirebaseRecyclerAdapter<Event, FirebaseEventViewHolder> (options)
+//            {
+//
+//                @NonNull
 //                @Override
-//                protected void populateViewHolder(FirebaseEventViewHolder viewHolder,
-//                                                  Event model, int position) {
-//                    viewHolder.bindEvent(model);
+//                public FirebaseEventViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+//
+//                    View view = LayoutInflater.from(parent.getContext())
+//                            .inflate(R.layout.carduser_event, parent, false);
+//
+//                    return new FirebaseEventViewHolder(view);
 //                }
-            };
-            mRecyclerView.setHasFixedSize(true);
-            mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            mFirebaseAdapter.startListening();
-            mRecyclerView.setAdapter(mFirebaseAdapter);
-        }
-
-}
+//
+//                @Override
+//                protected void onBindViewHolder(@NonNull FirebaseEventViewHolder holder, int position, @NonNull Event model) {
+//
+//                    holder.bindEvent(model);
+//                }
+//
+////                @Override
+////                protected void populateViewHolder(FirebaseEventViewHolder viewHolder,
+////                                                  Event model, int position) {
+////                    viewHolder.bindEvent(model);
+////                }
+//            };
+//            mRecyclerView.setHasFixedSize(true);
+//            mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//            mFirebaseAdapter.startListening();
+//            mRecyclerView.setAdapter(mFirebaseAdapter);
+//        }
+//
+//}

@@ -111,7 +111,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
-                android:onClick="history"
+                android:onClick="adminHistory"
                 android:text="HISTORY"
                 android:background="@color/lightBlue"
                 android:textColor="@color/white"
