@@ -47,14 +47,14 @@ public class FirebaseUserViewHolder extends RecyclerView.ViewHolder implements V
 
 //        ImageView eventImageView = (ImageView) eView.findViewById(R.id.event_img_id);
 //        final TextView titleTextView = (TextView) eView.findViewById(R.id.event_title_id);
-        TextView username = (TextView) eView.findViewById(R.id.user_title_id);
+        final TextView username = (TextView) eView.findViewById(R.id.user_title_id);
         TextView name = (TextView) eView.findViewById(R.id.user_name_id);
         TextView email = (TextView) eView.findViewById(R.id.user_email_id);
         TextView donation = (TextView) eView.findViewById(R.id.user_donation_id4);
        // TextView locationTextView = (TextView) eView.findViewById(R.id.event_location_id);
 
         mAuth = FirebaseAuth.getInstance();
-        String id = mAuth.getCurrentUser().getUid();
+        final String id = mAuth.getCurrentUser().getUid();
 
         DatabaseReference root = FirebaseDatabase.getInstance().getReference();
         //DatabaseReference eventref = root.child("User").child(id).child("attended_events");
@@ -73,6 +73,23 @@ public class FirebaseUserViewHolder extends RecyclerView.ViewHolder implements V
 //        });
 
         String id1 = mAuth.getCurrentUser().getUid();
+
+//        cancelbtn = eView.findViewById(R.id.event_button_remove);
+//
+//
+//        cancelbtn = eView.findViewById(R.id.booking_button_id3);
+//
+//        cancelbtn.setOnClickListener(new View.OnClickListener() {
+//            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+//            @Override
+//            public void onClick(View view) {
+//                final ArrayList<Event> events = new ArrayList<>();
+//
+//                String user_name = username.getText().toString();
+//                ((UserAdminFragment) eContext).removeUser(view, booking_name);
+//
+//            }
+//        });
 
 //        root.child("User").child(id1).child("isAdmin").addValueEventListener(new ValueEventListener() {
 //            @Override

@@ -142,5 +142,11 @@ public class EventAdmin extends Activity {
     }
 
 
+    public void mainmenuA(View view) {
+
+      finish();
+
+    }
+
 }
 
