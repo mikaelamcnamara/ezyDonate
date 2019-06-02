@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
@@ -99,8 +98,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_menu:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new MainMenuFragment()).commit();
+               // getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+               //         new MainMenuFragment()).commit();
+                setContentView(R.layout.page_main);
+                TextView donationAmount = (TextView) findViewById(R.id.textView14);
+                donationAmount.setText("$" + String.format("%.2f",currentUser.getDonation()));
                 break;
             case R.id.nav_account:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -178,8 +180,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void mainmenu(View view) {
-        setContentView(R.layout.page_main);
-
+      setContentView(R.layout.page_main);
+        TextView donationAmount = (TextView) findViewById(R.id.textView14);
+        donationAmount.setText("$" + String.format("%.2f",currentUser.getDonation()));
     }
 
     public void forgotPass_page(View view) {
