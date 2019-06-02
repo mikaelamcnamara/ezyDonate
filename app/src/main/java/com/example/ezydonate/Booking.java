@@ -5,7 +5,7 @@ public class Booking {
     public String user;
     public String date;
     public String time;
-    public String location;
+    public String description;
 
 
     public Booking () {
@@ -13,12 +13,12 @@ public class Booking {
 
     }
 
-    public Booking(String user, String time, String date, String location)
+    public Booking(String user, String time, String date, String Description)
     {
         this.user = user;
         this.date = date;
         this.time = time;
-        this.location = location;
+        this.description = Description;
 
     }
 
@@ -32,9 +32,10 @@ public class Booking {
         return time;
     }
 
-    public String getLocation () {
+    public String getDescription () {
 
-        return location;
+        return description;
     }
+
 }
 

@@ -43,6 +43,7 @@ public class BookingMakeActivity extends Activity {
     private TimePicker timepicker;
     private Button btn;
     private String time;
+    EditText etDesc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,7 @@ public class BookingMakeActivity extends Activity {
 
         timepicker = (TimePicker) findViewById(R.id.timePicker1);
         timepicker.setIs24HourView(true);
+        etDesc = (EditText) findViewById(R.id.editText6);
 
         CalendarView calendar = (CalendarView)findViewById(R.id.calendarView);
 
@@ -104,7 +106,6 @@ public class BookingMakeActivity extends Activity {
 //            Toast.makeText(this, "Invalid Details", Toast.LENGTH_SHORT).show();
 
             final String timeString = timepicker.getHour() + "-" + timepicker.getMinute();
-            Toast.makeText(this, date, Toast.LENGTH_SHORT).show();
             FirebaseUser user = mAuth.getCurrentUser();
             final String id1 = mAuth.getCurrentUser().getUid();
             final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -115,7 +116,7 @@ public class BookingMakeActivity extends Activity {
 
                     String name = (String) snapshot.getValue();  //prints "Do you have data? You'll love Firebase."
 
-                    Booking booking = new Booking(name, timeString, date, "hi");
+                    Booking booking = new Booking(name, timeString, date, etDesc.getText().toString());
 
                     mDatabase.child("booking").child(id1 + timeString).setValue(booking);
 

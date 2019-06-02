@@ -11,7 +11,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,7 +33,8 @@ public class FirebaseBookingViewHolder extends RecyclerView.ViewHolder implement
     private static final int MAX_HEIGHT = 200;
     private TextView event_description;
     private LinearLayout events = itemView.findViewById(R.id.transition_container);
-    private Button btn;
+    private Button cancelbtn;
+    private FirebaseAuth mAuth;
 
     public FirebaseBookingViewHolder(View itemView) {
         super(itemView);
@@ -45,15 +48,37 @@ public class FirebaseBookingViewHolder extends RecyclerView.ViewHolder implement
 
 
         TextView dateTextView = (TextView) eView.findViewById(R.id.booking_date_id);
-        TextView timeTextView = (TextView) eView.findViewById(R.id.booking_time_id);
+        final TextView timeTextView = (TextView) eView.findViewById(R.id.booking_time_id);
         TextView locationTextView = (TextView) eView.findViewById(R.id.booking_location_id);
 
+        final String Time = booking.getTime();
 
-        dateTextView.setText("Date:" + booking.getDate());
-        timeTextView.setText("Time" + booking.getTime());
-        locationTextView.setText(booking.getLocation());
+        dateTextView.setText("Date: " + booking.getDate());
+        timeTextView.setText("Time: " + booking.getTime());
+        locationTextView.setText(booking.getDescription());
 
-    }
+        mAuth = FirebaseAuth.getInstance();
+        final String id = mAuth.getCurrentUser().getUid();
+
+        DatabaseReference root = FirebaseDatabase.getInstance().getReference();
+        cancelbtn = eView.findViewById(R.id.event_button_remove);
+
+
+                    cancelbtn = eView.findViewById(R.id.booking_button_id3);
+
+                    cancelbtn.setOnClickListener(new View.OnClickListener() {
+                        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                        @Override
+                        public void onClick(View view) {
+                            final ArrayList<Event> events = new ArrayList<>();
+
+                            String booking_name = id + Time;
+                            ((BookingCancelActivity) eContext).removeBooking(view, booking_name);
+
+                        }
+                    });
+
+                }
 
     @Override
     public void onClick(View view) {

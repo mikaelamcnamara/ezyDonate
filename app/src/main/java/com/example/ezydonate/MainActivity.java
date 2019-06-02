@@ -158,6 +158,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.fragment_account);
     }
 
+    public void accountA(View view) {
+        setContentView(R.layout.fragment_users);
+    }
+
     public void mainmenuA(View view) {
         setContentView(R.layout.mainadmin_page);
     }
@@ -202,6 +206,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Intent makeEvent = new Intent(MainActivity.this, BookingCancelActivity.class);
         startActivity(makeEvent);
+
+    }
+
+    public void showusers(View view) {
+
+        Intent showUsers = new Intent(MainActivity.this, UserAdminFragment.class);
+        startActivity(showUsers);
 
     }
 

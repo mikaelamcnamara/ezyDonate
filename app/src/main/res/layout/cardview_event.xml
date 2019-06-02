@@ -68,11 +68,11 @@
             android:layout_marginLeft="150dp"
             android:layout_marginTop="60dp"
             android:layout_weight="1"
-            android:text="Date"
-            android:textColor="@color/white"
-            android:textStyle="bold"
+            android:text="Date: "
             android:textAllCaps="true"
-            android:textSize="13dp" />
+            android:textColor="@color/white"
+            android:textSize="13dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/event_time_id"
@@ -81,11 +81,11 @@
             android:layout_marginLeft="250dp"
             android:layout_marginTop="60dp"
             android:layout_weight="1"
-            android:text="Time"
-            android:textColor="@color/white"
-            android:textStyle="bold"
+            android:text="Time: "
             android:textAllCaps="true"
-            android:textSize="13dp" />
+            android:textColor="@color/white"
+            android:textSize="13dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/event_location_id"

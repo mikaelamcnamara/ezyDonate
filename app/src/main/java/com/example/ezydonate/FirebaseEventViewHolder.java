@@ -128,30 +128,6 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
                             ((MainActivity) eContext).attendEvent(view, titleTextView.getText().toString());
                             btnButton1.setText("Attending");
 
-
-//                ref.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(DataSnapshot dataSnapshot) {
-//                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                            events.add(snapshot.getValue(Event.class));
-//                        }
-//
-//
-//                        Toast.makeText(v.getContext(), "Invalid Username or Password", Toast.LENGTH_SHORT).show();
-//                        try {
-//                            ((MainActivity) eContext).attendEvent(v);
-//                        } catch (Exception e) {
-//                            // ignore
-//                        }
-//
-////                MainActivity.get
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(DatabaseError databaseError) {
-//                    }
-//                });
-
                         }
                     });
                 }
@@ -184,8 +160,8 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
 
         titleTextView.setText(event.getTitle());
         event_description.setText(event.getDescription());
-        dateTextView.setText("Date:" + event.getEventDate());
-        timeTextView.setText("Time" + event.getTime());
+        dateTextView.setText("Date: " + event.getEventDate());
+        timeTextView.setText("Time: " + event.getTime());
         locationTextView.setText(event.getLocation());
 
     }

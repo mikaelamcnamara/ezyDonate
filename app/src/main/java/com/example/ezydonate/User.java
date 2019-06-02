@@ -33,17 +33,38 @@ public class User
 
     public void setDonation (double donation) {
 
-        this.donation = donation;
+       this.donation = donation;
+    }
+
+    public void setName (String name) {
+
+        this.fullname = name;
+    }
+
+    public void setUsername (String name) {
+
+        this.username = name;
     }
 
     public double getDonation() {
 
         return donation;
     }
+
     public String getUsername() {
 
         return username;
     }
+    public String getName() {
+
+        return fullname;
+    }
+
+    public String getEmail() {
+
+        return email;
+    }
+
 
 
 }
