@@ -496,7 +496,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     uInfo.setDonation(Long.parseLong((donate)));
 
 
-                    long total = amount + uInfo.getDonation();
+                    double total = amount + uInfo.getDonation();
 
                     myRef.child("donation").setValue(total);
                 }
