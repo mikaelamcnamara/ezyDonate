@@ -28,7 +28,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -105,7 +104,7 @@ public class BookingMakeActivity extends Activity {
 //        if (time.trim().equals("") || date.trim().equals("") || location.getText().toString().trim().equals("")) {
 //            Toast.makeText(this, "Invalid Details", Toast.LENGTH_SHORT).show();
 
-            final String timeString = timepicker.getHour() + "-" + timepicker.getMinute();
+            final String timeString = timepicker.getHour() + " : " + timepicker.getMinute();
             FirebaseUser user = mAuth.getCurrentUser();
             final String id1 = mAuth.getCurrentUser().getUid();
             final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();

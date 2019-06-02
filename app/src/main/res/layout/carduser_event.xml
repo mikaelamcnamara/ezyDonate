@@ -48,7 +48,7 @@
             app:civ_border_width="2dp" />
 
         <TextView
-            android:id="@+id/event_title_id"
+            android:id="@+id/trans_user_id"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp"

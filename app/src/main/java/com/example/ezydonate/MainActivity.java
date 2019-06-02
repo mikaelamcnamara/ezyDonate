@@ -145,6 +145,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         startActivity(eventAdmin);
     }
 
+
+
     public void booking(View view) {
         setContentView(R.layout.admin_bookingview);
     }

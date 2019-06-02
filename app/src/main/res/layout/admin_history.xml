@@ -24,23 +24,9 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/history" />
 
-        <ImageButton
-            android:id="@+id/menuButton"
-            android:layout_width="78dp"
-            android:layout_height="67dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:background="@null"
-            android:onClick="menu"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_menu_black_24dp"
-            tools:ignore="VectorDrawableCompat" />
-
         <Button
 
-            android:id="@+id/histBtn"
+            android:id="@+id/eventHistAdminBtn"
             android:layout_width="363dp"
             android:layout_height="70dp"
             android:layout_marginStart="8dp"
@@ -50,8 +36,7 @@
             android:layout_marginRight="8dp"
             android:background="@drawable/login_btn"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="Event History"
-            android:onClick="viewEvent"
+            android:text="Event Participants"
             android:textColor="@color/white"
             android:textSize="20dp"
             android:textStyle="bold"
@@ -62,7 +47,7 @@
 
         <Button
 
-            android:id="@+id/transHistBtn"
+            android:id="@+id/transHistAdminBtn"
             android:layout_width="363dp"
             android:layout_height="70dp"
             android:layout_marginStart="8dp"
@@ -73,8 +58,7 @@
             android:layout_marginBottom="200dp"
             android:background="@drawable/reg_btn"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="Transaction HIstory"
-            android:onClick="transactionHist"
+            android:text="Donation Participants"
             android:textColor="@color/lightBlue"
             android:textSize="20dp"
             android:textStyle="bold"
@@ -102,22 +86,20 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
+        <ImageButton
+            android:id="@+id/backEvent"
+            android:layout_width="45dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
+            android:background="@drawable/ic_arrow_back_black_24dp"
+            android:onClick="mainM"
+            app:layout_constraintEnd_toStartOf="@+id/textView6"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </android.support.constraint.ConstraintLayout>
 
-
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-    <android.support.design.widget.NavigationView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:menu="@menu/mainpage_menu"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/navigation_header"
-        android:id="@+id/nav_view">
-    </android.support.design.widget.NavigationView>
 
 
 

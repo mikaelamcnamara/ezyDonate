@@ -54,7 +54,7 @@ public class RecyclerViewAdapterHistory extends RecyclerView.Adapter<RecyclerVie
         public MyViewHolder(View itemView) {
             super(itemView);
             event_thumbnail = itemView.findViewById(R.id.event_img_id);
-            event_title =  itemView.findViewById(R.id.event_title_id);
+            event_title =  itemView.findViewById(R.id.trans_user_id);
             event_time =itemView.findViewById(R.id.event_time_id);
             event_date = itemView.findViewById(R.id.event_date_id);
             event_location=  itemView.findViewById(R.id.event_location_id);

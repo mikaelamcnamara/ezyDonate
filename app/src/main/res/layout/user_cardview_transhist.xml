@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:paddingBottom="20dp"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--<android.support.v7.widget.CardView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="170dp"-->
+    <!--android:layout_marginLeft="30dp"-->
+    <!--android:layout_marginTop="30dp"-->
+    <!--android:layout_marginRight="30dp">-->
+
+
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -14,7 +24,7 @@
         android:layout_marginRight="30dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="339dp"
             android:layout_height="match_parent"
             android:background="@color/lightBlue"
             android:orientation="horizontal">
@@ -23,7 +33,7 @@
         </LinearLayout>
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/admineventHistory_img_id"
+            android:id="@+id/trans_user_img"
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:layout_marginLeft="20dp"
@@ -34,56 +44,39 @@
             app:civ_border_width="2dp" />
 
         <TextView
-            android:id="@+id/admineventHistory_title_id"
+            android:id="@+id/trans_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp"
             android:layout_marginTop="20dp"
             android:layout_weight="1"
-            android:text="Title"
+            android:text="Username"
             android:textSize="17dp" />
 
         <TextView
-            android:id="@+id/adminEventHistory_date_id"
+            android:id="@+id/trans_user_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp"
             android:layout_marginTop="51dp"
-            android:textSize="17dp"
             android:layout_weight="1"
-            android:text="Date" />
-
-        <TextView
-            android:id="@+id/adminEventHistory_time_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="150dp"
-            android:layout_weight="1"
-            android:text="Time"
-            android:layout_marginTop="113dp"
+            android:text="Amount"
             android:textSize="17dp" />
 
+
         <TextView
-            android:id="@+id/adminEventHistory_location_id"
+            android:id="@+id/trans_user_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp"
             android:layout_marginTop="82dp"
             android:layout_weight="1"
-            android:text="Location"
+            android:text="Date"
             android:textSize="17dp" />
 
-        <TextView
-            android:id="@+id/adminEventHistory_description_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="170dp"
-            android:layout_weight="1"
-            android:text="Description"
-            android:textSize="17dp" />
 
     </android.support.v7.widget.CardView>
 
-</LinearLayout>
 
+
+</LinearLayout>
