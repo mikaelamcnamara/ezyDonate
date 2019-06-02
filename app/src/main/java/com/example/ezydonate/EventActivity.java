@@ -4,20 +4,24 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -53,7 +57,7 @@ public class EventActivity extends Activity {
     private List<Event> exampleList;
     private List<Event> exampleListFull;
     Button btn;
-
+    private TimePicker timepicker;
 
     private LinearLayout event;
 
@@ -127,26 +131,46 @@ public class EventActivity extends Activity {
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public void createEvents(View view) {
 
         final EditText title = (EditText) findViewById(R.id.editText1);
         final EditText description = (EditText) findViewById(R.id.editText2);
         final EditText location = (EditText) findViewById(R.id.editText3);
-        final EditText date = (EditText) findViewById(R.id.editText4);
-        final EditText time = (EditText) findViewById(R.id.editText5);
+//        final EditText date = (EditText) findViewById(R.id.editText4);
+//        final EditText time = (EditText) findViewById(R.id.editText5);
         Button myButton = (Button) findViewById(R.id.button2);
+
+        timepicker = (TimePicker) findViewById(R.id.timePicker2);
+        timepicker.setIs24HourView(true);
+        final String[] date = new String[1];
+
+        CalendarView calendar = (CalendarView)findViewById(R.id.calendarView3);
+
+        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month,
+                                            int dayOfMonth) {
+
+                date[0] = dayOfMonth + "/" + month + "/" + year;
+
+            }
+        });
+
+        final String timeString = timepicker.getHour() + "-" + timepicker.getMinute();
 
         Toast.makeText(EventActivity.this, "Event being created....", Toast.LENGTH_LONG).show();
 
         myButton.setEnabled(false);
 
-        if (title.getText().toString().trim().equals("") || description.getText().toString().trim().equals("") || location.getText().toString().trim().equals("") || date.getText().toString().trim().equals("") || time.getText().toString().trim().equals("")) {
+        if (title.getText().toString().trim().equals("") || description.getText().toString().trim().equals("") || location.getText().toString().trim().equals("")) {
             Toast.makeText(this, "Invalid Details", Toast.LENGTH_SHORT).show();
         } else {
 
             if (image_uri == null) {
 
-                Event event = new Event(title.getText().toString(), description.getText().toString(), location.getText().toString(), date.getText().toString(), time.getText().toString(), "");
+                Event event = new Event(title.getText().toString(), description.getText().toString(), location.getText().toString(), date[0], timeString, "");
 
                 mDatabase.child("events").child(title.getText().toString()).setValue(event);
 
@@ -175,7 +199,7 @@ public class EventActivity extends Activity {
 
                                 download_uri = uri.toString();
 
-                                Event event = new Event(title.getText().toString(), description.getText().toString(), location.getText().toString(), date.getText().toString(), time.getText().toString(), download_uri);
+                                Event event = new Event(title.getText().toString(), description.getText().toString(), location.getText().toString(), date[0], timeString, download_uri);
 
                                 mDatabase.child("events").child(title.getText().toString()).setValue(event);
 

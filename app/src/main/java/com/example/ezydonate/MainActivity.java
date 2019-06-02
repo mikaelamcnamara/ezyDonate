@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
@@ -147,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void booking(View view) {
-        setContentView(R.layout.admin_booking);
+        setContentView(R.layout.admin_bookingview);
     }
 
     public void history(View view) {
