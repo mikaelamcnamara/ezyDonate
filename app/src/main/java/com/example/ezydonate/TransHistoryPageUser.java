@@ -14,6 +14,7 @@ import com.example.ezydonate.Model.Donation;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -22,13 +23,15 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 
-public class TransHistoryPage extends Activity {
+public class TransHistoryPageUser extends Activity {
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     private RecyclerView myrecyclerview;
     private List<Booking> lstEvent;
     private FirebaseRecyclerAdapter<Donation, FirebaseTransHistViewHolder> mFirebaseAdapter;
+    private String userID;
+    private FirebaseUser user;
 
     Query query;
 
@@ -41,10 +44,13 @@ public class TransHistoryPage extends Activity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         setContentView(R.layout.fragment_transactionhistory);
 
+        FirebaseUser user = mAuth.getCurrentUser();
+        userID = user.getUid();
+
 
         ButterKnife.bind(this);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("donation");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("donation").child(userID);
         query = mDatabase.limitToFirst(50);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerviewhistory_id);

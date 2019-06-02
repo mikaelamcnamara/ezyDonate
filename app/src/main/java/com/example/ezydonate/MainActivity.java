@@ -235,9 +235,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    public void eventHistoryUser(View view) {
+
+        Intent eventhistory = new Intent(this, EventHistoryPageUser.class);
+        startActivity(eventhistory);
+
+    }
+
     public void donationHistory(View view) {
 
         Intent donationhist = new Intent(this, TransHistoryPage.class);
+        startActivity(donationhist);
+
+    }
+
+    public void donationHistoryUser(View view) {
+
+        Intent donationhist = new Intent(this, TransHistoryPageUser.class);
         startActivity(donationhist);
 
     }
@@ -248,8 +262,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         startActivity(adhist);
 
     }
-
-
 
 
     public void menu(View view) {
@@ -444,7 +456,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FirebaseUser user = mAuth.getCurrentUser();
         final String id1 = user.getUid();
 
-        myRef = mFirebaseDatabase.getReference("User/"  + id1 + "/");
+        myRef = mFirebaseDatabase.getReference().child("User").child(id1);
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
@@ -468,7 +480,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     //Donation donation = dataSnapshot.getValue(Donation.class);
 
                     uInfo = new User();
-                    usernamed = dataSnapshot.child("username").getValue().toString();
+                    usernamed = dataSnapshot.getValue().toString();
 
                 }
 
@@ -480,9 +492,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             });
 
-            Donation donation = new Donation(amount, id1, dtf.format(now), usernamed);
+            Toast.makeText(this, currentUser.getUsername(), Toast.LENGTH_SHORT).show();
 
-            mDatabase.child("donation").child(id1 + currentTime).setValue(donation);
+            Donation donation = new Donation(amount, id1, dtf.format(now), currentUser.getUsername());
+
+            mDatabase.child("donation").child(id1).child(currentTime.toString()).setValue(donation);
 
             myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -509,12 +523,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             });
 
-            Toast.makeText(this, "Donation successful", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Donation successful", Toast.LENGTH_SHORT).show();
         }
 
     }
 
-    public void attendEvent(View view, String event) {
+    public void attendEvent(View view, Event event) {
 
 //        tv1 = findViewById(R.id.event_title_id);
 //
@@ -523,7 +537,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FirebaseUser user = mAuth.getCurrentUser();
         final String id1 = user.getUid();
 
-        mDatabase.child("User").child(id1).child("attended_events").child(event).setValue(true);
+        mDatabase.child("User").child(id1).child("attended_events").child(event.getTitle()).setValue(event);
 
     }
 

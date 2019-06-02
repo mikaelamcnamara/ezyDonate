@@ -35,6 +35,7 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
     private LinearLayout events = itemView.findViewById(R.id.transition_container);
     private Button btn;
     private DatabaseReference myRef;
+    private Event attended_event;
 
 
     public FirebaseEventViewHolder(View itemView) {
@@ -57,6 +58,7 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
         btnButton1 = itemView.findViewById(R.id.event_button_id);
 
         mAuth = FirebaseAuth.getInstance();
+        attended_event = event;
         final String id = mAuth.getCurrentUser().getUid();
 
         final DatabaseReference root = FirebaseDatabase.getInstance().getReference();
@@ -121,7 +123,7 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
                         public void onClick(View view) {
                             final ArrayList<Event> events = new ArrayList<>();
 
-                            ((MainActivity) eContext).attendEvent(view, titleTextView.getText().toString());
+                            ((MainActivity) eContext).attendEvent(view, attended_event);
                             btnButton1.setText("Attending");
 
                         }

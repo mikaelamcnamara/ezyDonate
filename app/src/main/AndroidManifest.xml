@@ -84,6 +84,14 @@
             android:name=".AdminHistory"
             android:label="EzyDonate" >
         </activity>
+        <activity
+            android:name=".EventHistoryPageUser"
+            android:label="EzyDonate" >
+        </activity>
+        <activity
+            android:name=".TransHistoryPageUser"
+            android:label="EzyDonate" >
+        </activity>
     </application>
 
 </manifest>

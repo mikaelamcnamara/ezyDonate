@@ -10,10 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.ezydonate.Model.Donation;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -22,13 +22,15 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 
-public class TransHistoryPage extends Activity {
+public class EventHistoryPageUser extends Activity {
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     private RecyclerView myrecyclerview;
     private List<Booking> lstEvent;
-    private FirebaseRecyclerAdapter<Donation, FirebaseTransHistViewHolder> mFirebaseAdapter;
+    private String userID;
+    private FirebaseUser user;
+    private FirebaseRecyclerAdapter<Event, FirebaseEventHistViewHolder> mFirebaseAdapter;
 
     Query query;
 
@@ -39,12 +41,14 @@ public class TransHistoryPage extends Activity {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        setContentView(R.layout.fragment_transactionhistory);
+        setContentView(R.layout.fragment_eventhistory);
 
+        FirebaseUser user = mAuth.getCurrentUser();
+        userID = user.getUid();
 
         ButterKnife.bind(this);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("donation");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("User").child(userID).child("attended_events");
         query = mDatabase.limitToFirst(50);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerviewhistory_id);
@@ -52,34 +56,37 @@ public class TransHistoryPage extends Activity {
         setUpFirebaseAdapter(query);
     }
 
+
+
+
     public void backBooking(View view) {
         finish();
     }
 
     private void setUpFirebaseAdapter(Query query) {
 
-        FirebaseRecyclerOptions<Donation> options =
-                new FirebaseRecyclerOptions.Builder<Donation>()
-                        .setQuery(query, Donation.class)
+        FirebaseRecyclerOptions<Event> options =
+                new FirebaseRecyclerOptions.Builder<Event>()
+                        .setQuery(query, Event.class)
                         .build();
 
-        mFirebaseAdapter = new FirebaseRecyclerAdapter<Donation, FirebaseTransHistViewHolder> (options)
+        mFirebaseAdapter = new FirebaseRecyclerAdapter<Event, FirebaseEventHistViewHolder> (options)
         {
 
             @NonNull
             @Override
-            public FirebaseTransHistViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public FirebaseEventHistViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
                 View view = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.user_cardview_transhist, parent, false);
+                        .inflate(R.layout.user_cardview_eventhist, parent, false);
 
-                return new FirebaseTransHistViewHolder(view);
+                return new FirebaseEventHistViewHolder(view);
             }
 
             @Override
-            protected void onBindViewHolder(@NonNull FirebaseTransHistViewHolder holder, int position, @NonNull Donation model) {
+            protected void onBindViewHolder(@NonNull FirebaseEventHistViewHolder holder, int position, @NonNull Event model) {
 
-                holder.bindDonation(model);
+                holder.bindEvent(model);
             }
 
 //                @Override
