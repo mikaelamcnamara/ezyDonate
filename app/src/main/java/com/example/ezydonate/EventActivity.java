@@ -134,48 +134,62 @@ public class EventActivity extends Activity {
         final EditText location = (EditText) findViewById(R.id.editText3);
         final EditText date = (EditText) findViewById(R.id.editText4);
         final EditText time = (EditText) findViewById(R.id.editText5);
+        Button myButton = (Button) findViewById(R.id.button2);
 
         Toast.makeText(EventActivity.this, "Event being created....", Toast.LENGTH_LONG).show();
 
+        myButton.setEnabled(false);
+
         if (title.getText().toString().trim().equals("") || description.getText().toString().trim().equals("") || location.getText().toString().trim().equals("") || date.getText().toString().trim().equals("") || time.getText().toString().trim().equals("")) {
             Toast.makeText(this, "Invalid Details", Toast.LENGTH_SHORT).show();
+        } else {
+
+            if (image_uri == null) {
+
+                Event event = new Event(title.getText().toString(), description.getText().toString(), location.getText().toString(), date.getText().toString(), time.getText().toString(), "");
+
+                mDatabase.child("events").child(title.getText().toString()).setValue(event);
+
+                Toast.makeText(EventActivity.this, "event creation successful", Toast.LENGTH_SHORT).show();
+
+                finish();
+
+            } else {
+
+                final StorageReference eventRef = storageRef.child("event_images/" + image_uri.getLastPathSegment());
+                UploadTask uploadTask = eventRef.putFile(image_uri);
+
+                uploadTask.addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // Handle unsuccessful uploads
+                    }
+                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                        Task<Uri> downloadUrl = taskSnapshot.getMetadata().getReference().getDownloadUrl();
+                        downloadUrl.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+
+                                download_uri = uri.toString();
+
+                                Event event = new Event(title.getText().toString(), description.getText().toString(), location.getText().toString(), date.getText().toString(), time.getText().toString(), download_uri);
+
+                                mDatabase.child("events").child(title.getText().toString()).setValue(event);
+
+                                Toast.makeText(EventActivity.this, "event creation successful", Toast.LENGTH_SHORT).show();
+
+                                finish();
+                            }
+                        });
+
+
+                    }
+                });
+            }
         }
-
-        else {
-            final StorageReference eventRef = storageRef.child("event_images/" + image_uri.getLastPathSegment());
-            UploadTask uploadTask = eventRef.putFile(image_uri);
-
-            uploadTask.addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    // Handle unsuccessful uploads
-                }
-            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
-                    Task<Uri> downloadUrl = taskSnapshot.getMetadata().getReference().getDownloadUrl();
-                    downloadUrl.addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-
-                            download_uri = uri.toString();
-
-                            Event event = new Event(title.getText().toString(), description.getText().toString(), location.getText().toString(), date.getText().toString(), time.getText().toString(), download_uri);
-
-                            mDatabase.child("events").child(title.getText().toString()).setValue(event);
-
-                            Toast.makeText(EventActivity.this, "event creation successful", Toast.LENGTH_SHORT).show();
-
-                            finish();
-                        }
-                    });
-
-
-                }
-            });
-        }
-    }
 
 
 //    //public boolean onCreateOptionsMenu(Menu menu) {
@@ -195,4 +209,5 @@ public class EventActivity extends Activity {
 //        return false;
 //    }
 //}
+    }
 }

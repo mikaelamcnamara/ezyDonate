@@ -62,23 +62,9 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
         btnButton1 = itemView.findViewById(R.id.event_button_id);
 
         mAuth = FirebaseAuth.getInstance();
-        String id = mAuth.getCurrentUser().getUid();
+        final String id = mAuth.getCurrentUser().getUid();
 
-        DatabaseReference root = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference eventref = root.child("User").child(id).child("attended_events");
-        eventref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.hasChild(titleTextView.getText().toString())) {
-                    btnButton1.setText("Attending");
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+        final DatabaseReference root = FirebaseDatabase.getInstance().getReference();
 
         String id1 = mAuth.getCurrentUser().getUid();
 
@@ -119,6 +105,21 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
 
                 else {
 
+                    DatabaseReference eventref = root.child("User").child(id).child("attended_events");
+                    eventref.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot snapshot) {
+                            if (snapshot.hasChild(titleTextView.getText().toString())) {
+                                btnButton1.setText("Attending");
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
                     btnButton1.setOnClickListener(new View.OnClickListener() {
                         @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                         @Override
@@ -152,11 +153,15 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
             }
         });
 
-        Picasso.get()
-                .load(event.getThumbnail())
-                .resize(MAX_WIDTH, MAX_HEIGHT)
-                .centerCrop()
-                .into(eventImageView);
+        if (!event.getThumbnail().isEmpty()) {
+
+            Picasso.get()
+                    .load(event.getThumbnail())
+                    .resize(MAX_WIDTH, MAX_HEIGHT)
+                    .centerCrop()
+                    .into(eventImageView);
+
+        }
 
         titleTextView.setText(event.getTitle());
         event_description.setText(event.getDescription());
