@@ -31,7 +31,7 @@ public class User
     }
 
 
-    public void setDonation (double donation) {
+    public void setDonation (long donation) {
 
        this.donation = donation;
     }

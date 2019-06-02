@@ -72,6 +72,18 @@
             android:name=".UserAdminFragment"
             android:label="EzyDonate" >
         </activity>
+        <activity
+            android:name=".EventHistoryPage"
+            android:label="EzyDonate" >
+        </activity>
+        <activity
+            android:name=".TransHistoryPage"
+            android:label="EzyDonate" >
+        </activity>
+        <activity
+            android:name=".AdminHistory"
+            android:label="EzyDonate" >
+        </activity>
     </application>
 
 </manifest>

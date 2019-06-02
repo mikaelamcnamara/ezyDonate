@@ -41,6 +41,8 @@ import org.w3c.dom.Text;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -56,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DatabaseReference myRef;
     private DatabaseReference Donors;
     private User[] topDonators = new User[3];
+    private String usernamed;
     private User currentUser;
 
 
@@ -225,6 +228,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    public void eventHistory(View view) {
+
+        Intent eventhistory = new Intent(this, EventHistoryPage.class);
+        startActivity(eventhistory);
+
+    }
+
+    public void donationHistory(View view) {
+
+        Intent donationhist = new Intent(this, TransHistoryPage.class);
+        startActivity(donationhist);
+
+    }
+
+    public void adminHistory(View view) {
+
+        Intent adhist = new Intent(this, AdminHistory.class);
+        startActivity(adhist);
+
+    }
+
 
 
 
@@ -388,6 +412,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                     }
                                     @Override
                                     public void onCancelled(DatabaseError databaseError) {
+
                                         String admin = "false";
                                     }
                                 });
@@ -424,6 +449,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
 
+        Date currentTime = Calendar.getInstance().getTime();
+
         final EditText title = (EditText) findViewById(R.id.editText9);
 
         if (title.getText().toString().trim().equals("")) {
@@ -432,11 +459,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         else {
 
-            final double amount = (Double.parseDouble(title.getText().toString()));
+            final long amount = (Long.parseLong(title.getText().toString()));
 
-            Donation donation = new Donation(amount, id1, dtf.format(now));
+            myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    // Get Post object and use the values to update the UI
+                    //Donation donation = dataSnapshot.getValue(Donation.class);
 
-            mDatabase.child("donation").child(id1 + " " + dtf.format(now)).setValue(donation);
+                    uInfo = new User();
+                    usernamed = dataSnapshot.child("username").getValue().toString();
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    // Getting Post failed, log a message
+                    Log.w( "loadPost:onCancelled", databaseError.toException());
+                    // ...
+                }
+            });
+
+            Donation donation = new Donation(amount, id1, dtf.format(now), usernamed);
+
+            mDatabase.child("donation").child(id1 + currentTime).setValue(donation);
 
             myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -447,7 +493,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     uInfo = new User();
                     String donate = dataSnapshot.child("donation").getValue().toString();
 
-                    uInfo.setDonation(Double.parseDouble((donate)));
+                    uInfo.setDonation(Long.parseLong((donate)));
+
 
                     double total = amount + uInfo.getDonation();
 
