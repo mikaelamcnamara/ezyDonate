@@ -37,6 +37,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DatabaseReference Donors;
     private User[] topDonators = new User[3];
     private String usernamed;
+    private User currentUser;
 
 
     @Override
@@ -68,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         b1 = (Button) findViewById(R.id.loginbtn);
         checkPermission();
+
         Donors = (DatabaseReference) FirebaseDatabase.getInstance().getReference("User");
         Donors.orderByChild("donation").limitToLast(3).addValueEventListener(new ValueEventListener() {
             @Override
@@ -97,8 +101,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_menu:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new MainMenuFragment()).commit();
+               // getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+               //         new MainMenuFragment()).commit();
+                setContentView(R.layout.page_main);
+                TextView donationAmount = (TextView) findViewById(R.id.textView14);
+                donationAmount.setText("$" + String.format("%.2f",currentUser.getDonation()));
                 break;
             case R.id.nav_account:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -176,8 +183,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void mainmenu(View view) {
-        setContentView(R.layout.page_main);
-
+      setContentView(R.layout.page_main);
+        TextView donationAmount = (TextView) findViewById(R.id.textView14);
+        donationAmount.setText("$" + String.format("%.2f",currentUser.getDonation()));
     }
 
     public void forgotPass_page(View view) {
@@ -275,6 +283,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         EditText password = (EditText) findViewById(R.id.editText);
 
         signIn(mAuth, username.getText().toString(), password.getText().toString());
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        mDatabase.child("User").child(user.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                currentUser = dataSnapshot.getValue(User.class);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
     }
 
@@ -381,6 +405,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                         else {
 
                                             setContentView(R.layout.page_main);
+                                            TextView donationAmount = (TextView) findViewById(R.id.textView14);
+                                            donationAmount.setText("$" + String.format("%.2f",currentUser.getDonation()));
 
                                         }
                                     }
