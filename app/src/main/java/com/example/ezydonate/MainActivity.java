@@ -38,6 +38,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -255,11 +257,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         signIn(mAuth, username.getText().toString(), password.getText().toString());
         FirebaseUser user = mAuth.getCurrentUser();
+
         mDatabase.child("User").child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
                 currentUser = dataSnapshot.getValue(User.class);
+
             }
 
             @Override
@@ -267,6 +271,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             }
         });
+
 
     }
 
@@ -373,6 +378,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                         else {
 
                                             setContentView(R.layout.page_main);
+                                            TextView donationAmount = (TextView) findViewById(R.id.textView14);
+                                            donationAmount.setText("$" + String.format("%.2f",currentUser.getDonation()));
 
                                         }
                                     }
