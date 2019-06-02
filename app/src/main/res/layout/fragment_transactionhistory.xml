@@ -53,33 +53,41 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.066" />
 
+
         <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="71dp"
-            android:layout_height="73dp"
-            android:layout_marginTop="36dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
+            android:id="@+id/backevents"
+            android:layout_width="45dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/ic_arrow_back_black_24dp"
+            android:onClick="backBooking"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerviewhistory_ids"
             app:layout_constraintEnd_toStartOf="@+id/textView9"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
 
 
     </android.support.constraint.ConstraintLayout>
 
-    <android.support.design.widget.NavigationView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:menu="@menu/mainpage_menu"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/navigation_header"
-        android:id="@+id/nav_view">
+    <!--<android.support.design.widget.NavigationView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--app:menu="@menu/mainpage_menu"-->
+        <!--android:layout_gravity="start"-->
+        <!--app:headerLayout="@layout/navigation_header"-->
+        <!--android:id="@+id/nav_view">-->
 
-        <View
-            android:id="@+id/view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </android.support.design.widget.NavigationView>
+        <!--<View-->
+            <!--android:id="@+id/view"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
+    <!--</android.support.design.widget.NavigationView>-->
 
 
 

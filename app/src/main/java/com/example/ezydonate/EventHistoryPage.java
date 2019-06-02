@@ -52,6 +52,9 @@ public class EventHistoryPage extends Activity {
         setUpFirebaseAdapter(query);
     }
 
+
+
+
     public void backBooking(View view) {
         finish();
     }

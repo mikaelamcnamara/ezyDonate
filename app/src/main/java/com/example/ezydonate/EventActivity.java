@@ -109,6 +109,8 @@ public class EventActivity extends Activity {
 
     }
 
+
+
     public void getImage(View view) {
 
         startActivityForResult(new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI), GET_FROM_GALLERY);
