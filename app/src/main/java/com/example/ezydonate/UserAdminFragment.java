@@ -14,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -100,6 +101,14 @@ public class UserAdminFragment extends Activity {
 
     public void backUser(View view) {
         finish();
+    }
+
+    public void removeUser(View view, String user) {
+
+       // Toast.makeText(this, user, Toast.LENGTH_SHORT).show();
+
+        mDatabase.child(user).removeValue();
+
     }
 
 }

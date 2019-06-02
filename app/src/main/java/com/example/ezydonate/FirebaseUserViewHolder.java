@@ -2,9 +2,11 @@ package com.example.ezydonate;
 
 import android.content.Context;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.transition.TransitionManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,6 +18,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
@@ -35,6 +38,7 @@ public class FirebaseUserViewHolder extends RecyclerView.ViewHolder implements V
     private LinearLayout events = itemView.findViewById(R.id.transition_container);
     private Button btn;
     private DatabaseReference myRef;
+    private String key;
 
     public FirebaseUserViewHolder(View itemView) {
         super(itemView);
@@ -49,7 +53,7 @@ public class FirebaseUserViewHolder extends RecyclerView.ViewHolder implements V
 //        final TextView titleTextView = (TextView) eView.findViewById(R.id.event_title_id);
         final TextView username = (TextView) eView.findViewById(R.id.user_title_id);
         TextView name = (TextView) eView.findViewById(R.id.user_name_id);
-        TextView email = (TextView) eView.findViewById(R.id.user_email_id);
+        final TextView email = (TextView) eView.findViewById(R.id.user_email_id);
         TextView donation = (TextView) eView.findViewById(R.id.user_donation_id4);
        // TextView locationTextView = (TextView) eView.findViewById(R.id.event_location_id);
 
@@ -74,22 +78,54 @@ public class FirebaseUserViewHolder extends RecyclerView.ViewHolder implements V
 
         String id1 = mAuth.getCurrentUser().getUid();
 
-//        cancelbtn = eView.findViewById(R.id.event_button_remove);
-//
-//
-//        cancelbtn = eView.findViewById(R.id.booking_button_id3);
-//
-//        cancelbtn.setOnClickListener(new View.OnClickListener() {
-//            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+
+        cancelbtn = eView.findViewById(R.id.user_button_id);
+
+        final DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+//        Query query = rootRef.child("User").orderByChild("username").equalTo(username.getText().toString());
+//        ValueEventListener valueEventListener = new ValueEventListener() {
 //            @Override
-//            public void onClick(View view) {
-//                final ArrayList<Event> events = new ArrayList<>();
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+//                    key = ds.getKey();
 //
-//                String user_name = username.getText().toString();
-//                ((UserAdminFragment) eContext).removeUser(view, booking_name);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
 //
 //            }
-//        });
+//        };
+//        query.addListenerForSingleValueEvent(valueEventListener);
+
+        Query query = rootRef.child("User").orderByChild("email").equalTo(user.getEmail());
+        ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    key = ds.getKey();
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+        query.addListenerForSingleValueEvent(valueEventListener);
+
+        cancelbtn.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            public void onClick(View view) {
+
+                ((UserAdminFragment) eContext).removeUser(view, key);
+
+            }
+        });
 
 //        root.child("User").child(id1).child("isAdmin").addValueEventListener(new ValueEventListener() {
 //            @Override

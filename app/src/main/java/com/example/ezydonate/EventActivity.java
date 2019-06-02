@@ -135,7 +135,7 @@ public class EventActivity extends Activity {
         final EditText date = (EditText) findViewById(R.id.editText4);
         final EditText time = (EditText) findViewById(R.id.editText5);
 
-        Toast.makeText(EventActivity.this, "Event being created....", Toast.LENGTH_SHORT).show();
+        Toast.makeText(EventActivity.this, "Event being created....", Toast.LENGTH_LONG).show();
 
         if (title.getText().toString().trim().equals("") || description.getText().toString().trim().equals("") || location.getText().toString().trim().equals("") || date.getText().toString().trim().equals("") || time.getText().toString().trim().equals("")) {
             Toast.makeText(this, "Invalid Details", Toast.LENGTH_SHORT).show();

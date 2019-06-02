@@ -105,7 +105,7 @@
 
 
         <Button
-            android:id="@+id/event_button_id"
+            android:id="@+id/user_button_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp"
