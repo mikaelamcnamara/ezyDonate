@@ -1,32 +1,23 @@
 package com.example.ezydonate;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
-import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.transition.TransitionManager;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.core.Constants;
 import com.squareup.picasso.Picasso;
-
-import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -57,7 +48,7 @@ public class FirebaseEventViewHolder extends RecyclerView.ViewHolder implements 
 
 
         ImageView eventImageView = (ImageView) eView.findViewById(R.id.event_img_id);
-        final TextView titleTextView = (TextView) eView.findViewById(R.id.event_title_id);
+        final TextView titleTextView = (TextView) eView.findViewById(R.id.trans_user_id);
         event_description = (TextView) eView.findViewById(R.id.event_description_id);
         TextView dateTextView = (TextView) eView.findViewById(R.id.event_date_id);
         TextView timeTextView = (TextView) eView.findViewById(R.id.event_time_id);

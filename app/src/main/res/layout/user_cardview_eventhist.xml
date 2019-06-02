@@ -23,7 +23,7 @@
         </LinearLayout>
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/admineventHistory_img_id"
+            android:id="@+id/eventHist_img_id"
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:layout_marginLeft="20dp"
@@ -34,7 +34,7 @@
             app:civ_border_width="2dp" />
 
         <TextView
-            android:id="@+id/admineventHistory_title_id"
+            android:id="@+id/eventHistory_title_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp"
@@ -44,7 +44,7 @@
             android:textSize="17dp" />
 
         <TextView
-            android:id="@+id/adminEventHistory_date_id"
+            android:id="@+id/eventHistory_date_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp"
@@ -54,7 +54,7 @@
             android:text="Date" />
 
         <TextView
-            android:id="@+id/adminEventHistory_time_id"
+            android:id="@+id/eventHistory_time_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp"
@@ -64,7 +64,7 @@
             android:textSize="17dp" />
 
         <TextView
-            android:id="@+id/adminEventHistory_location_id"
+            android:id="@+id/eventHistory_location_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp"
@@ -74,7 +74,7 @@
             android:textSize="17dp" />
 
         <TextView
-            android:id="@+id/adminEventHistory_description_id"
+            android:id="@+id/eventHistory_description_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
