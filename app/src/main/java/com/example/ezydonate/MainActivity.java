@@ -221,6 +221,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    public void cancelBookingA(View view) {
+
+        Intent makeEvent = new Intent(MainActivity.this, BookingCancelActivityAdmin.class);
+        startActivity(makeEvent);
+
+    }
+
     public void showusers(View view) {
 
         Intent showUsers = new Intent(MainActivity.this, UserAdminFragment.class);

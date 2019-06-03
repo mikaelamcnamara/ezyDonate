@@ -96,6 +96,10 @@
             android:name=".UserAdminFragmentSearch"
             android:label="EzyDonate" >
         </activity>
+        <activity
+            android:name=".BookingCancelActivityAdmin"
+            android:label="EzyDonate" >
+        </activity>
     </application>
 
 </manifest>
