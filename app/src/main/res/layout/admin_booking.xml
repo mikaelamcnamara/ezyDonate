@@ -74,7 +74,7 @@
             android:background="@drawable/reg_btn"
             android:fontFamily="sans-serif-condensed-medium"
             android:text="Cancel Booking"
-            android:onClick="cancelBooking"
+            android:onClick="cancelBookingA"
             android:textColor="@color/lightBlue"
             android:textSize="20dp"
             android:textStyle="bold"
