@@ -14,14 +14,14 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerviewhistory_idss"
-            android:layout_width="405dp"
-            android:layout_height="528dp"
+            android:layout_width="407dp"
+            android:layout_height="361dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="100dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="8dp"
             android:clipToPadding="false"
             android:paddingBottom="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -67,9 +67,11 @@
             android:background="@drawable/ic_arrow_back_black_24dp"
             android:onClick="backBooking"
             app:layout_constraintBottom_toTopOf="@+id/recyclerviewhistory_idss"
-            app:layout_constraintEnd_toStartOf="@+id/textView9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.022"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <EditText
             android:id="@+id/editText11"
@@ -82,7 +84,7 @@
             android:layout_marginRight="8dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Username"
+            android:text="Enter Username"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />

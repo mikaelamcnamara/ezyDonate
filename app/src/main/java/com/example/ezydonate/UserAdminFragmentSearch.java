@@ -71,6 +71,10 @@ public class UserAdminFragmentSearch extends Activity {
 
         }
 
+    public void backBooking(View view) {
+        finish();
+    }
+
 //        private void setUpFirebaseAdapter(Query query) {
 //
 //            FirebaseRecyclerOptions<User> options =
