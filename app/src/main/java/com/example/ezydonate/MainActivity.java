@@ -263,6 +263,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    public void adminHistorySearch(View view) {
+
+        Intent adhist = new Intent(this, UserAdminFragmentSearch.class);
+        startActivity(adhist);
+
+    }
+
 
     public void menu(View view) {
         dmLayout = (DrawerLayout) findViewById(R.id.draw_layout);

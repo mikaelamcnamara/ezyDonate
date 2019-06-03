@@ -92,6 +92,10 @@
             android:name=".TransHistoryPageUser"
             android:label="EzyDonate" >
         </activity>
+        <activity
+            android:name=".UserAdminFragmentSearch"
+            android:label="EzyDonate" >
+        </activity>
     </application>
 
 </manifest>

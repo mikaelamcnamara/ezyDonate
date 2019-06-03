@@ -20,8 +20,10 @@
             android:scaleType="fitStart"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/history" />
 
         <Button
@@ -53,21 +55,22 @@
             android:layout_height="70dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="200dp"
             android:background="@drawable/reg_btn"
             android:fontFamily="sans-serif-condensed-medium"
+            android:onClick="donationHistory"
             android:text="Donation Participants"
             android:textColor="@color/lightBlue"
-            android:onClick="donationHistory"
             android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/imageView5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/histBtn" />
+            app:layout_constraintTop_toBottomOf="@+id/eventHistAdminBtn"
+            app:layout_constraintVertical_bias="0.288" />
 
 
         <TextView
@@ -99,6 +102,30 @@
             android:onClick="mainM"
             app:layout_constraintEnd_toStartOf="@+id/textView6"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+
+            android:id="@+id/transHistAdminBtn3"
+            android:layout_width="363dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="104dp"
+            android:background="@drawable/reg_btn"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:onClick="adminHistorySearch"
+            android:text="Search User"
+            android:textColor="@color/lightBlue"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/transHistAdminBtn"
+            app:layout_constraintVertical_bias="0.145" />
 
     </android.support.constraint.ConstraintLayout>
 

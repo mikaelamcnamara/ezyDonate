@@ -58,4 +58,11 @@ public class AdminHistory extends Activity {
 
     }
 
+    public void adminHistorySearch(View view) {
+
+        Intent adhist = new Intent(this, UserAdminFragmentSearch.class);
+        startActivity(adhist);
+
+    }
+
 }
