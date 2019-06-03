@@ -72,7 +72,7 @@ public class FirebaseBookingViewHolder extends RecyclerView.ViewHolder implement
                         public void onClick(View view) {
                             final ArrayList<Event> events = new ArrayList<>();
 
-                            String booking_name = id + Time;
+                            String booking_name = Time;
                             ((BookingCancelActivity) eContext).removeBooking(view, booking_name);
 
                         }

@@ -499,8 +499,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             });
 
-            Toast.makeText(this, currentUser.getUsername(), Toast.LENGTH_SHORT).show();
-
             Donation donation = new Donation(amount, id1, dtf.format(now), currentUser.getUsername());
 
             mDatabase.child("donation").child(id1).child(currentTime.toString()).setValue(donation);

@@ -30,6 +30,7 @@ public class BookingCancelActivity extends Activity {
     private RecyclerView myrecyclerview;
     private List<Booking> lstEvent;
     private FirebaseRecyclerAdapter<Booking, FirebaseBookingViewHolder> mFirebaseAdapter;
+    private String userID;
 
     Query query;
 
@@ -42,10 +43,13 @@ public class BookingCancelActivity extends Activity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         setContentView(R.layout.cancel_booking);
 
+        FirebaseUser user = mAuth.getCurrentUser();
+        userID = user.getUid();
+
 
             ButterKnife.bind(this);
 
-            mDatabase = FirebaseDatabase.getInstance().getReference().child("booking");
+            mDatabase = FirebaseDatabase.getInstance().getReference().child("booking").child(userID);
             query = mDatabase.limitToFirst(50);
 
             mRecyclerView = (RecyclerView) findViewById(R.id.recyclerviewbooking_id);
@@ -97,8 +101,7 @@ public class BookingCancelActivity extends Activity {
 
         public void removeBooking(View view, String booking) {
 
-            Toast.makeText(this, booking, Toast.LENGTH_SHORT).show();
-
+            Toast.makeText(this, "booking removed", Toast.LENGTH_SHORT);
             mDatabase.child(booking).removeValue();
 
         }

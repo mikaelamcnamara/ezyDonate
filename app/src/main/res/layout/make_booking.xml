@@ -32,7 +32,7 @@
                 android:textSize="15dp"
                 android:textColor="#F5EFEF"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/calendarView"
+                app:layout_constraintBottom_toTopOf="@+id/calendarViews"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/imageView5"
                 app:layout_constraintTop_toBottomOf="@+id/textView6"
@@ -49,7 +49,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/ic_date_range_black_24dp"
-                app:layout_constraintBottom_toTopOf="@+id/calendarView"
+                app:layout_constraintBottom_toTopOf="@+id/calendarViews"
                 app:layout_constraintEnd_toStartOf="@+id/textView10"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +84,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/textView23"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/calendarView"
+                app:layout_constraintTop_toBottomOf="@+id/calendarViews"
                 app:layout_constraintVertical_bias="0.714" />
 
             <TextView
@@ -106,7 +106,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.532"
                 app:layout_constraintStart_toStartOf="@+id/imageView5"
-                app:layout_constraintTop_toBottomOf="@+id/calendarView"
+                app:layout_constraintTop_toBottomOf="@+id/calendarViews"
                 app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
@@ -142,7 +142,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <CalendarView
-                android:id="@+id/calendarView"
+                android:id="@+id/calendarViews"
                 android:layout_width="364dp"
                 android:layout_height="342dp"
                 android:layout_marginStart="8dp"
@@ -172,7 +172,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/calendarView"
+                app:layout_constraintTop_toBottomOf="@+id/calendarViews"
                 app:layout_constraintVertical_bias="1.0" />
 
             <TextView
@@ -190,7 +190,7 @@
                 android:textSize="15dp"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/calendarView"
+                app:layout_constraintBottom_toTopOf="@+id/calendarViews"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/imageView5"
                 app:layout_constraintTop_toBottomOf="@+id/editText6"
