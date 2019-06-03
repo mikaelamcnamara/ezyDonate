@@ -11,6 +11,9 @@
         android:layout_height="match_parent">
 
 
+
+
+
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -22,7 +25,7 @@
                 android:layout_height="128dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +41,7 @@
                 android:layout_height="155dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -91,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -99,24 +102,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView6"
                 app:srcCompat="@drawable/moneydonor" />
-
-
-            <ImageView
-                android:id="@+id/imageView16"
-                android:layout_width="336dp"
-                android:layout_height="102dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.491"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView11"
-                app:srcCompat="@drawable/totalpoints" />
 
 
             <TextView
@@ -195,33 +180,6 @@
                 app:layout_constraintStart_toStartOf="@+id/imageView11"
                 app:layout_constraintTop_toTopOf="@+id/imageView11" />
 
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="52dp"
-                android:layout_marginRight="52dp"
-                android:text="YOUR POINTS:"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="14dp"
-                app:layout_constraintEnd_toEndOf="@+id/imageView16"
-                app:layout_constraintTop_toTopOf="@+id/imageView16" />
-
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="100000"
-                android:textColor="@color/white"
-                android:textSize="30dp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/imageView16"
-                app:layout_constraintHorizontal_bias="0.832"
-                app:layout_constraintStart_toStartOf="@+id/imageView16"
-                app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
 
         </android.support.constraint.ConstraintLayout>
@@ -273,7 +231,6 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/navigation_header"
         app:menu="@menu/mainpage_menu">
-
     </android.support.design.widget.NavigationView>
 
 

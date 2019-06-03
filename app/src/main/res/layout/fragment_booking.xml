@@ -105,19 +105,19 @@
     </android.support.constraint.ConstraintLayout>
 
 
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    <!--<FrameLayout-->
+        <!--android:id="@+id/fragment_container"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"/>-->
 
-    <android.support.design.widget.NavigationView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:menu="@menu/mainpage_menu"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/navigation_header"
-        android:id="@+id/nav_view">
-    </android.support.design.widget.NavigationView>
+    <!--<android.support.design.widget.NavigationView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--app:menu="@menu/mainpage_menu"-->
+        <!--android:layout_gravity="start"-->
+        <!--app:headerLayout="@layout/navigation_header"-->
+        <!--android:id="@+id/nav_view">-->
+    <!--</android.support.design.widget.NavigationView>-->
 
 
 
