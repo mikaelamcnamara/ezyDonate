@@ -119,7 +119,7 @@ public class BookingMakeActivity extends Activity {
 
                     mDatabase.child("booking").child(id1).child("user_booking").setValue(booking);
 
-                    mDatabase.child("bookingadmin").child(name+timeString).setValue(booking);
+                    mDatabase.child("bookingadmin").child(timeString+id1).setValue(booking);
 
                     Toast.makeText(BookingMakeActivity.this, "Booking Made", Toast.LENGTH_SHORT).show();
 

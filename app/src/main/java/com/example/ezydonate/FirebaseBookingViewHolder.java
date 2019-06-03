@@ -36,11 +36,14 @@ public class FirebaseBookingViewHolder extends RecyclerView.ViewHolder implement
     private Button cancelbtn;
     private FirebaseAuth mAuth;
 
+
     public FirebaseBookingViewHolder(View itemView) {
         super(itemView);
         eView = itemView;
         eContext = itemView.getContext();
         itemView.setOnClickListener(this);
+
+
     }
 
     public void bindBooking(Booking booking) {
@@ -69,11 +72,38 @@ public class FirebaseBookingViewHolder extends RecyclerView.ViewHolder implement
                     cancelbtn.setOnClickListener(new View.OnClickListener() {
                         @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                         @Override
-                        public void onClick(View view) {
+                        public void onClick(final View view) {
                             final ArrayList<Event> events = new ArrayList<>();
 
-                            String booking_name = Time;
-                            ((BookingCancelActivity) eContext).removeBooking(view, booking_name);
+                            final String booking_name = Time;
+                            String booking_desc = id;
+
+                            DatabaseReference g = FirebaseDatabase.getInstance().getReference();
+
+                           g.child("User").child(id).child("isAdmin").addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot snapshot) {
+
+                                    String admin = (String) snapshot.getValue();  //prints "Do you have data? You'll love Firebase."
+
+                                    if (admin.equals("yes")) {
+
+
+                                        ((BookingCancelActivityAdmin) eContext).removeBooking(view, booking_name, id);
+                                    }
+
+                                    else {
+
+                                        ((BookingCancelActivity) eContext).removeBooking(view, booking_name, id);
+                                    }
+                                }
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                    String admin = "false";
+                                }
+                            });
+
 
                         }
                     });

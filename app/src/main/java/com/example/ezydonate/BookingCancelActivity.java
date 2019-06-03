@@ -99,10 +99,12 @@ public class BookingCancelActivity extends Activity {
             mRecyclerView.setAdapter(mFirebaseAdapter);
         }
 
-        public void removeBooking(View view, String booking) {
+        public void removeBooking(View view, String booking, String id) {
 
             Toast.makeText(this, "booking removed", Toast.LENGTH_SHORT);
-            mDatabase.child(booking).removeValue();
+            mDatabase.removeValue();
+            DatabaseReference admin = FirebaseDatabase.getInstance().getReference().child("bookingadmin").child(booking+id);
+            admin.removeValue();
 
         }
 
