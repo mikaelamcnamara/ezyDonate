@@ -58,6 +58,8 @@ public class BookingMakeActivity extends Activity {
 
         CalendarView calendar = (CalendarView)findViewById(R.id.calendarViews);
 
+
+
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
 
             @Override
@@ -68,7 +70,11 @@ public class BookingMakeActivity extends Activity {
 
             }
         });
+
+
     }
+
+
 
 
     public void backBooking(View view) {

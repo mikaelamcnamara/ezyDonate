@@ -112,6 +112,7 @@
             android:layout_marginTop="190dp"
             android:background="#3895F2"
             android:text="Description"
+            android:textColor="@color/white"
             android:textSize="17dp"
             android:paddingLeft="30dp"
             android:paddingBottom="20dp"

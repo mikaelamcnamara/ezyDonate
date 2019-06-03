@@ -31,7 +31,6 @@
             android:background="@null"
             android:onClick="menu"
             app:layout_constraintBottom_toTopOf="@+id/textView8"
-            app:layout_constraintEnd_toStartOf="@+id/textView16"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -45,9 +44,11 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
+
+
             <TextView
                 android:id="@+id/textView19"
-                android:layout_width="184dp"
+                android:layout_width="152dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="8dp"
@@ -56,7 +57,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="ezyDonate"
+                android:text="Location"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -67,14 +68,14 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.025" />
 
-            <Button
+            <TextView
                 android:id="@+id/button_GPS"
-                android:layout_width="279dp"
+                android:layout_width="153dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@color/lightBlue"
                 android:text="Find Nearby Charities"
                 android:textColor="@android:color/white" />
+
         </LinearLayout>
 
     </LinearLayout>
@@ -88,6 +89,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/map" />
+
     </LinearLayout>
 
 </LinearLayout>
