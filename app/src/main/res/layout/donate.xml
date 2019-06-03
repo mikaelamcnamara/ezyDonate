@@ -88,8 +88,8 @@
 
     <ImageView
         android:id="@+id/imageView18"
-        android:layout_width="126dp"
-        android:layout_height="113dp"
+        android:layout_width="82dp"
+        android:layout_height="71dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -98,8 +98,10 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/editText9"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ezyDone"
+        app:layout_constraintVertical_bias="0.493"
         app:srcCompat="@drawable/ic_attach_money_black_24dp" />
 
     <!--<ImageView-->
